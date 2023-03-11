@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "34DEF95529B1765900F01AA9"
-               BuildableName = "Task Blotter.app"
-               BlueprintName = "Task Blotter"
-               ReferencedContainer = "container:Task Blotter.xcodeproj">
+               BuildableName = "TaskBlotter.app"
+               BlueprintName = "TaskBlotter"
+               ReferencedContainer = "container:TaskBlotter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,9 +34,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "34DEF96B29B1765D00F01AA9"
-               BuildableName = "Task BlotterTests.xctest"
-               BlueprintName = "Task BlotterTests"
-               ReferencedContainer = "container:Task Blotter.xcodeproj">
+               BuildableName = "TaskBlotterTests.xctest"
+               BlueprintName = "TaskBlotterTests"
+               ReferencedContainer = "container:TaskBlotter.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -45,19 +45,18 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "34DEF97529B1765D00F01AA9"
-               BuildableName = "Task BlotterUITests.xctest"
-               BlueprintName = "Task BlotterUITests"
-               ReferencedContainer = "container:Task Blotter.xcodeproj">
+               BuildableName = "TaskBlotterUITests.xctest"
+               BlueprintName = "TaskBlotterUITests"
+               ReferencedContainer = "container:TaskBlotter.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
-      intentQueryString = "Start Task Blotter"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      launchStyle = "1"
+      launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
@@ -68,15 +67,14 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "34DEF95529B1765900F01AA9"
-            BuildableName = "Task Blotter.app"
-            BlueprintName = "Task Blotter"
-            ReferencedContainer = "container:Task Blotter.xcodeproj">
+            BuildableName = "TaskBlotter.app"
+            BlueprintName = "TaskBlotter"
+            ReferencedContainer = "container:TaskBlotter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
-      intentQueryString = "Start Task Blotter"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
@@ -86,9 +84,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "34DEF95529B1765900F01AA9"
-            BuildableName = "Task Blotter.app"
-            BlueprintName = "Task Blotter"
-            ReferencedContainer = "container:Task Blotter.xcodeproj">
+            BuildableName = "TaskBlotter.app"
+            BlueprintName = "TaskBlotter"
+            ReferencedContainer = "container:TaskBlotter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

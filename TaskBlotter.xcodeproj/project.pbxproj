@@ -71,7 +71,7 @@
 		34B8C0AB29BBE8D9008C262E /* TBUIOTController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBUIOTController.swift; sourceTree = "<group>"; };
 		34B8C0AD29BBF1CA008C262E /* TBUIObjectiveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBUIObjectiveCell.swift; sourceTree = "<group>"; };
 		34DD74CC29B63CFE0034DC50 /* TBUIGoalListingTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBUIGoalListingTableView.swift; sourceTree = "<group>"; };
-		34DEF95629B1765900F01AA9 /* Task Blotter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Task Blotter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		34DEF95629B1765900F01AA9 /* TaskBlotter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskBlotter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34DEF95929B1765900F01AA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34DEF95B29B1765900F01AA9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		34DEF95D29B1765900F01AA9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -79,9 +79,9 @@
 		34DEF96229B1765C00F01AA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		34DEF96529B1765C00F01AA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		34DEF96729B1765C00F01AA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		34DEF96C29B1765D00F01AA9 /* Task BlotterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Task BlotterTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		34DEF96C29B1765D00F01AA9 /* TaskBlotterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskBlotterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		34DEF97029B1765D00F01AA9 /* Task_BlotterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task_BlotterTests.swift; sourceTree = "<group>"; };
-		34DEF97629B1765D00F01AA9 /* Task BlotterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Task BlotterUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		34DEF97629B1765D00F01AA9 /* TaskBlotterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskBlotterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		34DEF97A29B1765D00F01AA9 /* Task_BlotterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task_BlotterUITests.swift; sourceTree = "<group>"; };
 		34DEF97C29B1765D00F01AA9 /* Task_BlotterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task_BlotterUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		34DEF98B29B1813D00F01AA9 /* TBUITabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBUITabBarController.swift; sourceTree = "<group>"; };
@@ -136,7 +136,7 @@
 		34DEF94D29B1765900F01AA9 = {
 			isa = PBXGroup;
 			children = (
-				34DEF95829B1765900F01AA9 /* Task Blotter */,
+				34DEF95829B1765900F01AA9 /* TaskBlotter */,
 				34DEF96F29B1765D00F01AA9 /* Task BlotterTests */,
 				34DEF97929B1765D00F01AA9 /* Task BlotterUITests */,
 				34DEF95729B1765900F01AA9 /* Products */,
@@ -147,14 +147,14 @@
 		34DEF95729B1765900F01AA9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				34DEF95629B1765900F01AA9 /* Task Blotter.app */,
-				34DEF96C29B1765D00F01AA9 /* Task BlotterTests.xctest */,
-				34DEF97629B1765D00F01AA9 /* Task BlotterUITests.xctest */,
+				34DEF95629B1765900F01AA9 /* TaskBlotter.app */,
+				34DEF96C29B1765D00F01AA9 /* TaskBlotterTests.xctest */,
+				34DEF97629B1765D00F01AA9 /* TaskBlotterUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		34DEF95829B1765900F01AA9 /* Task Blotter */ = {
+		34DEF95829B1765900F01AA9 /* TaskBlotter */ = {
 			isa = PBXGroup;
 			children = (
 				349012CD29B822870095D133 /* Model */,
@@ -176,7 +176,7 @@
 				34DEF96429B1765C00F01AA9 /* LaunchScreen.storyboard */,
 				34DEF96729B1765C00F01AA9 /* Info.plist */,
 			);
-			path = "Task Blotter";
+			path = TaskBlotter;
 			sourceTree = "<group>";
 		};
 		34DEF96F29B1765D00F01AA9 /* Task BlotterTests */ = {
@@ -207,9 +207,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		34DEF95529B1765900F01AA9 /* Task Blotter */ = {
+		34DEF95529B1765900F01AA9 /* TaskBlotter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 34DEF98029B1765D00F01AA9 /* Build configuration list for PBXNativeTarget "Task Blotter" */;
+			buildConfigurationList = 34DEF98029B1765D00F01AA9 /* Build configuration list for PBXNativeTarget "TaskBlotter" */;
 			buildPhases = (
 				34DEF95229B1765900F01AA9 /* Sources */,
 				34DEF95329B1765900F01AA9 /* Frameworks */,
@@ -219,14 +219,14 @@
 			);
 			dependencies = (
 			);
-			name = "Task Blotter";
+			name = TaskBlotter;
 			productName = "Task Blotter";
-			productReference = 34DEF95629B1765900F01AA9 /* Task Blotter.app */;
+			productReference = 34DEF95629B1765900F01AA9 /* TaskBlotter.app */;
 			productType = "com.apple.product-type.application";
 		};
-		34DEF96B29B1765D00F01AA9 /* Task BlotterTests */ = {
+		34DEF96B29B1765D00F01AA9 /* TaskBlotterTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 34DEF98329B1765D00F01AA9 /* Build configuration list for PBXNativeTarget "Task BlotterTests" */;
+			buildConfigurationList = 34DEF98329B1765D00F01AA9 /* Build configuration list for PBXNativeTarget "TaskBlotterTests" */;
 			buildPhases = (
 				34DEF96829B1765D00F01AA9 /* Sources */,
 				34DEF96929B1765D00F01AA9 /* Frameworks */,
@@ -237,14 +237,14 @@
 			dependencies = (
 				34DEF96E29B1765D00F01AA9 /* PBXTargetDependency */,
 			);
-			name = "Task BlotterTests";
+			name = TaskBlotterTests;
 			productName = "Task BlotterTests";
-			productReference = 34DEF96C29B1765D00F01AA9 /* Task BlotterTests.xctest */;
+			productReference = 34DEF96C29B1765D00F01AA9 /* TaskBlotterTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		34DEF97529B1765D00F01AA9 /* Task BlotterUITests */ = {
+		34DEF97529B1765D00F01AA9 /* TaskBlotterUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 34DEF98629B1765D00F01AA9 /* Build configuration list for PBXNativeTarget "Task BlotterUITests" */;
+			buildConfigurationList = 34DEF98629B1765D00F01AA9 /* Build configuration list for PBXNativeTarget "TaskBlotterUITests" */;
 			buildPhases = (
 				34DEF97229B1765D00F01AA9 /* Sources */,
 				34DEF97329B1765D00F01AA9 /* Frameworks */,
@@ -255,9 +255,9 @@
 			dependencies = (
 				34DEF97829B1765D00F01AA9 /* PBXTargetDependency */,
 			);
-			name = "Task BlotterUITests";
+			name = TaskBlotterUITests;
 			productName = "Task BlotterUITests";
-			productReference = 34DEF97629B1765D00F01AA9 /* Task BlotterUITests.xctest */;
+			productReference = 34DEF97629B1765D00F01AA9 /* TaskBlotterUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -283,7 +283,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 34DEF95129B1765900F01AA9 /* Build configuration list for PBXProject "Task Blotter" */;
+			buildConfigurationList = 34DEF95129B1765900F01AA9 /* Build configuration list for PBXProject "TaskBlotter" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -296,9 +296,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				34DEF95529B1765900F01AA9 /* Task Blotter */,
-				34DEF96B29B1765D00F01AA9 /* Task BlotterTests */,
-				34DEF97529B1765D00F01AA9 /* Task BlotterUITests */,
+				34DEF95529B1765900F01AA9 /* TaskBlotter */,
+				34DEF96B29B1765D00F01AA9 /* TaskBlotterTests */,
+				34DEF97529B1765D00F01AA9 /* TaskBlotterUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -382,12 +382,12 @@
 /* Begin PBXTargetDependency section */
 		34DEF96E29B1765D00F01AA9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 34DEF95529B1765900F01AA9 /* Task Blotter */;
+			target = 34DEF95529B1765900F01AA9 /* TaskBlotter */;
 			targetProxy = 34DEF96D29B1765D00F01AA9 /* PBXContainerItemProxy */;
 		};
 		34DEF97829B1765D00F01AA9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 34DEF95529B1765900F01AA9 /* Task Blotter */;
+			target = 34DEF95529B1765900F01AA9 /* TaskBlotter */;
 			targetProxy = 34DEF97729B1765D00F01AA9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -598,7 +598,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Task Blotter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Task Blotter";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TaskBlotter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TaskBlotter";
 			};
 			name = Debug;
 		};
@@ -618,7 +618,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Task Blotter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Task Blotter";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TaskBlotter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TaskBlotter";
 			};
 			name = Release;
 		};
@@ -661,7 +661,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		34DEF95129B1765900F01AA9 /* Build configuration list for PBXProject "Task Blotter" */ = {
+		34DEF95129B1765900F01AA9 /* Build configuration list for PBXProject "TaskBlotter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				34DEF97E29B1765D00F01AA9 /* Debug */,
@@ -670,7 +670,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		34DEF98029B1765D00F01AA9 /* Build configuration list for PBXNativeTarget "Task Blotter" */ = {
+		34DEF98029B1765D00F01AA9 /* Build configuration list for PBXNativeTarget "TaskBlotter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				34DEF98129B1765D00F01AA9 /* Debug */,
@@ -679,7 +679,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		34DEF98329B1765D00F01AA9 /* Build configuration list for PBXNativeTarget "Task BlotterTests" */ = {
+		34DEF98329B1765D00F01AA9 /* Build configuration list for PBXNativeTarget "TaskBlotterTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				34DEF98429B1765D00F01AA9 /* Debug */,
@@ -688,7 +688,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		34DEF98629B1765D00F01AA9 /* Build configuration list for PBXNativeTarget "Task BlotterUITests" */ = {
+		34DEF98629B1765D00F01AA9 /* Build configuration list for PBXNativeTarget "TaskBlotterUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				34DEF98729B1765D00F01AA9 /* Debug */,
