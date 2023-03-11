@@ -15,28 +15,23 @@ import UIKit
 class TBUITabBarController: UITabBarController {
     var navTarget: String = "none"
     var stateStore = StateStore()
-//    var appState = AppState()
     var domainStore = DomainStore()
-//    var effortDomainAppState: EffortDomainAppState?
     
     init() {
         super.init(nibName: nil, bundle: nil)
-//        self.effortDomainAppState = EffortDomainAppState(effortDomain: domainStore.domain, appState: appState)
     }
         
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-//        self.effortDomainAppState = EffortDomainAppState(effortDomain: domainStore.domain, appState: appState)
-//        fatalError("init(coder:) has not been implemented")
+        // fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
         print("TBUITabBarController.viewDidLoad()")        
         super.viewDidLoad()
-//        initDataState(dataState: .normal) // replace with direct call
         loadDomainData()
         loadStateData()
-        saveStateData(stateRef: self.stateStore.state)  // todo, this is just temporary to test the method
+        // saveStateData(stateRef: self.stateStore.state)  // todo, this is just temporary to test the method
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,6 +39,7 @@ class TBUITabBarController: UITabBarController {
         print("TBUITabBarController.viewWillAppear()")
         doNavigation()
     }
+
     
     func doNavigation() {
         if self.navTarget == "GoalDetail" {
@@ -110,45 +106,11 @@ class TBUITabBarController: UITabBarController {
             }
         }
     }
-        
-    /**
-     Different ways of setting the AppState() in sync with the saved domain.
-        1 - clear empty data (see also AppIntent that cleard te domain data without loading the app)
-        2 - test data
-        3 - data loaded from disk
-     */
-//    func initDataState(dataState: DataState) {
-//        switch dataState {
-//            // don't need this .   clear should be a separate shortcut.
-//        case .clear: // this is really dangerous for a real app.  Disable this after some testing.
-//            print("The .clear case shouldn't need to be used in the TBUITabBarController")
-////            self.domainStore =  DomainStore()
-////            saveData(domainRef: self.domainStore.domain)
-////            self.effortDomainAppState = EffortDomainAppState(effortDomain: &self.domainStore.domain,
-////                                                             appState: &AppState())
-//        case .testdata: // this is really dangerous for a real app.  Disable this after some testing.
-////            effortDomainAppState = dummyDataEffortDomainAppState
-//            self.domainStore.domain = testEffortDomain
-//            saveData(domainRef: self.domainStore.domain)
-//        case .normal:
-////            self.domainStore =  DomainStore()
-////            self.effortDomainAppState = EffortDomainAppState(effortDomain: &self.domainStore!.domain,
-////                                                             appState: AppState())
-//            loadData(domainInOutRef: &self.domainStore.domain)
-//
-//        }
-//    }
-
-    
+            
     func setNavigation(navTarget: String) {
         self.navTarget = navTarget
     }
     
-
-    /*
-    // MARK: - Navigation
-     */
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("in TBUITabBarController prepare for segue. self.navTarget: \(self.navTarget)")
             }

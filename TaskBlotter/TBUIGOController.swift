@@ -44,8 +44,23 @@ class TBUIGOController: UIViewController, UITableViewDataSource, UITableViewDele
 
     }
 
+    func getTBRootController() ->TBUITabBarController{
+        return navigationController!.viewControllers.first?.tabBarController as! TBUITabBarController
+//        var top: UIViewController = self;
+//
+//        while top.presentingViewController != nil {
+//                top = top.presentingViewController!;
+//            }
+//        return top
+    }
+    
     @IBAction func defaultGoalButtonAction(_ sender: UIButton) {
         print("pressed defaultGoalButton. goalRank is: \(self.goalRank)")
+        let tbRootController = self.getTBRootController()
+        let existingState = tbRootController.stateStore.state
+        let domain = tbRootController.domainStore.domain
+        var newState = domain.requestNewCurrentGState(desiredGSlot: self.goalRank, previousAppState: existingState)
+        tbRootController.stateStore.saveData(stateRef: newState)
     }
     
     // MARK: - Navigation
