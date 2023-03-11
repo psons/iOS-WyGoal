@@ -120,12 +120,7 @@
 		349012CD29B822870095D133 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				344E5EA329BCCFB70012B64A /* Task.swift */,
-				344E5E9B29BCCF770012B64A /* Objective.swift */,
-				344E5EA129BCCFB10012B64A /* Goal.swift */,
 				3488D0B929B40D4F0009DA87 /* ModelData.swift */,
-				344E5E9D29BCCF9D0012B64A /* EffortDomain.swift */,
-				344E5E9F29BCCFA90012B64A /* EffortDomainAppState.swift */,
 				349012CE29B8252E0095D133 /* DomainStore.swift */,
 				34405BCA29B964760015EA28 /* DataState.swift */,
 				3464848E29BC136100CE5D8A /* StateStore.swift */,
@@ -157,6 +152,7 @@
 		34DEF95829B1765900F01AA9 /* TaskBlotter */ = {
 			isa = PBXGroup;
 			children = (
+				34FFE3BF29BCD774006F4C28 /* EffortDomain */,
 				349012CD29B822870095D133 /* Model */,
 				34DEF99129B18E4F00F01AA9 /* TBAppIntents.swift */,
 				34DEF95929B1765900F01AA9 /* AppDelegate.swift */,
@@ -202,6 +198,18 @@
 				34DEF99429B18F8900F01AA9 /* AppIntents.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		34FFE3BF29BCD774006F4C28 /* EffortDomain */ = {
+			isa = PBXGroup;
+			children = (
+				344E5EA329BCCFB70012B64A /* Task.swift */,
+				344E5E9B29BCCF770012B64A /* Objective.swift */,
+				344E5EA129BCCFB10012B64A /* Goal.swift */,
+				344E5E9D29BCCF9D0012B64A /* EffortDomain.swift */,
+				344E5E9F29BCCFA90012B64A /* EffortDomainAppState.swift */,
+			);
+			path = EffortDomain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -535,7 +543,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XX9BD4C763;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Task Blotter/Info.plist";
+				INFOPLIST_FILE = "TaskBlotter/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -563,7 +571,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XX9BD4C763;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Task Blotter/Info.plist";
+				INFOPLIST_FILE = "TaskBlotter/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
