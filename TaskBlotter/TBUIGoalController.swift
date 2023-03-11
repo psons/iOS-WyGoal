@@ -55,10 +55,10 @@ class TBUIGoalControllerViewController: UIViewController, UITableViewDataSource,
      This will be common to my TabBarController children, so maybe a base class?
      access the data and application state from the root controller.
      */
-    func useEffortDomainAppStateRef() -> EffortDomainAppState {
-        let tbc = self.useParentTBC()
-        return tbc.effortDomainAppState!
-    }
+//    func useEffortDomainAppStateRef() -> EffortDomainAppState {
+//        let tbc = self.useParentTBC()
+//        return tbc.effortDomainAppState!
+//    }
 
     
     // MARK: - Navigation

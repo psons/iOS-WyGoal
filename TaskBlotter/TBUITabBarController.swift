@@ -14,25 +14,29 @@ import UIKit
  */
 class TBUITabBarController: UITabBarController {
     var navTarget: String = "none"
-    var appState = AppState()
+    var stateStore = StateStore()
+//    var appState = AppState()
     var domainStore = DomainStore()
-    var effortDomainAppState: EffortDomainAppState?
+//    var effortDomainAppState: EffortDomainAppState?
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        self.effortDomainAppState = EffortDomainAppState(effortDomain: domainStore.domain, appState: appState)
+//        self.effortDomainAppState = EffortDomainAppState(effortDomain: domainStore.domain, appState: appState)
     }
         
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        self.effortDomainAppState = EffortDomainAppState(effortDomain: domainStore.domain, appState: appState)
+//        self.effortDomainAppState = EffortDomainAppState(effortDomain: domainStore.domain, appState: appState)
 //        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
         print("TBUITabBarController.viewDidLoad()")        
         super.viewDidLoad()
-        initDataState(dataState: .normal)
+//        initDataState(dataState: .normal) // replace with direct call
+        loadDomainData()
+        loadStateData()
+        saveStateData(stateRef: self.stateStore.state)  // todo, this is just temporary to test the method
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,16 +61,38 @@ class TBUITabBarController: UITabBarController {
         }
     }
     
+
+    func loadStateData() {
+        StateStore.load { result in
+            switch result {
+            case .failure(let error):
+                fatalError(error.localizedDescription)
+            case .success(let stateData):
+                self.stateStore.state = stateData
+            }
+        }
+    }
+
+    func saveStateData(stateRef: AppState) {
+        StateStore.save(state: stateRef) { result in
+            if case .failure(let error) = result {
+                fatalError(error.localizedDescription)
+            }
+        }
+    }
+
+    
     /**
+     Loads the Domain data
      This method runs async, and we need data from it, so it needs to be a method in a long lived object in the app.
-     As a long livedobject it provides a 'self' attribute reference to assign the data to.
+     As a long lived object it provides a 'self' attribute reference to assign the data to.
      otherwise the error message might be:
         - When the reference that gets the result is an inout paramater:
             Escaping closure captures 'inout' parameter 'domainInOutRef'
         - when it is local:
             Reference to property 'effortDomainAppState' in closure requires explicit use of 'self' to make capture semantics explicit
      */
-    func loadData(domainInOutRef: inout EffortDomain) {
+    func loadDomainData() {
         DomainStore.load { result in
             switch result {
             case .failure(let error):
@@ -77,7 +103,7 @@ class TBUITabBarController: UITabBarController {
         }
     }
 
-    func saveData(domainRef: EffortDomain) {
+    func saveDomainData(domainRef: EffortDomain) {
         DomainStore.save(domain: domainRef) { result in
             if case .failure(let error) = result {
                 fatalError(error.localizedDescription)
@@ -91,28 +117,27 @@ class TBUITabBarController: UITabBarController {
         2 - test data
         3 - data loaded from disk
      */
-    func initDataState(dataState: DataState) {
-        switch dataState {
-            // don't need this .   clear should be a separate shortcut.
-        case .clear: // this is really dangerous for a real app.  Disable this after some testing.
-            print("The .clear case shouldn't nef used in the TBUITabBarController")
-//            self.domainStore =  DomainStore()
+//    func initDataState(dataState: DataState) {
+//        switch dataState {
+//            // don't need this .   clear should be a separate shortcut.
+//        case .clear: // this is really dangerous for a real app.  Disable this after some testing.
+//            print("The .clear case shouldn't need to be used in the TBUITabBarController")
+////            self.domainStore =  DomainStore()
+////            saveData(domainRef: self.domainStore.domain)
+////            self.effortDomainAppState = EffortDomainAppState(effortDomain: &self.domainStore.domain,
+////                                                             appState: &AppState())
+//        case .testdata: // this is really dangerous for a real app.  Disable this after some testing.
+////            effortDomainAppState = dummyDataEffortDomainAppState
+//            self.domainStore.domain = testEffortDomain
 //            saveData(domainRef: self.domainStore.domain)
-//            self.effortDomainAppState = EffortDomainAppState(effortDomain: &self.domainStore.domain,
-//                                                             appState: &AppState())
-        case .testdata: // this is really dangerous for a real app.  Disable this after some testing.
-//            effortDomainAppState = dummyDataEffortDomainAppState
-            self.domainStore.domain = testEffortDomain
-            saveData(domainRef: self.domainStore.domain)
-        case .normal:
-//            self.domainStore =  DomainStore()
-//            self.effortDomainAppState = EffortDomainAppState(effortDomain: &self.domainStore!.domain,
-//                                                             appState: AppState())
-            loadData(domainInOutRef: &self.domainStore.domain)
-
-        }
-        
-    }
+//        case .normal:
+////            self.domainStore =  DomainStore()
+////            self.effortDomainAppState = EffortDomainAppState(effortDomain: &self.domainStore!.domain,
+////                                                             appState: AppState())
+//            loadData(domainInOutRef: &self.domainStore.domain)
+//
+//        }
+//    }
 
     
     func setNavigation(navTarget: String) {

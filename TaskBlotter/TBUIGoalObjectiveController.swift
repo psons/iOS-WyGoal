@@ -47,9 +47,10 @@ class TBUIGoalObjectiveController: UIViewController {
     /**
             access the data and application state from the root controller.
      */
-    func useEffortDomainAppStateRef() -> EffortDomainAppState {
-        return self.useParentTBC().effortDomainAppState!
-    }
+//    func useEffortDomainAppStateRef() -> AppState {
+////        return self.useParentTBC().effortDomainAppState!
+//        return self.useParentTBC().stateStore.state
+//    }
     
     // Gets a reference from the parent tabBarController to keep track of user position in the app asneeded for Siri Intens ad NSUserActivities
 //    func useAppState()-> AppState {
@@ -102,8 +103,16 @@ class TBUIGoalObjectiveController: UIViewController {
             if let maxTasksStr: String = self.newObjectiveMaxTasksTV.text {
                 if let maxTasksInt = Int(maxTasksStr) {
                     print("addNewObjectiveButtonAction: \(name) \(maxTasksInt)")
-                    self.useEffortDomainAppStateRef().currentGoal.addObjective(objective: Objective(name: name, maxTasks: maxTasksInt))
-                    self.storyListingTV.text = self.useEffortDomainAppStateRef().currentGoal.objectiveStrings()
+                    //self.useParentTBC().domainStore.domain
+                    // get current goal by applying the current app state to the domain.
+                    // the replacement for this will have the goal index passed in, and not expect the app state to pint to it.
+                    // though even that approach has to validate the goal it is trying to use.
+                    var currentAppState = self.useParentTBC().stateStore.state
+                    var effortDomain = self.useParentTBC().domainStore.domain
+                    let actualSppState = effortDomain.addObjective(objective: Objective(name: name, maxTasks: maxTasksInt), appState: currentAppState)
+//                    self.useEffortDomainAppStateRef().currentGoal.addObjective(objective: Objective(name: name, maxTasks: maxTasksInt))
+//                    self.storyListingTV.text = self.useEffortDomainAppStateRef().currentGoal.objectiveStrings()
+                    self.storyListingTV.text = effortDomain.goals[actualSppState.gSlot].objectiveStrings()
                 } else {
                     print("addNewObjectiveButtonAction: \(name)")
                 }

@@ -44,7 +44,10 @@ class TBUIGOController: UIViewController, UITableViewDataSource, UITableViewDele
 
     }
 
-
+    @IBAction func defaultGoalButtonAction(_ sender: UIButton) {
+        print("pressed defaultGoalButton. goalRank is: \(self.goalRank)")
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
