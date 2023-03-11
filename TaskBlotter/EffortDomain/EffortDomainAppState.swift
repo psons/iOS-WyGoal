@@ -45,10 +45,10 @@ class EffortDomainAppState: Codable, CustomStringConvertible {
         self.appState = appState
         
         // make sure appState points at a Goal
-        if !self.effortDomain.goals.indices.contains(self.appState.currentGSlot){
+        if !self.effortDomain.goals.indices.contains(self.appState.gSlot){
             print("Error in EffortDomainAppState.init(). AppState currentGSlot does not agree with EffortDomain. ")
             print("\t Forcing AppState to appState.currentGSlot EffortDomain.defaultGSlot")
-            self.appState.currentGSlot = EffortDomain.defaultGSlot
+            self.appState.gSlot = EffortDomain.defaultGSlot
         }
         // now can use self.currentGoal
 
@@ -56,11 +56,11 @@ class EffortDomainAppState: Codable, CustomStringConvertible {
          todo Need some test scenarios for this when user can manipulate appState current Goal and Objective with Siri
          `and when task adding is supported.`
          */
-        if !self.currentGoal.objectives.indices.contains(appState.currentOSlot) {
+        if !self.currentGoal.objectives.indices.contains(appState.oSlot) {
             print("Error in EffortDomainAppState.init(). AppState currentOSlot does not agree with EffortDomain. ")
             print("\t Appending to currentGoal.objectives")
             self.currentGoal.objectives.append(Objective(name: "default objective"))
-            self.appState.currentOSlot = self.currentGoal.objectives.count
+            self.appState.oSlot = self.currentGoal.objectives.count
         }
     }
     
@@ -72,11 +72,11 @@ class EffortDomainAppState: Codable, CustomStringConvertible {
     }
 
     var currentGoal: Goal {
-        get {return effortDomain.goals[appState.currentGSlot]}
+        get {return effortDomain.goals[appState.gSlot]}
     }
 
     var currentObjective: Objective {
-        get {return effortDomain.goals[appState.currentGSlot].objectives[appState.currentOSlot]}
+        get {return effortDomain.goals[appState.gSlot].objectives[appState.oSlot]}
     }
     
     /**

@@ -14,8 +14,8 @@ class StateStore {
     
     init(currentGSlot: Int = 0, currentOSlot: Int = 0) {
         self.state = AppState()
-        self.state.currentGSlot = currentGSlot
-        self.state.currentOSlot = currentOSlot
+        self.state.gSlot = currentGSlot
+        self.state.oSlot = currentOSlot
     }
     
     private static func fileURL() throws -> URL {

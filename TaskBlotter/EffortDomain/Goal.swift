@@ -11,6 +11,7 @@ let defaultMaxObjectives = 3
 
 class Goal: Codable, CustomStringConvertible {
     static let defaultOslot = 0
+    static let invalidOslot = -1
     let _id: String
     var name = ""
     var maxObjectives = 3
