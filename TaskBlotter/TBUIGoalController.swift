@@ -50,20 +50,6 @@ class TBUIGoalController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
 
-    
-    /**
-     This will be common to my TabBarController children, so maybe a base class?
-     access the data and application state from the root controller.
-     */
-//    func useEffortDomainAppStateRef() -> EffortDomainAppState {
-//        let tbc = self.useParentTBC()
-//        return tbc.effortDomainAppState!
-//    }
-
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.

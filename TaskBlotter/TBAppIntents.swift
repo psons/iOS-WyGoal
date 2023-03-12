@@ -124,7 +124,7 @@ struct ViewDefaultGoalIntent: AppIntent {
     func perform() async throws -> some IntentResult {
         print("ViewDefaultGoalIntent invoked")
         let tbc = getTBRootController()
-        tbc.setNavigation(navTarget: "GoalDetail")
+        tbc.setNavigation(navTarget: "GoalListing")
         tbc.doNavigation()
         return .result(value: "Launched to the default Goal" )
     }
@@ -143,7 +143,7 @@ struct ViewSavedObjectiveIntent: AppIntent {
     func perform() async throws -> some IntentResult {
         print("ViewSavedObjectiveIntent invoked")
         let tbc = getTBRootController()
-        tbc.setNavigation(navTarget: "ObjectiveDetail")
+        tbc.setNavigation(navTarget: "ObjectiveTasks")
         tbc.doNavigation()
         return .result(value: "Launched to the Saved Objective" )
     }
