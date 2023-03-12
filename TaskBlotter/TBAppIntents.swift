@@ -67,12 +67,10 @@ struct AddObjectiveIntent: AppIntent {
     static var description = IntentDescription("Adds an objective underneath the current goal in the Task Blotter App")
     
     @Parameter(title: "Name of the Objective")
-    var name: String    // not non-optional will have Sire assure that it is provided.
+    var name: String    // not non-optional will have Siri assure that it is provided.
     
     func perform() async throws -> some IntentResult {
         print("AddObjectiveIntent.perform() has parameter 'name' from the user \(name)")
-        
-        let domainStore = DomainStore()
         
         DomainStore.load { result in
             switch result {

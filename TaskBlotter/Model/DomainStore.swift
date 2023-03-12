@@ -12,7 +12,7 @@ class DomainStore {
     init(domain: EffortDomain) {
         self.domain = domain
     }
-    
+        
     init(name: String = "default") {
         self.domain = EffortDomain(name: name)
     }
@@ -25,7 +25,6 @@ class DomainStore {
             .appendingPathComponent("domain.json")
     }
     
-
     func saveData(domainRef: EffortDomain) {
         DomainStore.save(domain: domainRef) { result in
             if case .failure(let error) = result {
