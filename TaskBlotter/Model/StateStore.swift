@@ -56,6 +56,7 @@ class StateStore {
             }
         }
     }
+    
     /**
      Thinking why this should be static:  the caller may go out of scope while the async save is happening.
      */
