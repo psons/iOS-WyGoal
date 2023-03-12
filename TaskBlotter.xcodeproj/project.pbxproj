@@ -20,6 +20,7 @@
 		34B4216729BD143C000D3C79 /* EffortDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B4216629BD143C000D3C79 /* EffortDomain.swift */; };
 		34B4216929BD14B0000D3C79 /* EffortDomainAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B4216829BD14B0000D3C79 /* EffortDomainAppState.swift */; };
 		34B4216B29BD14DB000D3C79 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B4216A29BD14DB000D3C79 /* Goal.swift */; };
+		34B4216D29BD4F5B000D3C79 /* TBRootAccessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B4216C29BD4F5B000D3C79 /* TBRootAccessController.swift */; };
 		34B8C0AC29BBE8D9008C262E /* TBUIOTController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B8C0AB29BBE8D9008C262E /* TBUIOTController.swift */; };
 		34B8C0AE29BBF1CA008C262E /* TBUIObjectiveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B8C0AD29BBF1CA008C262E /* TBUIObjectiveCell.swift */; };
 		34DD74CD29B63CFE0034DC50 /* TBUIGoalListingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DD74CC29B63CFE0034DC50 /* TBUIGoalListingTableView.swift */; };
@@ -70,6 +71,7 @@
 		34B4216629BD143C000D3C79 /* EffortDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EffortDomain.swift; path = ../../../EffortDomain/EffortDomain/EffortDomainModel/EffortDomain.swift; sourceTree = "<group>"; };
 		34B4216829BD14B0000D3C79 /* EffortDomainAppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffortDomainAppState.swift; sourceTree = "<group>"; };
 		34B4216A29BD14DB000D3C79 /* Goal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
+		34B4216C29BD4F5B000D3C79 /* TBRootAccessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBRootAccessController.swift; sourceTree = "<group>"; };
 		34B8C0AB29BBE8D9008C262E /* TBUIOTController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBUIOTController.swift; sourceTree = "<group>"; };
 		34B8C0AD29BBF1CA008C262E /* TBUIObjectiveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBUIObjectiveCell.swift; sourceTree = "<group>"; };
 		34DD74CC29B63CFE0034DC50 /* TBUIGoalListingTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBUIGoalListingTableView.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				34DEF95B29B1765900F01AA9 /* SceneDelegate.swift */,
 				34DEF95D29B1765900F01AA9 /* ViewController.swift */,
 				34DEF95F29B1765900F01AA9 /* Main.storyboard */,
+				34B4216C29BD4F5B000D3C79 /* TBRootAccessController.swift */,
 				34DEF98B29B1813D00F01AA9 /* TBUITabBarController.swift */,
 				3488D0BD29B449D80009DA87 /* TBUIGoalController.swift */,
 				3488E3D029BBCD9D00FFBB7C /* TBUIGOController.swift */,
@@ -361,6 +364,7 @@
 				34B8C0AE29BBF1CA008C262E /* TBUIObjectiveCell.swift in Sources */,
 				34DEF95A29B1765900F01AA9 /* AppDelegate.swift in Sources */,
 				34DEF98E29B181C400F01AA9 /* TBUIGoalObjectiveController.swift in Sources */,
+				34B4216D29BD4F5B000D3C79 /* TBRootAccessController.swift in Sources */,
 				34405BCB29B964760015EA28 /* DataState.swift in Sources */,
 				34B4216529BD1427000D3C79 /* AppState.swift in Sources */,
 				34DEF98C29B1813D00F01AA9 /* TBUITabBarController.swift in Sources */,

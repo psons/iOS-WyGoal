@@ -12,7 +12,7 @@ import UIKit
 //  darker text against white: 5F5488 = darker purpleish
 // Cell Identifier: "ObjectiveCell"
 
-class TBUIGOController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class TBUIGOController: TBRootAccessController, UITableViewDataSource, UITableViewDelegate{
 
     var objectives: [Objective] = []
     var localGoal = Goal(name: "UNKNOWN Goal name")
@@ -43,24 +43,13 @@ class TBUIGOController: UIViewController, UITableViewDataSource, UITableViewDele
         self.goalRankTF.text = rankAsStr
 
     }
-
-    func getTBRootController() ->TBUITabBarController{
-        return navigationController!.viewControllers.first?.tabBarController as! TBUITabBarController
-//        var top: UIViewController = self;
-//
-//        while top.presentingViewController != nil {
-//                top = top.presentingViewController!;
-//            }
-//        return top
-    }
     
     @IBAction func defaultGoalButtonAction(_ sender: UIButton) {
         print("pressed defaultGoalButton. goalRank is: \(self.goalRank)")
-        let tbRootController = self.getTBRootController()
-        let existingState = tbRootController.stateStore.state
-        let domain = tbRootController.domainStore.domain
-        var newState = domain.requestNewCurrentGState(desiredGSlot: self.goalRank, previousAppState: existingState)
-        tbRootController.stateStore.saveData(stateRef: newState)
+        let stateStore = getTBStateStore()
+        let domainStore = getTBDomainStore()
+        var newState = domainStore.domain.requestNewCurrentGState(desiredGSlot: self.goalRank, previousAppState: stateStore.state)
+        stateStore.saveData(stateRef: newState)
     }
     
     // MARK: - Navigation
