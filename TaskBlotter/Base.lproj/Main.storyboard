@@ -185,6 +185,7 @@
                                                         <backgroundConfiguration key="background">
                                                             <color key="backgroundColor" red="0.69803921568627447" green="0.61960784313725492" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </backgroundConfiguration>
+                                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </buttonConfiguration>
                                                 </button>
                                             </subviews>
@@ -233,7 +234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Vh-b0-YhS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1500" y="593"/>
+            <point key="canvasLocation" x="634" y="523"/>
         </scene>
         <!--Goal + Objectives-->
         <scene sceneID="csq-UH-cOo">
@@ -243,8 +244,79 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="oWu-pT-JHF">
+                                <rect key="frame" x="16" y="385" width="288" height="43"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sDJ-NK-xcV">
+                                        <rect key="frame" x="0.0" y="0.0" width="133" height="43"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Set Default #n" cornerStyle="large">
+                                            <backgroundConfiguration key="background">
+                                                <color key="backgroundColor" red="0.69803921568627447" green="0.61960784313725492" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </backgroundConfiguration>
+                                            <fontDescription key="titleFontDescription" name="KhmerSangamMN" family="Khmer Sangam MN" pointSize="16"/>
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="defaultGoalButtonAction:" destination="vfJ-jS-FYg" eventType="touchUpInside" id="tGQ-d4-Ukh"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1xB-iH-EXg" userLabel="Delete Goal Button">
+                                        <rect key="frame" x="155" y="0.0" width="133" height="43"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Delete" cornerStyle="large">
+                                            <backgroundConfiguration key="background">
+                                                <color key="backgroundColor" red="0.69803921570000005" green="0.61960784310000006" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </backgroundConfiguration>
+                                            <fontDescription key="titleFontDescription" name="KhmerSangamMN" family="Khmer Sangam MN" pointSize="16"/>
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="defaultGoalButtonAction:" destination="vfJ-jS-FYg" eventType="touchUpInside" id="uSW-bT-cxI"/>
+                                            <action selector="deleteGoalButtonAction:" destination="vfJ-jS-FYg" eventType="touchUpInside" id="Uz1-uX-K0Y"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="eWr-mP-NL4">
+                                <rect key="frame" x="16" y="436" width="288" height="32"/>
+                                <subviews>
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="99" translatesAutoresizingMaskIntoConstraints="NO" id="Fe4-J9-rHx">
+                                        <rect key="frame" x="0.0" y="0.0" width="94" height="32"/>
+                                        <connections>
+                                            <action selector="maxObjectiveStepperAction:" destination="vfJ-jS-FYg" eventType="valueChanged" id="VkI-A5-CtZ"/>
+                                        </connections>
+                                    </stepper>
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="88" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="737-Ge-a9J">
+                                        <rect key="frame" x="106" y="0.0" width="53" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max Objectives" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JCQ-zh-v4J">
+                                        <rect key="frame" x="171" y="0.0" width="117" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dfi-lI-p3Q">
+                                <rect key="frame" x="16" y="476" width="288" height="43"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Create New Objective" cornerStyle="large">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" red="0.64313725490196072" green="0.76862745098039209" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </backgroundConfiguration>
+                                    <fontDescription key="titleFontDescription" name="KhmerSangamMN" family="Khmer Sangam MN" pointSize="16"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="createObjectiveButtonAction:" destination="vfJ-jS-FYg" eventType="touchUpInside" id="EaA-98-Llz"/>
+                                    <segue destination="KjH-Aw-jb6" kind="show" identifier="CreateNewObjective" id="dKs-Hq-z1S"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="JyZ-xv-i8Q">
-                                <rect key="frame" x="16" y="52" width="288" height="241"/>
+                                <rect key="frame" x="16" y="112" width="288" height="265"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ObjectiveCell" rowHeight="101" id="ZJy-15-V1R" customClass="TBUIObjectiveCell" customModule="TaskBlotter" customModuleProvider="target">
@@ -265,6 +337,7 @@
                                                             <color key="backgroundColor" red="0.64313725490196072" green="0.76862745098039209" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </backgroundConfiguration>
                                                         <fontDescription key="titleFontDescription" name="KhmerSangamMN" family="Khmer Sangam MN" pointSize="12"/>
+                                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </buttonConfiguration>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="254" text="Objective Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pam-z1-Vu6" userLabel="Goal Name Label">
@@ -319,102 +392,45 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Goal Name Might be a few lines long." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="x3a-UL-ccz">
-                                <rect key="frame" x="16" y="301" width="288" height="60"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Goal Name Might be a few lines long." borderStyle="roundedRect" placeholder="Enter a Goal Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a30-U8-SW0">
+                                <rect key="frame" x="16" y="44" width="288" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="ow4-Al-K3n"/>
+                                    <constraint firstAttribute="height" constant="60" id="y6j-VT-zqy"/>
                                 </constraints>
                                 <color key="textColor" red="0.37254901960784315" green="0.32941176470588235" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="oWu-pT-JHF">
-                                <rect key="frame" x="16" y="369" width="288" height="43"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sDJ-NK-xcV">
-                                        <rect key="frame" x="0.0" y="0.0" width="162" height="43"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Set as Default Goal" cornerStyle="large">
-                                            <backgroundConfiguration key="background">
-                                                <color key="backgroundColor" red="0.69803921568627447" green="0.61960784313725492" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </backgroundConfiguration>
-                                            <fontDescription key="titleFontDescription" name="KhmerSangamMN" family="Khmer Sangam MN" pointSize="16"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="defaultGoalButtonAction:" destination="vfJ-jS-FYg" eventType="touchUpInside" id="tGQ-d4-Ukh"/>
-                                        </connections>
-                                    </button>
-                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y8K-Mq-424">
-                                        <rect key="frame" x="184" y="0.0" width="44" height="43"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rank" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ygq-C3-XmA">
-                                        <rect key="frame" x="250" y="0.0" width="38" height="43"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="eWr-mP-NL4">
-                                <rect key="frame" x="16" y="420" width="288" height="32"/>
-                                <subviews>
-                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="99" translatesAutoresizingMaskIntoConstraints="NO" id="Fe4-J9-rHx">
-                                        <rect key="frame" x="0.0" y="0.0" width="94" height="32"/>
-                                    </stepper>
-                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="88" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="737-Ge-a9J">
-                                        <rect key="frame" x="106" y="0.0" width="53" height="32"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max Objectives" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JCQ-zh-v4J">
-                                        <rect key="frame" x="171" y="0.0" width="117" height="32"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dfi-lI-p3Q">
-                                <rect key="frame" x="16" y="460" width="288" height="43"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Create New Objective" cornerStyle="large">
-                                    <backgroundConfiguration key="background">
-                                        <color key="backgroundColor" red="0.64313725490196072" green="0.76862745098039209" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </backgroundConfiguration>
-                                    <fontDescription key="titleFontDescription" name="KhmerSangamMN" family="Khmer Sangam MN" pointSize="16"/>
-                                </buttonConfiguration>
-                            </button>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="goalNameTFdidEndExitAction:forEvent:" destination="vfJ-jS-FYg" eventType="editingDidEndOnExit" id="ogW-iR-4me"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6MW-Hu-UOQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="JyZ-xv-i8Q" firstAttribute="leading" secondItem="6MW-Hu-UOQ" secondAttribute="leading" constant="16" id="5r4-Cm-GMm"/>
                             <constraint firstItem="6MW-Hu-UOQ" firstAttribute="trailing" secondItem="eWr-mP-NL4" secondAttribute="trailing" constant="16" id="6ra-ea-XYQ"/>
+                            <constraint firstItem="a30-U8-SW0" firstAttribute="top" secondItem="6MW-Hu-UOQ" secondAttribute="top" id="9Hi-qM-Gcw"/>
                             <constraint firstItem="6MW-Hu-UOQ" firstAttribute="trailing" secondItem="Dfi-lI-p3Q" secondAttribute="trailing" constant="16" id="Aol-Rm-gKm"/>
-                            <constraint firstItem="6MW-Hu-UOQ" firstAttribute="bottom" secondItem="Dfi-lI-p3Q" secondAttribute="bottom" constant="16" id="BFZ-8K-qDt"/>
+                            <constraint firstItem="6MW-Hu-UOQ" firstAttribute="bottom" secondItem="Dfi-lI-p3Q" secondAttribute="bottom" id="BFZ-8K-qDt"/>
+                            <constraint firstItem="6MW-Hu-UOQ" firstAttribute="trailing" secondItem="a30-U8-SW0" secondAttribute="trailing" constant="16" id="EdG-ei-3nx"/>
                             <constraint firstItem="Dfi-lI-p3Q" firstAttribute="leading" secondItem="6MW-Hu-UOQ" secondAttribute="leading" constant="16" id="Eyt-LX-9I4"/>
                             <constraint firstItem="eWr-mP-NL4" firstAttribute="leading" secondItem="6MW-Hu-UOQ" secondAttribute="leading" constant="16" id="Jil-NM-Pdt"/>
-                            <constraint firstItem="6MW-Hu-UOQ" firstAttribute="trailing" secondItem="x3a-UL-ccz" secondAttribute="trailing" constant="16" id="Mg6-CQ-Pht"/>
-                            <constraint firstItem="JyZ-xv-i8Q" firstAttribute="top" secondItem="6MW-Hu-UOQ" secondAttribute="top" constant="8" id="NFw-yD-xrU"/>
+                            <constraint firstItem="a30-U8-SW0" firstAttribute="leading" secondItem="6MW-Hu-UOQ" secondAttribute="leading" constant="16" id="OKa-qM-0sQ"/>
                             <constraint firstItem="eWr-mP-NL4" firstAttribute="top" secondItem="oWu-pT-JHF" secondAttribute="bottom" constant="8" symbolic="YES" id="Pr8-UI-jcN"/>
                             <constraint firstItem="6MW-Hu-UOQ" firstAttribute="trailing" secondItem="oWu-pT-JHF" secondAttribute="trailing" constant="16" id="VaS-FG-jg4"/>
+                            <constraint firstItem="JyZ-xv-i8Q" firstAttribute="top" secondItem="a30-U8-SW0" secondAttribute="bottom" constant="8" symbolic="YES" id="WPU-ah-ioN"/>
                             <constraint firstItem="Dfi-lI-p3Q" firstAttribute="top" secondItem="eWr-mP-NL4" secondAttribute="bottom" constant="8" id="XPO-De-swG"/>
                             <constraint firstItem="oWu-pT-JHF" firstAttribute="leading" secondItem="6MW-Hu-UOQ" secondAttribute="leading" constant="16" id="asc-ew-ODP"/>
-                            <constraint firstItem="oWu-pT-JHF" firstAttribute="top" secondItem="x3a-UL-ccz" secondAttribute="bottom" constant="8" symbolic="YES" id="dTu-QM-ppV"/>
-                            <constraint firstItem="x3a-UL-ccz" firstAttribute="top" secondItem="JyZ-xv-i8Q" secondAttribute="bottom" constant="8" symbolic="YES" id="djE-5C-Ttx"/>
+                            <constraint firstItem="oWu-pT-JHF" firstAttribute="top" secondItem="JyZ-xv-i8Q" secondAttribute="bottom" constant="8" symbolic="YES" id="dzX-QT-Jd0"/>
                             <constraint firstItem="6MW-Hu-UOQ" firstAttribute="trailing" secondItem="JyZ-xv-i8Q" secondAttribute="trailing" constant="16" id="qTS-Ua-QRv"/>
-                            <constraint firstItem="x3a-UL-ccz" firstAttribute="leading" secondItem="6MW-Hu-UOQ" secondAttribute="leading" constant="16" id="rin-GT-tg3"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="UG2-1i-wWW"/>
                     <connections>
                         <outlet property="createObjectiveButton" destination="Dfi-lI-p3Q" id="1fh-eJ-tIO"/>
                         <outlet property="defaultGoalButton" destination="sDJ-NK-xcV" id="6Nh-Ls-ldd"/>
-                        <outlet property="goalNameTV" destination="x3a-UL-ccz" id="Qcy-kp-X4j"/>
-                        <outlet property="goalRankTF" destination="Y8K-Mq-424" id="ZuI-9k-P2Z"/>
+                        <outlet property="goalNameTF" destination="a30-U8-SW0" id="bWi-4E-LBq"/>
                         <outlet property="maxObjectiveStepper" destination="Fe4-J9-rHx" id="2Uj-sQ-4Tx"/>
                         <outlet property="maxObjectiveTF" destination="737-Ge-a9J" id="Lie-Nm-Pvt"/>
                         <outlet property="objectiveListingTableView" destination="JyZ-xv-i8Q" id="IBu-Pb-MIa"/>
@@ -423,7 +439,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vnO-CJ-YyL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2645.625" y="592.6056338028169"/>
+            <point key="canvasLocation" x="1432.5" y="522.88732394366195"/>
         </scene>
         <!--Controller-->
         <scene sceneID="0Rt-JG-wz4">
@@ -432,14 +448,190 @@
                     <view key="view" contentMode="scaleToFill" id="xSm-hA-14n">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sch-6w-NDL">
+                                <rect key="frame" x="16" y="476" width="288" height="43"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Create New Task" cornerStyle="large">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" red="0.38823529411764707" green="0.81176470588235294" blue="0.63921568627450975" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </backgroundConfiguration>
+                                    <fontDescription key="titleFontDescription" name="KhmerSangamMN" family="Khmer Sangam MN" pointSize="16"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="vZF-YQ-ww6">
+                                <rect key="frame" x="16" y="436" width="288" height="32"/>
+                                <subviews>
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="99" translatesAutoresizingMaskIntoConstraints="NO" id="kel-B2-zaz">
+                                        <rect key="frame" x="0.0" y="0.0" width="94" height="32"/>
+                                        <connections>
+                                            <action selector="maxObjectiveStepperAction:" destination="vfJ-jS-FYg" eventType="valueChanged" id="BbD-KC-Jel"/>
+                                            <action selector="maxTasksStepperAction:" destination="KjH-Aw-jb6" eventType="valueChanged" id="3g3-YB-wfb"/>
+                                        </connections>
+                                    </stepper>
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="100" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="791-CA-xDb">
+                                        <rect key="frame" x="124" y="0.0" width="55" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max Tasks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfa-R8-qZw">
+                                        <rect key="frame" x="209" y="0.0" width="79" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="2WD-TI-hdb">
+                                <rect key="frame" x="16" y="385" width="287.5" height="43"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uAR-5f-9D1">
+                                        <rect key="frame" x="0.0" y="0.0" width="133.5" height="43"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Set Default #n" cornerStyle="large">
+                                            <backgroundConfiguration key="background">
+                                                <color key="backgroundColor" red="0.64313725490196072" green="0.76862745098039209" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </backgroundConfiguration>
+                                            <fontDescription key="titleFontDescription" name="KhmerSangamMN" family="Khmer Sangam MN" pointSize="16"/>
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="defaultGoalButtonAction:" destination="vfJ-jS-FYg" eventType="touchUpInside" id="gSa-Tg-U23"/>
+                                            <action selector="defaultObjectiveButtonAction:" destination="KjH-Aw-jb6" eventType="touchUpInside" id="3IA-VT-tHb"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zKA-uC-K4K" userLabel="Delete Objective Button">
+                                        <rect key="frame" x="154.5" y="0.0" width="133" height="43"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Delete " cornerStyle="large">
+                                            <backgroundConfiguration key="background">
+                                                <color key="backgroundColor" red="0.64313725489999995" green="0.76862745099999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </backgroundConfiguration>
+                                            <fontDescription key="titleFontDescription" name="KhmerSangamMN" family="Khmer Sangam MN" pointSize="16"/>
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="defaultGoalButtonAction:" destination="vfJ-jS-FYg" eventType="touchUpInside" id="v2a-hb-Jrv"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jnc-cP-Pqf">
+                                <rect key="frame" x="16" y="112" width="288" height="257"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ObjectiveCell" rowHeight="101" id="FzV-m5-Zer" customClass="TBUIObjectiveCell" customModule="TaskBlotter" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="288" height="101"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FzV-m5-Zer" id="tv6-Ah-Xaa">
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="101"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="95f-ft-fwn" userLabel="Task Drag Grip">
+                                                    <rect key="frame" x="0.0" y="0.0" width="22" height="101"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="22" id="HsL-yf-Bcb"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="R">
+                                                        <backgroundConfiguration key="background">
+                                                            <color key="backgroundColor" red="0.38823529411764707" green="0.81176470588235294" blue="0.63921568627450975" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </backgroundConfiguration>
+                                                        <fontDescription key="titleFontDescription" name="KhmerSangamMN" family="Khmer Sangam MN" pointSize="12"/>
+                                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </buttonConfiguration>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="254" text="Task Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzI-Yt-LaZ" userLabel="Task Name Label">
+                                                    <rect key="frame" x="30" y="4" width="242" height="14.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" name="AccentColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="253" text="Task Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SO4-ft-SAB" userLabel="Task Name text">
+                                                    <rect key="frame" x="30" y="20.5" width="242" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" text="Task Detail" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C58-lX-bmJ">
+                                                    <rect key="frame" x="30" y="42" width="242" height="53"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="95f-ft-fwn" firstAttribute="top" secondItem="tv6-Ah-Xaa" secondAttribute="top" id="1d3-AH-KRv"/>
+                                                <constraint firstItem="rzI-Yt-LaZ" firstAttribute="leading" secondItem="95f-ft-fwn" secondAttribute="trailing" constant="8" symbolic="YES" id="3th-m0-J7V"/>
+                                                <constraint firstAttribute="bottom" secondItem="95f-ft-fwn" secondAttribute="bottom" id="Cx9-m1-pVe"/>
+                                                <constraint firstAttribute="trailing" secondItem="SO4-ft-SAB" secondAttribute="trailing" constant="16" id="DdA-Rq-GLy"/>
+                                                <constraint firstItem="rzI-Yt-LaZ" firstAttribute="top" secondItem="tv6-Ah-Xaa" secondAttribute="top" constant="4" id="K3N-mq-1LP"/>
+                                                <constraint firstItem="C58-lX-bmJ" firstAttribute="top" secondItem="SO4-ft-SAB" secondAttribute="bottom" constant="2" id="KK7-KB-6Zx"/>
+                                                <constraint firstAttribute="trailing" secondItem="rzI-Yt-LaZ" secondAttribute="trailing" constant="16" id="SEd-c2-F4a"/>
+                                                <constraint firstItem="95f-ft-fwn" firstAttribute="leading" secondItem="tv6-Ah-Xaa" secondAttribute="leading" id="b1L-aO-TGv"/>
+                                                <constraint firstAttribute="bottom" secondItem="C58-lX-bmJ" secondAttribute="bottom" constant="6" id="dqP-Jg-x5T"/>
+                                                <constraint firstItem="C58-lX-bmJ" firstAttribute="leading" secondItem="95f-ft-fwn" secondAttribute="trailing" constant="8" symbolic="YES" id="ehA-wa-hWZ"/>
+                                                <constraint firstItem="SO4-ft-SAB" firstAttribute="top" secondItem="rzI-Yt-LaZ" secondAttribute="bottom" constant="2" id="fpc-9c-Tdn"/>
+                                                <constraint firstItem="SO4-ft-SAB" firstAttribute="leading" secondItem="95f-ft-fwn" secondAttribute="trailing" constant="8" symbolic="YES" id="lhg-Jh-8jr"/>
+                                                <constraint firstAttribute="trailing" secondItem="C58-lX-bmJ" secondAttribute="trailing" constant="16" id="rGC-Yu-VFq"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="objectiveGrip" destination="95f-ft-fwn" id="e7S-6m-02G"/>
+                                            <outlet property="objectiveNameLabel" destination="SO4-ft-SAB" id="EB1-rC-nl1"/>
+                                            <outlet property="taskSummary" destination="C58-lX-bmJ" id="2u4-Je-6AG"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Objective Name Might be a few lines long." borderStyle="roundedRect" placeholder="Enter an objective name here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m9p-Qb-U07">
+                                <rect key="frame" x="16" y="44" width="288" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="zws-gB-M3w"/>
+                                </constraints>
+                                <color key="textColor" red="0.29433352791711548" green="0.36930582646000654" blue="0.51864346590909083" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="objectiveNameTFdidEndExitAction:" destination="KjH-Aw-jb6" eventType="editingDidEndOnExit" id="bw0-Cm-FZ9"/>
+                                </connections>
+                            </textField>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="ams-4r-yCa"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="jnc-cP-Pqf" firstAttribute="leading" secondItem="ams-4r-yCa" secondAttribute="leading" constant="16" id="6HP-zZ-jjV"/>
+                            <constraint firstItem="ams-4r-yCa" firstAttribute="trailing" secondItem="m9p-Qb-U07" secondAttribute="trailing" constant="16" id="8OH-kv-j6c"/>
+                            <constraint firstItem="ams-4r-yCa" firstAttribute="trailing" secondItem="sch-6w-NDL" secondAttribute="trailing" constant="16" id="DD9-Aw-dzE"/>
+                            <constraint firstItem="ams-4r-yCa" firstAttribute="bottom" secondItem="sch-6w-NDL" secondAttribute="bottom" id="DUg-y4-Rpz"/>
+                            <constraint firstItem="m9p-Qb-U07" firstAttribute="leading" secondItem="ams-4r-yCa" secondAttribute="leading" constant="16" id="FfA-6v-Ep0"/>
+                            <constraint firstItem="ams-4r-yCa" firstAttribute="trailing" secondItem="vZF-YQ-ww6" secondAttribute="trailing" constant="16" id="NbI-wK-0Di"/>
+                            <constraint firstItem="sch-6w-NDL" firstAttribute="top" secondItem="vZF-YQ-ww6" secondAttribute="bottom" constant="8" id="NjX-kL-yHQ"/>
+                            <constraint firstItem="2WD-TI-hdb" firstAttribute="top" secondItem="jnc-cP-Pqf" secondAttribute="bottom" constant="16" id="Tw9-w9-oDc"/>
+                            <constraint firstItem="ams-4r-yCa" firstAttribute="trailing" secondItem="2WD-TI-hdb" secondAttribute="trailing" constant="16.5" id="VEe-j1-lyY"/>
+                            <constraint firstItem="vZF-YQ-ww6" firstAttribute="leading" secondItem="ams-4r-yCa" secondAttribute="leading" constant="16" id="eYr-ZI-JlB"/>
+                            <constraint firstItem="sch-6w-NDL" firstAttribute="leading" secondItem="ams-4r-yCa" secondAttribute="leading" constant="16" id="f7w-JX-BA7"/>
+                            <constraint firstItem="2WD-TI-hdb" firstAttribute="leading" secondItem="ams-4r-yCa" secondAttribute="leading" constant="16" id="iRn-oI-jSq"/>
+                            <constraint firstItem="vZF-YQ-ww6" firstAttribute="top" secondItem="2WD-TI-hdb" secondAttribute="bottom" constant="8" symbolic="YES" id="lBd-CK-TMB"/>
+                            <constraint firstItem="jnc-cP-Pqf" firstAttribute="top" secondItem="m9p-Qb-U07" secondAttribute="bottom" constant="8" symbolic="YES" id="pqj-he-Q1J"/>
+                            <constraint firstItem="ams-4r-yCa" firstAttribute="trailing" secondItem="jnc-cP-Pqf" secondAttribute="trailing" constant="16" id="t7M-rB-yj3"/>
+                            <constraint firstItem="m9p-Qb-U07" firstAttribute="top" secondItem="ams-4r-yCa" secondAttribute="top" id="zjO-cT-AF0"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Qfv-nS-xau"/>
+                    <connections>
+                        <outlet property="createTaskButton" destination="sch-6w-NDL" id="5a4-ed-PnS"/>
+                        <outlet property="defaultObjectiveButton" destination="uAR-5f-9D1" id="Aty-fb-74v"/>
+                        <outlet property="maxTaskStepper" destination="kel-B2-zaz" id="pmR-MW-ep3"/>
+                        <outlet property="maxTaskTF" destination="791-CA-xDb" id="zKR-LO-pUO"/>
+                        <outlet property="objectiveNameTF" destination="m9p-Qb-U07" id="rWU-w8-PNR"/>
+                        <outlet property="taskListinTableView" destination="jnc-cP-Pqf" id="4Jn-Hk-rmX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LZc-em-emE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3368" y="593"/>
+            <point key="canvasLocation" x="2302.5" y="522.88732394366195"/>
         </scene>
         <!--Goal List-->
         <scene sceneID="hLD-fK-iiE">
@@ -447,7 +639,7 @@
                 <navigationController id="tzE-hc-3o9" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Goal List" id="cJY-sb-CmA"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Pcx-an-sAB">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -456,7 +648,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="csb-Ll-OJr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="413" y="593"/>
+            <point key="canvasLocation" x="-135" y="494"/>
         </scene>
         <!--Current Goal-->
         <scene sceneID="8fI-az-dGo">
@@ -653,6 +845,9 @@
             <point key="canvasLocation" x="1247" y="-780"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="dKs-Hq-z1S"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="ellipsis1" width="24" height="24"/>
         <namedColor name="AccentColor">

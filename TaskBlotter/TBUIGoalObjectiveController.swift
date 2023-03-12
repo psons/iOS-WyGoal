@@ -51,23 +51,24 @@ class TBUIGoalObjectiveController: UIViewController {
     
     
     @IBAction func addNewObjectiveButtonAction(_ sender: UIButton) {
-        if let name: String = self.newObjectiveNameTV.text {
-            if let maxTasksStr: String = self.newObjectiveMaxTasksTV.text {
-                if let maxTasksInt = Int(maxTasksStr) {
-                    print("addNewObjectiveButtonAction: \(name) \(maxTasksInt)")
-                    //self.useParentTBC().domainStore.domain
-                    // get current goal by applying the current app state to the domain.
-                    // the replacement for this will have the goal index passed in, and not expect the app state to pint to it.
-                    // though even that approach has to validate the goal it is trying to use.
-                    let currentAppState = self.useParentTBC().stateStore.state
-                    let effortDomain = self.useParentTBC().domainStore.domain
-                    let actualSppState = effortDomain.addObjective(objective: Objective(name: name, maxTasks: maxTasksInt), appState: currentAppState)
-                    self.storyListingTV.text = effortDomain.goals[actualSppState.gSlot].objectiveStrings()
-                } else {
-                    print("addNewObjectiveButtonAction: \(name)")
-                }
-            }
-        }
+        print("addNewObjectiveButtonAction: It's time to sunset TBUIGoalObjectiveController")
+//        if let name: String = self.newObjectiveNameTV.text {
+//            if let maxTasksStr: String = self.newObjectiveMaxTasksTV.text {
+//                if let maxTasksInt = Int(maxTasksStr) {
+//                    print("addNewObjectiveButtonAction: \(name) \(maxTasksInt)")
+//                    //self.useParentTBC().domainStore.domain
+//                    // get current goal by applying the current app state to the domain.
+//                    // the replacement for this will have the goal index passed in, and not expect the app state to pint to it.
+//                    // though even that approach has to validate the goal it is trying to use.
+////                    let currentAppState = self.useParentTBC().stateStore.state
+//                    let effortDomain = self.useParentTBC().domainStore.domain
+//                    let actualScreenIndexState = effortDomain.addObjective(objective: Objective(name: name, maxTasks: maxTasksInt), gSlot: self.scr: currentAppState)
+//                    self.storyListingTV.text = effortDomain.goals[actualScreenIndexState.gSlot].objectiveStrings()
+//                } else {
+//                    print("addNewObjectiveButtonAction: \(name)")
+//                }
+//            }
+//        }
     }
     
     

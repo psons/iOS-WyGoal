@@ -13,59 +13,93 @@ import UIKit
 // Cell Identifier: "ObjectiveCell"
 
 class TBUIGOController: TBRootAccessController, UITableViewDataSource, UITableViewDelegate{
-
+    
     var objectives: [Objective] = []
-    var localGoal = Goal(name: "UNKNOWN Goal name")
-    var goalRank = -1
-
+    var screenGoal = Goal(name: "UNKNOWN Goal name")
+    var goalIndex = -1
+    
     @IBOutlet weak var objectiveListingTableView: UITableView!
-    @IBOutlet weak var goalNameTV: UITextView!
-    @IBOutlet weak var goalRankTF: UITextField!
+    @IBOutlet weak var goalNameTF: UITextField!
     @IBOutlet weak var maxObjectiveStepper: UIStepper!
     @IBOutlet weak var maxObjectiveTF: UITextField!
     @IBOutlet weak var createObjectiveButton: UIButton!
     @IBOutlet weak var defaultGoalButton: UIButton!
     
+    @IBAction func goalNameTFdidEndExitAction(_ sender: UITextField,
+                                              forEvent event: UIEvent) {
+        if let editedName = sender.text {
+            print("Exit Ended on \(editedName)")
+            let domainStore = getTBDomainStore()
+            domainStore.domain.goals[self.goalIndex].name = editedName
+            domainStore.saveData(domainRef: domainStore.domain)
+        }
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Goal + Objectives"
         objectiveListingTableView.delegate = self
         objectiveListingTableView.dataSource = self
-        
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.objectives = localGoal.objectives
-        self.goalNameTV.text = self.localGoal.name
+        self.objectives = screenGoal.objectives
+        self.goalNameTF.text = self.screenGoal.name
         
-        let rankAsStr = String(self.goalRank + 1 ) // user sees rank as counting number, not array index.
-        self.goalRankTF.text = rankAsStr
-
+        let rankAsStr = String(self.goalIndex + 1 ) // user sees rank as counting number, not array index.
+        self.defaultGoalButton.setTitle("Set Default: \(rankAsStr)", for: .normal)
+        self.maxObjectiveTF.text = String(self.screenGoal.maxObjectives)
+        self.maxObjectiveStepper.value = Double(self.screenGoal.maxObjectives)
+        self.objectiveListingTableView.reloadData()
+    }
+    
+    @IBAction func maxObjectiveStepperAction(_ sender: UIStepper) {
+        let domainStore = getTBDomainStore()
+        let maxObjectives = maxObjectiveStepper.value
+        print("change in maxObjectiveStepper): \(maxObjectives)")
+        domainStore.domain.goals[self.goalIndex].maxObjectives = Int(maxObjectives)
+        domainStore.saveData(domainRef: domainStore.domain)
+        self.maxObjectiveTF.text = String(self.screenGoal.maxObjectives)
     }
     
     @IBAction func defaultGoalButtonAction(_ sender: UIButton) {
-        print("pressed defaultGoalButton. goalRank is: \(self.goalRank)")
+        print("pressed defaultGoalButton. goalRank is: \(self.goalIndex)")
         let stateStore = getTBStateStore()
         let domainStore = getTBDomainStore()
-        var newState = domainStore.domain.requestNewCurrentGState(desiredGSlot: self.goalRank, previousAppState: stateStore.state)
+        let newState = domainStore.domain.requestNewCurrentGState(desiredGSlot: self.goalIndex, previousAppState: stateStore.state)
         stateStore.saveData(stateRef: newState)
     }
     
+    @IBAction func deleteGoalButtonAction(_ sender: Any) {
+        print("pressed delete Goal button. goalRank is: \(self.goalIndex)")
+        print("alert if there are objectives, else delete it.")
+        print("unwind / dismiss controller stack to the Goal Listing.")
+    }
+    
+    @IBAction func createObjectiveButtonAction(_ sender: UIButton) {
+        print("pressed create Objective button.")
+    }
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         // Get the new view controller using segue.destination.
-         // Pass the selected object to the new view controller.
-         if let detail = segue.destination as? TBUIOTController {
-             if let indexPath = self.objectiveListingTableView.indexPathForSelectedRow {
-                 let objective = objectives[indexPath.row]
-                 detail.localObjective = objective
-             }
-         }
-     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if let targetVC = segue.destination as? TBUIOTController {
+            targetVC.screenGoalIndex = self.goalIndex
+            if segue.identifier != "CreateNewObjective" {
+                print("Doing segue: \(String(describing: segue.identifier))")
+                if let indexPath = self.objectiveListingTableView.indexPathForSelectedRow {
+                    let objective = objectives[indexPath.row]
+                    targetVC.screenObjective = objective
+                    targetVC.screenObjectiveIndex = indexPath.row
+                }
+            } else {
+                targetVC.screenObjective = Objective(name: "New Objective")
+                /** Not setting objectiveRankindicates that the objective is not created or saved yet.
+                 */
+            }
+        }
+    }
 }
 
 // extensions for protocols needed to support TableView
@@ -81,7 +115,8 @@ extension TBUIGOController {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ObjectiveCell", for: indexPath) as! TBUIObjectiveCell
 
-        let objective = self.objectives[indexPath.row]
+//        let objective = self.objectives[indexPath.row]
+        let objective = self.getTBDomainStore().domain.goals[self.goalIndex].objectives[indexPath.row]
 
         // wire the cell GUI features to outlets in the prototype cell view controller.
         cell.objectiveNameLabel.text = objective.name

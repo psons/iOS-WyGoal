@@ -70,8 +70,8 @@ class TBUIGoalControllerViewController: UIViewController, UITableViewDataSource,
         if let detail = segue.destination as? TBUIGOController /*TBUIGoalObjectiveController*/ {
             if let indexPath = self.goalListingTableview.indexPathForSelectedRow {
                 let goal = goals[indexPath.row]
-                detail.localGoal = goal
-                detail.goalRank = indexPath.row
+                detail.screenGoal = goal
+                detail.goalIndex = indexPath.row
             }
         }
     }
