@@ -70,7 +70,38 @@ struct AddObjectiveIntent: AppIntent {
     var name: String    // not non-optional will have Sire assure that it is provided.
     
     func perform() async throws -> some IntentResult {
-        print("AddObjectiveIntent has parameter 'name' from the user \(name)")
+        print("AddObjectiveIntent.perform() has parameter 'name' from the user \(name)")
+        
+        let domainStore = DomainStore()
+        
+        DomainStore.load { result in
+            switch result {
+            case .failure(let error):
+                fatalError(error.localizedDescription)
+            case .success(let domainData):
+                print("Loaded Domain Data \(domainData.name)")
+                let newObjectiveLocation = domainData.addObjective(objective: Objective(name: name), gSlot: 0)
+                print("{Saving to: \(newObjectiveLocation)} name: \(name)")
+                DomainStore.save(domain: domainData) { result in
+                    if case .failure(let error) = result {
+                        fatalError(error.localizedDescription)
+                    }
+                }
+            }
+        }
+        
+        StateStore.load { result in
+            switch result {
+            case .failure(let error):
+                fatalError(error.localizedDescription)
+            case .success(let stateData):
+                print("loaded state: \(stateData.description)")
+            }
+        }
+
+        
+        
+        
         //todo similar to above, but pass data to the tab bar.
         return .result(value: "Added the Objective" )
     }
@@ -99,17 +130,13 @@ struct ViewDefaultGoalIntent: AppIntent {
 
 
 
-// build Intent into a shortcut.
+// builds Intents into a shortcuts.
 struct TaskBlotterShortcuts: AppShortcutsProvider {
+    // phrases .applicationName or Siri roams out to an internet search.
     static var appShortcuts: [AppShortcut] {
         AppShortcut(
-            intent: StartTaskBlotterIntent(), phrases: [
-                "Start \(.applicationName)",
-                "Launch \(.applicationName)",
-                "Launch My Goal App \(.applicationName)"])
-        
-        AppShortcut(
             intent: AddObjectiveIntent(), phrases: [
+                "Create an Objective",
                 "Add Objective to \(.applicationName)",
                 "Add Story to  \(.applicationName)",
                 "Add Grouping of tasks to \(.applicationName)"])
@@ -127,6 +154,13 @@ struct TaskBlotterShortcuts: AppShortcutsProvider {
         AppShortcut(
             intent: TaskBlotterClearData(), phrases: [
                 "Clear Persisted Task Blotter Data \(.applicationName)"])
+
+        AppShortcut(
+            intent: StartTaskBlotterIntent(), phrases: [
+                "Start \(.applicationName)",
+                "Launch \(.applicationName)",
+                "Launch My Goal App \(.applicationName)"])
+        
 
     }
 }
