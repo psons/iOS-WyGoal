@@ -22,7 +22,7 @@ struct StartTaskBlotterIntent: AppIntent {
     func perform() async throws -> some IntentResult {
         print("StartTaskBlotterIntent.perform()")
         let tbc = getTBRootController()
-        tbc.selectedIndex = 2
+        tbc.selectedIndex = 1
         return .result()  //.finished
     }
 }
@@ -60,6 +60,11 @@ struct TaskBlotterClearData: AppIntent {
         return .result()  //.finished
     }
 }
+
+/**
+ This saves data without calling the app, so if the app is running, it will not see the update.
+ an improvement is needed: running a service, or just actually calling the app, like the nav does.
+ */
 
 struct AddObjectiveIntent: AppIntent {
     static var title: LocalizedStringResource = "Add an objective in the Task Blotter App"
@@ -111,8 +116,8 @@ go to the goal via nav controller so i have context
 and prove I can go past the tab bar inexes
  */
 struct ViewDefaultGoalIntent: AppIntent {
-    static var title: LocalizedStringResource = "View the Default Goal"
-    static var description = IntentDescription("Views the Goal where new Objectives and Tasks will be created in the Task Blotter App")
+    static var title: LocalizedStringResource = "View the Saved Goal"
+    static var description = IntentDescription("Views the User Saved Goal where new Objectives and Tasks will be created in the Task Blotter App")
     static var openAppWhenRun = true
     
     @MainActor
@@ -122,6 +127,25 @@ struct ViewDefaultGoalIntent: AppIntent {
         tbc.setNavigation(navTarget: "GoalDetail")
         tbc.doNavigation()
         return .result(value: "Launched to the default Goal" )
+    }
+    
+}
+
+/**
+go to the goal + Objective via nav controller so that back goes to the parent goal.
+ */
+struct ViewSavedObjectiveIntent: AppIntent {
+    static var title: LocalizedStringResource = "View the Saved Objective "
+    static var description = IntentDescription("Views the User Saved Objective where Tasks will be created in the Task Blotter App")
+    static var openAppWhenRun = true
+    
+    @MainActor
+    func perform() async throws -> some IntentResult {
+        print("ViewSavedObjectiveIntent invoked")
+        let tbc = getTBRootController()
+        tbc.setNavigation(navTarget: "ObjectiveDetail")
+        tbc.doNavigation()
+        return .result(value: "Launched to the Saved Objective" )
     }
     
 }
@@ -140,8 +164,15 @@ struct TaskBlotterShortcuts: AppShortcutsProvider {
                 "Add Grouping of tasks to \(.applicationName)"])
 
         AppShortcut(
+            intent: ViewSavedObjectiveIntent(), phrases: [
+                "View Saved Objective in \(.applicationName)",
+                "View an Objective  \(.applicationName)",
+                "View my Objective \(.applicationName)",
+                "Get the Objective \(.applicationName)"])
+        
+        AppShortcut(
             intent: ViewDefaultGoalIntent(), phrases: [
-                "View Default Goalin \(.applicationName)",
+                "View Default Goal in \(.applicationName)",
                 "View a Goal  \(.applicationName)",
                 "View my Goal \(.applicationName)"])
         

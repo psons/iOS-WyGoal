@@ -36,12 +36,15 @@ class TBUIOTController: TBRootAccessController {
 
     override func viewWillAppear(_ animated: Bool) {
         self.objectiveNameTF.text = self.screenObjective.name
-        let goalRankAsStr = String(self.screenGoalIndex + 1)
-        let objRankAsStr =  self.screenObjectiveIndex == -1 ?  "?" :String(self.screenObjectiveIndex + 1)
-        
-        self.defaultObjectiveButton.setTitle("Set Default: \(goalRankAsStr):\(objRankAsStr)", for: .normal)
         self.maxTaskTF.text = String(self.screenObjective.maxTasks)
         self.maxTaskStepper.value = Double(self.screenObjective.maxTasks)
+        setSetDefaultButtonText()
+    }
+
+    func setSetDefaultButtonText() {
+        let goalRankAsStr = String(self.screenGoalIndex + 1)
+        let objRankAsStr =  self.screenObjectiveIndex == -1 ?  "?" :String(self.screenObjectiveIndex + 1)
+        self.defaultObjectiveButton.setTitle("Set Default: \(goalRankAsStr):\(objRankAsStr)", for: .normal)
     }
     
     /**
@@ -77,21 +80,22 @@ class TBUIOTController: TBRootAccessController {
         }
     }
     
+    /**
+     Save the current objective if necessary, then save the curent screen goal index and this objective index as the default state
+     */
     @IBAction func defaultObjectiveButtonAction(_ sender: UIButton) {
         print("pressed defaultObjectiveButtonAction. screenGoalIndex is: \(self.screenGoalIndex) screenObjectiveIndex is: \(self.screenObjectiveIndex)")
-        // first save the obj so tomake sure it is a legit index to save as a target
         let oIndex = oIndexSaveCheck()
         let stateStore = getTBStateStore()
-        let domainStore = getTBDomainStore()
-//        let newState = domainStore.domain.requestNewCurrentGState(desiredGSlot: self.goalIndex, previousAppState: stateStore.state)
-//        stateStore.saveData(stateRef: newState)
+        stateStore.saveData(stateRef: AppState.factory(self.screenGoalIndex, oIndex))
+        setSetDefaultButtonText() // might have updated if we just created an Objective
     }
 
     @IBAction func maxTasksStepperAction(_ sender: Any) {
         let domainStore = getTBDomainStore()
         let maxTasks = Int(maxTaskStepper.value)
         print("change in maxTasksStepper): \(maxTasks)")
-        let oIndex = oIndexSaveCheck()
+        _ = oIndexSaveCheck()
         domainStore.domain.goals[self.screenGoalIndex].objectives[self.screenObjectiveIndex].maxTasks = maxTasks
         domainStore.saveData(domainRef: domainStore.domain)
         self.maxTaskTF.text = String(maxTasks)

@@ -48,7 +48,7 @@
         <!--Goal Listing-->
         <scene sceneID="b9u-G6-H9H">
             <objects>
-                <viewController storyboardIdentifier="goal" id="INC-Uw-Gk1" userLabel="Goal Listing" customClass="TBUIGoalControllerViewController" customModule="TaskBlotter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="goalStoryBoardID" id="INC-Uw-Gk1" userLabel="Goal Listing" customClass="TBUIGoalController" customModule="TaskBlotter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Fu-pU-nqd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

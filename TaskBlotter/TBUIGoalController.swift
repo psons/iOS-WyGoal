@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TBUIGoalControllerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
+class TBUIGoalController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
     @IBOutlet weak var goalListingTableview: UITableView!
     var goals: [Goal] = []
@@ -81,7 +81,7 @@ class TBUIGoalControllerViewController: UIViewController, UITableViewDataSource,
 }
 
 // extensions for protocols needed to support TableView
-extension TBUIGoalControllerViewController {
+extension TBUIGoalController {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

@@ -40,13 +40,32 @@ class TBUITabBarController: UITabBarController {
         doNavigation()
     }
 
-    
+    /**
+     Builds and launches all or part of an array of nav controller rooted at the TBUITabBarController
+     0 - Goal listing: TBUIGoalController
+     1 - GO Goal Objectives: goalStoryBpardID
+     2 - OT Objective Tasks:
+     3 - Task Detail: // nav not supported, but want this screen.
+     */
     func doNavigation() {
         if self.navTarget == "GoalDetail" {
             print("TBUITabBarController wil do doNavigation() to \(self.navTarget)")
             let goalNav = self.viewControllers?[2] as! UINavigationController // hard coded 2 is the position of this controller in the tab index.
 
-            let goalVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "goal")
+            let goalVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "goalStoryBoardID")
+            // todo: build up a list of controllers here for deeper navigation cases.like [goalVC, goalObjectiveVC]
+
+            goalNav.setViewControllers([goalVC], animated: true)  // can make longer array, and will display last.
+            self.selectedViewController = goalNav  // this actualy displays the view controller after the arry is set up on prev line.
+        }
+        if self.navTarget == "ObjectiveDetail" {
+            /**
+             
+             */
+            print("TBUITabBarController wil do doNavigation() to \(self.navTarget)")
+            let goalNav = self.viewControllers?[2] as! UINavigationController // hard coded 2 is the position of this controller in the tab index.
+
+            let goalVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "goalStoryBoardID")
             // todo: build up a list of controllers here for deeper navigation cases.like [goalVC, goalObjectiveVC]
 
             goalNav.setViewControllers([goalVC], animated: true)  // can make longer array, and will display last.
