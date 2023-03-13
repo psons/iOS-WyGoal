@@ -21,8 +21,21 @@ class TBRootAccessController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    /**
+     Some controllers may use this that were loaded by a nav controller
+     Some controllers may use this that were loaded by a TabBarController.
+     This has crashed if the calling controller wasn't loaded by a navigationController useParentTBC seems to always work,
+     but I need to test more. ' if let' should cover problems.
+     
+    */
     func getTBRootController() ->TBUITabBarController{
-        return navigationController!.viewControllers.first?.tabBarController as! TBUITabBarController
+        if let navC = navigationController {
+            if let tbcViaNav = navC.viewControllers.first?.tabBarController as? TBUITabBarController {
+                return tbcViaNav
+            }
+        }
+        return useParentTBC()
+    
     }
     
     func getTBStateStore() -> StateStore {
@@ -33,15 +46,12 @@ class TBRootAccessController: UIViewController {
         return getTBRootController().domainStore
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func useParentTBC() -> TBUITabBarController {
+        if let taskBlotterTabBarViewController = tabBarController as? TBUITabBarController {
+            return taskBlotterTabBarViewController
+        } else {
+            assertionFailure("Error This class should be loaded from of TBUITabBarController")
+            return TBUITabBarController()
+        }
     }
-    */
-
 }

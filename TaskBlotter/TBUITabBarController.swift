@@ -41,9 +41,34 @@ class TBUITabBarController: UITabBarController {
     }
 
     /**
+     Retrns an AppState with indexes verified to be on the model's current state.
+     */
+    func useSyncedState() -> AppState {
+        let appState = self.stateStore.state
+        let validatedAppState = self.domainStore.domain.requestNewValidGOState(desiredState: appState, previousAppState: appState)
+        return validatedAppState
+    }
+
+    /**
+     gets the screen state data for two cases where screen state materializes from saved state, not user clicks.
+         - tab bar direct to the current saved objective
+         - building up a nav array-stack as from a shortcut
+     */
+    func getScreenStateData() -> ScreenStateData {
+        let ssd = ScreenStateData()
+        let validatedAppState = useSyncedState()
+        ssd.screenGoalIndex = validatedAppState.gSlot
+        ssd.screenObjectiveIndex = validatedAppState.oSlot
+        ssd.goal = self.domainStore.domain.goals[validatedAppState.gSlot]
+        ssd.objective = ssd.goal.objectives[ssd.screenObjectiveIndex]
+        return ssd
+    }
+    
+    
+    /**
      Builds and launches all or part of an array of nav controller rooted at the TBUITabBarController
      0 - Goal listing: TBUIGoalController
-     1 - GO Goal Objectives: goalStoryBpardID
+     1 - GO Goal Objectives: goalStoryBoardID
      2 - OT Objective Tasks:
      3 - Task Detail: // nav not supported, but want this screen.
      */
@@ -64,45 +89,26 @@ class TBUITabBarController: UITabBarController {
             self.selectedViewController = goalNav  // this actualy displays the view controller after the arry is set up on prev line.
         }
         if self.navTarget == "ObjectiveTasks" {
-            /**
-             
-             */
+            
+            let screenStateData = getScreenStateData()
+            
             print("TBUITabBarController wil do doNavigation() to \(self.navTarget)")
             let goalNav = self.viewControllers?[2] as! UINavigationController // hard coded 2 is the position of this controller in the tab index.
 
-            /**
-             No special member data needed, but ...
-             todo: would be nice to set the selected Index on he table view
-             */
             let goalListingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "goalListingStoryBoardID")
             
-            /**
-             member data needed:
-             var objectives: [Objective] = [] <-- wil set this for itself.
-             var screenGoal = Goal(name: "UNKNOWN Goal name")  <-- need to pass this.
-             var goalIndex = -1  <-- need to pass this too.
-             */
-            let appState = self.stateStore.state
-            let validatedAppState = self.domainStore.domain.requestNewValidGOState(desiredState: appState, previousAppState: appState)
-            
             let goalObjectivesVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "goalObjectivesStoryBoardID") as! TBUIGOController
-            goalObjectivesVC.screenGoal = self.domainStore.domain.goals[validatedAppState.gSlot]
-            goalObjectivesVC.goalIndex = validatedAppState.gSlot
+            goalObjectivesVC.screenGoal = screenStateData.goal
+            goalObjectivesVC.screenGoalIndex = screenStateData.screenGoalIndex
             
-            /**
-             member data needed:
-             var screenObjective = Objective(name: "UNKNOWN Objective")
-             var screenObjectiveIndex = -1
-             var screenGoalIndex = -1
-             */
             let objectiveTasksVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "objectiveTasksStoryBoardID") as! TBUIOTController
-            objectiveTasksVC.screenGoalIndex = goalObjectivesVC.goalIndex
-            objectiveTasksVC.screenObjectiveIndex = validatedAppState.oSlot
-            objectiveTasksVC.screenObjective = goalObjectivesVC.screenGoal.objectives[objectiveTasksVC.screenObjectiveIndex]
+            objectiveTasksVC.screenGoalIndex = screenStateData.screenGoalIndex
+            objectiveTasksVC.screenObjectiveIndex = screenStateData.screenObjectiveIndex
+            objectiveTasksVC.screenObjective = screenStateData.objective
             
             // set up the nav controller
             goalNav.setViewControllers([goalListingVC, goalObjectivesVC, objectiveTasksVC], animated: true)
-            // will display last.
+            // will display last VC in the list
             
             // set the TAB Bar controller have the Nav as curently selected
             self.selectedViewController = goalNav  // this actualy displays the view controller after the arry is set up on prev line.
@@ -167,4 +173,21 @@ class TBUITabBarController: UITabBarController {
         print("in TBUITabBarController prepare for segue. self.navTarget: \(self.navTarget)")
             }
 
+}
+
+/**
+ Data representing a path down to an Objective as a user might nevigate in the app
+  It is an elaboration on an AppState with a known EffortDomainModel
+ var screenGoal = Goal(name: "UNKNOWN Goal name")  <-- need to pass this.
+ var goalIndex = -1  <-- need to pass this too.
+ var screenObjective = Objective(name: "UNKNOWN Objective")
+ var screenObjectiveIndex = -1
+ var screenGoalIndex = -1
+
+ */
+class ScreenStateData {
+    var screenObjectiveIndex = -1
+    var screenGoalIndex = -1
+    var goal = Goal(name: "UNKNOWN")
+    var objective = Objective(name: "UNKNOWN")
 }

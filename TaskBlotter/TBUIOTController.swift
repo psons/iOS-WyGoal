@@ -24,16 +24,36 @@ class TBUIOTController: TBRootAccessController {
     @IBOutlet weak var maxTaskTF: UITextField!
     @IBOutlet weak var createTaskButton: UIButton!
 
- 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Objective + Tasks"
+        setupFromSaved()
         // todo: uncomment when I do the tasktableview
 //        taskListinTableView.delegate = self
 //        taskListinTableView.dataSource = self
         
     }
 
+    func setupFromSaved() {
+        if self.screenGoalIndex == -1 {
+            /**
+            caller did not forward set required data
+            in this case we can reach to te containing TabBarController to get data based on saved state
+            */
+            let parentTBC = useParentTBC()
+            let ssd = parentTBC.getScreenStateData()
+            self.screenObjective = ssd.objective
+            self.screenObjectiveIndex = ssd.screenObjectiveIndex
+            self.screenGoalIndex = ssd.screenGoalIndex
+            print("used TBC to get setup TBUIOTController and load \(screenGoalIndex)")
+        } else {
+            print("The caling controller already set up TBUIOTController with screenGoalIndex: \(screenGoalIndex)")
+        }
+
+    }
+
+    
     override func viewWillAppear(_ animated: Bool) {
         self.objectiveNameTF.text = self.screenObjective.name
         self.maxTaskTF.text = String(self.screenObjective.maxTasks)

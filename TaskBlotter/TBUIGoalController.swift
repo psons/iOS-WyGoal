@@ -45,7 +45,7 @@ class TBUIGoalController: UIViewController, UITableViewDataSource, UITableViewDe
         if let taskBlotterTabBarViewController = tabBarController as? TBUITabBarController {
             return taskBlotterTabBarViewController
         } else {
-            assertionFailure("Error This class should be a subclass of TBUITabBarController")
+            assertionFailure("Error This class should be loaded from of TBUITabBarController")
             return TBUITabBarController()
         }
     }
@@ -57,7 +57,7 @@ class TBUIGoalController: UIViewController, UITableViewDataSource, UITableViewDe
             if let indexPath = self.goalListingTableview.indexPathForSelectedRow {
                 let goal = goals[indexPath.row]
                 detail.screenGoal = goal
-                detail.goalIndex = indexPath.row
+                detail.screenGoalIndex = indexPath.row
             }
         }
     }
