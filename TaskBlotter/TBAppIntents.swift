@@ -158,7 +158,7 @@ struct TaskBlotterShortcuts: AppShortcutsProvider {
     static var appShortcuts: [AppShortcut] {
         AppShortcut(
             intent: AddObjectiveIntent(), phrases: [
-                "Create an Objective",
+                "Create an Objective in \(.applicationName)",
                 "Add Objective to \(.applicationName)",
                 "Add Story to  \(.applicationName)",
                 "Add Grouping of tasks to \(.applicationName)"])

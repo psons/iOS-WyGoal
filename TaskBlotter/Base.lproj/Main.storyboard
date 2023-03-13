@@ -74,6 +74,9 @@
                                         <buttonConfiguration key="configuration" style="plain" title="+">
                                             <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <segue destination="vfJ-jS-FYg" kind="show" identifier="NewGoalDetail" id="gka-JV-X8n"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="6" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AZf-GU-rAm" userLabel="maxTasks TextField">
                                         <rect key="frame" x="248" y="0.0" width="40" height="40"/>
@@ -234,7 +237,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Vh-b0-YhS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="120" y="480"/>
+            <point key="canvasLocation" x="120" y="445"/>
         </scene>
         <!--Goal + Objectives-->
         <scene sceneID="csq-UH-cOo">
@@ -399,7 +402,7 @@
                                 </constraints>
                                 <color key="textColor" red="0.37254901960784315" green="0.32941176470588235" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <action selector="goalNameTFdidEndExitAction:forEvent:" destination="vfJ-jS-FYg" eventType="editingDidEndOnExit" id="ogW-iR-4me"/>
                                 </connections>
@@ -439,7 +442,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vnO-CJ-YyL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="791" y="512"/>
+            <point key="canvasLocation" x="951" y="480"/>
         </scene>
         <!--Objective + Tasks-->
         <scene sceneID="0Rt-JG-wz4">
@@ -518,7 +521,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jnc-cP-Pqf">
-                                <rect key="frame" x="16" y="68" width="288" height="301"/>
+                                <rect key="frame" x="16" y="112" width="288" height="257"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ObjectiveCell" rowHeight="101" id="FzV-m5-Zer" customClass="TBUIObjectiveCell" customModule="TaskBlotter" customModuleProvider="target">
@@ -586,7 +589,7 @@
                                 </prototypes>
                             </tableView>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Objective Name Might be a few lines long." borderStyle="roundedRect" placeholder="Enter an objective name here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m9p-Qb-U07">
-                                <rect key="frame" x="16" y="0.0" width="288" height="60"/>
+                                <rect key="frame" x="16" y="44" width="288" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="zws-gB-M3w"/>
                                 </constraints>
@@ -640,7 +643,7 @@
                 <navigationController id="tzE-hc-3o9" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Goal List" id="cJY-sb-CmA"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Pcx-an-sAB">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -649,7 +652,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="csb-Ll-OJr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-645" y="302"/>
+            <point key="canvasLocation" x="-786" y="378"/>
         </scene>
         <!--Plan-->
         <scene sceneID="0zP-NE-vtX">
@@ -676,7 +679,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="pXc-rf-rzP"/>
+        <segue reference="dKs-Hq-z1S"/>
+        <segue reference="6Si-1G-7Ts"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ellipsis1" width="24" height="24"/>

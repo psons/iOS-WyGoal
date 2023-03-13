@@ -38,6 +38,7 @@ class TBUIGoalController: UIViewController, UITableViewDataSource, UITableViewDe
 //        useParentTBC().loadData(domainInOutRef: &edas.effortDomain)
         self.goals = domain.goals
         self.domainNameLabel.text = domain.name
+        self.goalListingTableview.reloadData()
     }
     
     // This will be common to my TabBarController children, so maybe a base class?
@@ -53,11 +54,18 @@ class TBUIGoalController: UIViewController, UITableViewDataSource, UITableViewDe
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        if let detail = segue.destination as? TBUIGOController /*TBUIGoalObjectiveController*/ {
-            if let indexPath = self.goalListingTableview.indexPathForSelectedRow {
-                let goal = goals[indexPath.row]
-                detail.screenGoal = goal
-                detail.screenGoalIndex = indexPath.row
+        if let targetVC = segue.destination as? TBUIGOController /*TBUIGoalObjectiveController*/ {
+            if segue.identifier == "NewGoalDetail" {
+                print("Making a Goal")
+                targetVC.screenGoal = Goal(name: "New")
+                targetVC.screenGoalIndex = self.useParentTBC().domainStore.domain.addGoal(goal: targetVC.screenGoal)
+            } else if segue.identifier == "ShowGoalDetail"{
+                print("Showing an existing Goal")
+                if let indexPath = self.goalListingTableview.indexPathForSelectedRow {
+                    let goal = goals[indexPath.row]
+                    targetVC.screenGoal = goal
+                    targetVC.screenGoalIndex = indexPath.row
+                }
             }
         }
     }

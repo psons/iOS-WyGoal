@@ -77,9 +77,8 @@ class TBUIGOController: TBRootAccessController, UITableViewDataSource, UITableVi
     }
     
     @IBAction func createObjectiveButtonAction(_ sender: UIButton) {
-        print("pressed create Objective button.")
+        print("pressed create Objective button.  Segue should happen")
     }
-    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.

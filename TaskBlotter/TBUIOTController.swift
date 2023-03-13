@@ -39,7 +39,7 @@ class TBUIOTController: TBRootAccessController {
         if self.screenGoalIndex == -1 {
             /**
             caller did not forward set required data
-            in this case we can reach to te containing TabBarController to get data based on saved state
+            in this case we can reach to the containing TabBarController to get data based on saved state
             */
             let parentTBC = useParentTBC()
             let ssd = parentTBC.getScreenStateData()
