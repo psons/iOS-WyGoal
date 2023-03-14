@@ -34,8 +34,6 @@ class TBUIGoalController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewWillAppear(_ animated: Bool) {
         let domain = useParentTBC().domainStore.domain
-//        print("TBUIGoalControllerViewController edas: \(Unmanaged.passUnretained(edas).toOpaque())")
-//        useParentTBC().loadData(domainInOutRef: &edas.effortDomain)
         self.goals = domain.goals
         self.domainNameLabel.text = domain.name
         self.goalListingTableview.reloadData()

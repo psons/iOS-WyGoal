@@ -117,14 +117,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GoalCell" id="KeW-JY-O57" customClass="TBUIGoalCell" customModule="TaskBlotter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="288" height="100"/>
+                                        <rect key="frame" x="0.0" y="50" width="288" height="160.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KeW-JY-O57" id="3yf-zc-RpX" userLabel="Goal Item View">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="160.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iAw-f5-e76" userLabel="Goal Data View">
-                                                    <rect key="frame" x="26" y="0.0" width="262" height="100"/>
+                                                    <rect key="frame" x="26" y="0.0" width="262" height="160.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="253" text="Goal Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zgy-Fk-QUj" userLabel="Goal Name text">
                                                             <rect key="frame" x="0.0" y="20.5" width="262" height="19.5"/>
@@ -132,15 +132,8 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" verticalHuggingPriority="251" image="ellipsis1" translatesAutoresizingMaskIntoConstraints="NO" id="aSe-V2-L3v">
-                                                            <rect key="frame" x="0.0" y="80" width="262" height="20"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="hM6-kO-3FW"/>
-                                                                <constraint firstAttribute="height" constant="20" id="ybo-eG-65G"/>
-                                                            </constraints>
-                                                        </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" text="Objective Listing Summary" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IKI-LW-BbD" userLabel="Objective List Summary">
-                                                            <rect key="frame" x="0.0" y="65" width="262" height="15"/>
+                                                            <rect key="frame" x="0.0" y="65" width="262" height="14.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -160,7 +153,6 @@
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="zgy-Fk-QUj" firstAttribute="leading" secondItem="iAw-f5-e76" secondAttribute="leading" id="1Nt-Gd-9w8"/>
-                                                        <constraint firstAttribute="bottom" secondItem="aSe-V2-L3v" secondAttribute="bottom" id="8FF-yF-xfq"/>
                                                         <constraint firstAttribute="trailing" secondItem="IKI-LW-BbD" secondAttribute="trailing" id="AQu-Ya-jpj"/>
                                                         <constraint firstAttribute="trailing" secondItem="zgy-Fk-QUj" secondAttribute="trailing" id="ATY-DW-fnz"/>
                                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hp3-mn-X9s" secondAttribute="trailing" constant="8" id="BtE-jv-u0Q"/>
@@ -170,16 +162,14 @@
                                                         <constraint firstAttribute="width" constant="300" id="T7k-YC-zVc"/>
                                                         <constraint firstItem="zgy-Fk-QUj" firstAttribute="top" secondItem="oHd-yi-QNC" secondAttribute="bottom" id="TCK-Fb-jiq"/>
                                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oHd-yi-QNC" secondAttribute="trailing" constant="20" symbolic="YES" id="U1m-hy-Rx7"/>
-                                                        <constraint firstAttribute="trailing" secondItem="aSe-V2-L3v" secondAttribute="trailing" id="ZTb-06-OWU"/>
-                                                        <constraint firstItem="aSe-V2-L3v" firstAttribute="leading" secondItem="iAw-f5-e76" secondAttribute="leading" id="hy8-2W-ofj"/>
                                                         <constraint firstItem="hp3-mn-X9s" firstAttribute="leading" secondItem="iAw-f5-e76" secondAttribute="leading" id="j1K-HH-Kqz"/>
-                                                        <constraint firstItem="aSe-V2-L3v" firstAttribute="top" secondItem="IKI-LW-BbD" secondAttribute="bottom" id="rH3-xy-YOr"/>
                                                         <constraint firstItem="oHd-yi-QNC" firstAttribute="leading" secondItem="iAw-f5-e76" secondAttribute="leading" id="wdu-ld-Nh2"/>
                                                     </constraints>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="240" horizontalCompressionResistancePriority="800" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uJl-pB-uvE" userLabel="Goal Drag Grip">
-                                                    <rect key="frame" x="0.0" y="0.0" width="18" height="100"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="18" height="160.5"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="height" constant="160" id="Jyr-8p-wQa"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="18" id="kXu-3F-r1K"/>
                                                     </constraints>
                                                     <state key="normal" title="Button"/>
@@ -682,7 +672,6 @@
         <segue reference="6Si-1G-7Ts"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="ellipsis1" width="24" height="24"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
