@@ -68,14 +68,14 @@
 		3488E3D029BBCD9D00FFBB7C /* TBUIGOController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBUIGOController.swift; sourceTree = "<group>"; };
 		349012CE29B8252E0095D133 /* DomainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainStore.swift; sourceTree = "<group>"; };
 		34B4216429BD1427000D3C79 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		34B4216629BD143C000D3C79 /* EffortDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EffortDomain.swift; path = ../../../EffortDomain/EffortDomain/EffortDomainModel/EffortDomain.swift; sourceTree = "<group>"; };
+		34B4216629BD143C000D3C79 /* EffortDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffortDomain.swift; sourceTree = "<group>"; };
 		34B4216829BD14B0000D3C79 /* EffortDomainAppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffortDomainAppState.swift; sourceTree = "<group>"; };
 		34B4216A29BD14DB000D3C79 /* Goal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		34B4216C29BD4F5B000D3C79 /* TBRootAccessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBRootAccessController.swift; sourceTree = "<group>"; };
 		34B8C0AB29BBE8D9008C262E /* TBUIOTController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBUIOTController.swift; sourceTree = "<group>"; };
 		34B8C0AD29BBF1CA008C262E /* TBUIObjectiveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBUIObjectiveCell.swift; sourceTree = "<group>"; };
 		34DD74CC29B63CFE0034DC50 /* TBUIGoalListingTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBUIGoalListingTableView.swift; sourceTree = "<group>"; };
-		34DEF95629B1765900F01AA9 /* TaskBlotter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskBlotter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		34DEF95629B1765900F01AA9 /* WyGoal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WyGoal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34DEF95929B1765900F01AA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34DEF95B29B1765900F01AA9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		34DEF95D29B1765900F01AA9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -83,9 +83,9 @@
 		34DEF96229B1765C00F01AA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		34DEF96529B1765C00F01AA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		34DEF96729B1765C00F01AA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		34DEF96C29B1765D00F01AA9 /* TaskBlotterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskBlotterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		34DEF96C29B1765D00F01AA9 /* WyGoalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WyGoalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		34DEF97029B1765D00F01AA9 /* Task_BlotterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task_BlotterTests.swift; sourceTree = "<group>"; };
-		34DEF97629B1765D00F01AA9 /* TaskBlotterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskBlotterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		34DEF97629B1765D00F01AA9 /* WyGoalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WyGoalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		34DEF97A29B1765D00F01AA9 /* Task_BlotterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task_BlotterUITests.swift; sourceTree = "<group>"; };
 		34DEF97C29B1765D00F01AA9 /* Task_BlotterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task_BlotterUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		34DEF98B29B1813D00F01AA9 /* TBUITabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBUITabBarController.swift; sourceTree = "<group>"; };
@@ -146,9 +146,9 @@
 		34DEF95729B1765900F01AA9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				34DEF95629B1765900F01AA9 /* TaskBlotter.app */,
-				34DEF96C29B1765D00F01AA9 /* TaskBlotterTests.xctest */,
-				34DEF97629B1765D00F01AA9 /* TaskBlotterUITests.xctest */,
+				34DEF95629B1765900F01AA9 /* WyGoal.app */,
+				34DEF96C29B1765D00F01AA9 /* WyGoalTests.xctest */,
+				34DEF97629B1765D00F01AA9 /* WyGoalUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -221,9 +221,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		34DEF95529B1765900F01AA9 /* TaskBlotter */ = {
+		34DEF95529B1765900F01AA9 /* WyGoal */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 34DEF98029B1765D00F01AA9 /* Build configuration list for PBXNativeTarget "TaskBlotter" */;
+			buildConfigurationList = 34DEF98029B1765D00F01AA9 /* Build configuration list for PBXNativeTarget "WyGoal" */;
 			buildPhases = (
 				34DEF95229B1765900F01AA9 /* Sources */,
 				34DEF95329B1765900F01AA9 /* Frameworks */,
@@ -233,14 +233,14 @@
 			);
 			dependencies = (
 			);
-			name = TaskBlotter;
+			name = WyGoal;
 			productName = "Task Blotter";
-			productReference = 34DEF95629B1765900F01AA9 /* TaskBlotter.app */;
+			productReference = 34DEF95629B1765900F01AA9 /* WyGoal.app */;
 			productType = "com.apple.product-type.application";
 		};
-		34DEF96B29B1765D00F01AA9 /* TaskBlotterTests */ = {
+		34DEF96B29B1765D00F01AA9 /* WyGoalTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 34DEF98329B1765D00F01AA9 /* Build configuration list for PBXNativeTarget "TaskBlotterTests" */;
+			buildConfigurationList = 34DEF98329B1765D00F01AA9 /* Build configuration list for PBXNativeTarget "WyGoalTests" */;
 			buildPhases = (
 				34DEF96829B1765D00F01AA9 /* Sources */,
 				34DEF96929B1765D00F01AA9 /* Frameworks */,
@@ -251,14 +251,14 @@
 			dependencies = (
 				34DEF96E29B1765D00F01AA9 /* PBXTargetDependency */,
 			);
-			name = TaskBlotterTests;
+			name = WyGoalTests;
 			productName = "Task BlotterTests";
-			productReference = 34DEF96C29B1765D00F01AA9 /* TaskBlotterTests.xctest */;
+			productReference = 34DEF96C29B1765D00F01AA9 /* WyGoalTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		34DEF97529B1765D00F01AA9 /* TaskBlotterUITests */ = {
+		34DEF97529B1765D00F01AA9 /* WyGoalUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 34DEF98629B1765D00F01AA9 /* Build configuration list for PBXNativeTarget "TaskBlotterUITests" */;
+			buildConfigurationList = 34DEF98629B1765D00F01AA9 /* Build configuration list for PBXNativeTarget "WyGoalUITests" */;
 			buildPhases = (
 				34DEF97229B1765D00F01AA9 /* Sources */,
 				34DEF97329B1765D00F01AA9 /* Frameworks */,
@@ -269,9 +269,9 @@
 			dependencies = (
 				34DEF97829B1765D00F01AA9 /* PBXTargetDependency */,
 			);
-			name = TaskBlotterUITests;
+			name = WyGoalUITests;
 			productName = "Task BlotterUITests";
-			productReference = 34DEF97629B1765D00F01AA9 /* TaskBlotterUITests.xctest */;
+			productReference = 34DEF97629B1765D00F01AA9 /* WyGoalUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -297,7 +297,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 34DEF95129B1765900F01AA9 /* Build configuration list for PBXProject "TaskBlotter" */;
+			buildConfigurationList = 34DEF95129B1765900F01AA9 /* Build configuration list for PBXProject "WyGoal" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -310,9 +310,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				34DEF95529B1765900F01AA9 /* TaskBlotter */,
-				34DEF96B29B1765D00F01AA9 /* TaskBlotterTests */,
-				34DEF97529B1765D00F01AA9 /* TaskBlotterUITests */,
+				34DEF95529B1765900F01AA9 /* WyGoal */,
+				34DEF96B29B1765D00F01AA9 /* WyGoalTests */,
+				34DEF97529B1765D00F01AA9 /* WyGoalUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -398,12 +398,12 @@
 /* Begin PBXTargetDependency section */
 		34DEF96E29B1765D00F01AA9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 34DEF95529B1765900F01AA9 /* TaskBlotter */;
+			target = 34DEF95529B1765900F01AA9 /* WyGoal */;
 			targetProxy = 34DEF96D29B1765D00F01AA9 /* PBXContainerItemProxy */;
 		};
 		34DEF97829B1765D00F01AA9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 34DEF95529B1765900F01AA9 /* TaskBlotter */;
+			target = 34DEF95529B1765900F01AA9 /* WyGoal */;
 			targetProxy = 34DEF97729B1765D00F01AA9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -614,7 +614,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TaskBlotter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TaskBlotter";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WyGoal.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WyGoal";
 			};
 			name = Debug;
 		};
@@ -634,7 +634,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TaskBlotter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TaskBlotter";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WyGoal.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WyGoal";
 			};
 			name = Release;
 		};
@@ -677,7 +677,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		34DEF95129B1765900F01AA9 /* Build configuration list for PBXProject "TaskBlotter" */ = {
+		34DEF95129B1765900F01AA9 /* Build configuration list for PBXProject "WyGoal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				34DEF97E29B1765D00F01AA9 /* Debug */,
@@ -686,7 +686,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		34DEF98029B1765D00F01AA9 /* Build configuration list for PBXNativeTarget "TaskBlotter" */ = {
+		34DEF98029B1765D00F01AA9 /* Build configuration list for PBXNativeTarget "WyGoal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				34DEF98129B1765D00F01AA9 /* Debug */,
@@ -695,7 +695,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		34DEF98329B1765D00F01AA9 /* Build configuration list for PBXNativeTarget "TaskBlotterTests" */ = {
+		34DEF98329B1765D00F01AA9 /* Build configuration list for PBXNativeTarget "WyGoalTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				34DEF98429B1765D00F01AA9 /* Debug */,
@@ -704,7 +704,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		34DEF98629B1765D00F01AA9 /* Build configuration list for PBXNativeTarget "TaskBlotterUITests" */ = {
+		34DEF98629B1765D00F01AA9 /* Build configuration list for PBXNativeTarget "WyGoalUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				34DEF98729B1765D00F01AA9 /* Debug */,

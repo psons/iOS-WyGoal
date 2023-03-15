@@ -42,11 +42,11 @@ class TBUIOTController: TBRootAccessController {
             in this case we can reach to the containing TabBarController to get data based on saved state
             */
             let parentTBC = useParentTBC()
-            let ssd = parentTBC.getScreenStateData()
-            self.screenObjective = ssd.objective
-            self.screenObjectiveIndex = ssd.screenObjectiveIndex
-            self.screenGoalIndex = ssd.screenGoalIndex
-            print("used TBC to get setup TBUIOTController and load \(screenGoalIndex)")
+            let goState = parentTBC.getValidatedGOState()   //todo make this get saved state data
+            self.screenObjective = goState.objective
+            self.screenObjectiveIndex = goState.oSlot
+            self.screenGoalIndex = goState.gSlot
+            print("used TBC to get setup TBUIOTController and load \(screenGoalIndex),\(screenObjectiveIndex)")
         } else {
             print("The caling controller already set up TBUIOTController with screenGoalIndex: \(screenGoalIndex)")
         }
@@ -61,6 +61,9 @@ class TBUIOTController: TBRootAccessController {
         setSetDefaultButtonText()
     }
 
+    /**
+     Handles incrementing indecies for user display
+     */
     func setSetDefaultButtonText() {
         let goalRankAsStr = String(self.screenGoalIndex + 1)
         let objRankAsStr =  self.screenObjectiveIndex == -1 ?  "?" :String(self.screenObjectiveIndex + 1)
@@ -106,8 +109,12 @@ class TBUIOTController: TBRootAccessController {
     @IBAction func defaultObjectiveButtonAction(_ sender: UIButton) {
         print("pressed defaultObjectiveButtonAction. screenGoalIndex is: \(self.screenGoalIndex) screenObjectiveIndex is: \(self.screenObjectiveIndex)")
         let oIndex = oIndexSaveCheck()
+        print("defaultObjectiveButtonAction ")
         let stateStore = getTBStateStore()
         stateStore.saveData(stateRef: AppState.factory(self.screenGoalIndex, oIndex))
+        stateStore.state.gSlot = self.screenGoalIndex
+        stateStore.state.oSlot = oIndex
+        print("defaultObjectiveButtonAction saved:  \(self.screenGoalIndex), \(oIndex)")
         setSetDefaultButtonText() // might have updated if we just created an Objective
     }
 

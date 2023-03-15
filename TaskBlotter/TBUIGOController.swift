@@ -63,11 +63,18 @@ class TBUIGOController: TBRootAccessController, UITableViewDataSource, UITableVi
     }
     
     @IBAction func defaultGoalButtonAction(_ sender: UIButton) {
-        print("pressed defaultGoalButton. goalRank is: \(self.screenGoalIndex)")
-        let stateStore = getTBStateStore()
-        let domainStore = getTBDomainStore()
-        let newState = domainStore.domain.requestNewCurrentGState(desiredGSlot: self.screenGoalIndex, previousAppState: stateStore.state)
-        stateStore.saveData(stateRef: newState)
+        print("pressed defaultGoalButton. screenGoalIndex is: \(self.screenGoalIndex)")
+       
+//        // todo: write this method based on Objective saver.
+//        let gIndex = gIndexSaveCheck()
+//
+//        let stateStore = getTBStateStore()
+//        let domainStore = getTBDomainStore()
+//        let newState = domainStore.domain.requestNewCurrentGState(desiredGSlot: gIndex, previousAppState: stateStore.state)
+//        stateStore.saveData(stateRef: newState)
+//        print("defaultObjectiveButtonAction saved:  \(newState)")
+//        setSetDefaultButtonText() // might have updated if we just created an Objective
+        
     }
     
     @IBAction func deleteGoalButtonAction(_ sender: Any) {

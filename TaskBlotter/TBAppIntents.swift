@@ -61,11 +61,48 @@ struct TaskBlotterClearData: AppIntent {
     }
 }
 
+
+struct WyGoalAddIntent: AppIntent {
+    static var title: LocalizedStringResource = "Add Wygoal"
+    static var description = IntentDescription("Adds a WyGoal to work on")
+    static var openAppWhenRun = true
+
+    @Parameter(title: "Name of the WyGoal")
+    var name: String    // not non-optional will have Siri assure that it is provided.
+    
+    @MainActor
+    func perform() async throws -> some IntentResult {
+        print("WyGoalAdd.perform() \(name)")
+        
+        let tbc = getTBRootController()
+        tbc.setNavigation(navTarget: "WyGoal", name: name)
+        tbc.doNavigation()
+        return .result(value: "Launched WyGoal screen with new WyGoal" )
+    }
+}
+
+
+struct WyGoalTaskAddIntent: AppIntent {
+    static var title: LocalizedStringResource = "Add Wygoal Task"
+    static var description = IntentDescription("Adds a WyGoal task to complete")
+    static var openAppWhenRun = false  // <---- Won't launch app, or load ViewControllers.
+
+    @Parameter(title: "Name of the Task")
+    var name: String    // not non-optional will have Siri assure that it is provided.
+
+    
+    func perform() async throws -> some IntentResult {
+        print("WyGoalObjectiveAddIntent.perform() \(name)")
+        
+        return .result()  //.finished
+    }
+}
+
+
 /**
  This saves data without calling the app, so if the app is running, it will not see the update.
  an improvement is needed: running a service, or just actually calling the app, like the nav does.
  */
-
 struct AddObjectiveIntent: AppIntent {
     static var title: LocalizedStringResource = "Add an objective in the Task Blotter App"
     
@@ -156,6 +193,31 @@ struct ViewSavedObjectiveIntent: AppIntent {
 struct TaskBlotterShortcuts: AppShortcutsProvider {
     // phrases .applicationName or Siri roams out to an internet search.
     static var appShortcuts: [AppShortcut] {
+        AppShortcut(
+            intent: WyGoalAddIntent(), phrases: [
+                "Add \(.applicationName)",
+                "Add a \(.applicationName)",
+                "Add my \(.applicationName)",
+                "Creat a \(.applicationName)",
+                "Creat my \(.applicationName)",
+                "Please create my \(.applicationName)",
+                "Please create a new \(.applicationName)",
+                "Add a new \(.applicationName)"])
+
+        // WyGoalTaskAddIntent
+        AppShortcut(
+            intent: WyGoalTaskAddIntent(), phrases: [
+                "\(.applicationName) Task",
+                "Add \(.applicationName) Task",
+                "Add a \(.applicationName) Task",
+                "Add my \(.applicationName) Task",
+                "Creat a \(.applicationName) Task",
+                "Creat my \(.applicationName) Task",
+                "Please create my \(.applicationName) Task",
+                "Please create a new \(.applicationName) Task",
+                "Add a new \(.applicationName) Task"])
+
+
         AppShortcut(
             intent: AddObjectiveIntent(), phrases: [
                 "Create an Objective in \(.applicationName)",
