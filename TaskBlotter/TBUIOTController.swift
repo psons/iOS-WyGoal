@@ -111,9 +111,9 @@ class TBUIOTController: TBRootAccessController {
         let oIndex = oIndexSaveCheck()
         print("defaultObjectiveButtonAction ")
         let stateStore = getTBStateStore()
-        stateStore.saveData(stateRef: AppState.factory(self.screenGoalIndex, oIndex))
         stateStore.state.gSlot = self.screenGoalIndex
         stateStore.state.oSlot = oIndex
+        stateStore.saveData(stateRef: stateStore.state)
         print("defaultObjectiveButtonAction saved:  \(self.screenGoalIndex), \(oIndex)")
         setSetDefaultButtonText() // might have updated if we just created an Objective
     }

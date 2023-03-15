@@ -65,17 +65,26 @@ class TBUIGOController: TBRootAccessController, UITableViewDataSource, UITableVi
     @IBAction func defaultGoalButtonAction(_ sender: UIButton) {
         print("pressed defaultGoalButton. screenGoalIndex is: \(self.screenGoalIndex)")
        
-//        // todo: write this method based on Objective saver.
-//        let gIndex = gIndexSaveCheck()
-//
-//        let stateStore = getTBStateStore()
-//        let domainStore = getTBDomainStore()
-//        let newState = domainStore.domain.requestNewCurrentGState(desiredGSlot: gIndex, previousAppState: stateStore.state)
-//        stateStore.saveData(stateRef: newState)
-//        print("defaultObjectiveButtonAction saved:  \(newState)")
-//        setSetDefaultButtonText() // might have updated if we just created an Objective
+        // todo: there is no gIndexSaveCheck() like oIndexSaveCheck
+        //      Goal creation happens before segue, so it is already there
+
+        let stateStore = getTBStateStore()
+        let domainStore = getTBDomainStore()
+        let newState = domainStore.domain.requestNewCurrentGState(desiredGSlot: self.screenGoalIndex, previousAppState: stateStore.state)
+        stateStore.saveData(stateRef: newState)
+        print("defaultObjectiveButtonAction saved:  \(newState)")
+        setSetDefaultButtonText() // might have updated if we just created an Objective
         
     }
+    
+    /**
+     Handles incrementing index for user display
+     */
+    func setSetDefaultButtonText() {
+        let goalRankAsStr = String(self.screenGoalIndex + 1)
+        self.defaultGoalButton.setTitle("Set Default: \(goalRankAsStr)", for: .normal)
+    }
+
     
     @IBAction func deleteGoalButtonAction(_ sender: Any) {
         print("pressed delete Goal button. goalRank is: \(self.screenGoalIndex)")
