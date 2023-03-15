@@ -28,7 +28,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="jue-bI-Ctu">
             <objects>
-                <tabBarController id="FjK-Ur-tz5" customClass="TBUITabBarController" customModule="TaskBlotter" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="FjK-Ur-tz5" customClass="TBUITabBarController" customModule="WyGoal" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fWQ-OF-Lmq">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -48,7 +48,7 @@
         <!--Goal Listing-->
         <scene sceneID="b9u-G6-H9H">
             <objects>
-                <viewController storyboardIdentifier="goalListingStoryBoardID" id="INC-Uw-Gk1" userLabel="Goal Listing" customClass="TBUIGoalController" customModule="TaskBlotter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="goalListingStoryBoardID" id="INC-Uw-Gk1" userLabel="Goal Listing" customClass="TBUIGoalController" customModule="WyGoal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Fu-pU-nqd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -116,15 +116,15 @@
                                 <rect key="frame" x="16" y="140" width="288" height="379"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GoalCell" id="KeW-JY-O57" customClass="TBUIGoalCell" customModule="TaskBlotter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="288" height="160.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GoalCell" id="KeW-JY-O57" customClass="TBUIGoalCell" customModule="WyGoal" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="288" height="140.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KeW-JY-O57" id="3yf-zc-RpX" userLabel="Goal Item View">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="160.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="140.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iAw-f5-e76" userLabel="Goal Data View">
-                                                    <rect key="frame" x="26" y="0.0" width="262" height="160.5"/>
+                                                <view opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iAw-f5-e76" userLabel="Goal Data View">
+                                                    <rect key="frame" x="26" y="0.0" width="262" height="0.0"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="253" text="Goal Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zgy-Fk-QUj" userLabel="Goal Name text">
                                                             <rect key="frame" x="0.0" y="20.5" width="262" height="19.5"/>
@@ -167,9 +167,9 @@
                                                     </constraints>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="240" horizontalCompressionResistancePriority="800" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uJl-pB-uvE" userLabel="Goal Drag Grip">
-                                                    <rect key="frame" x="0.0" y="0.0" width="18" height="160.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="18" height="140.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="160" id="Jyr-8p-wQa"/>
+                                                        <constraint firstAttribute="height" constant="140" id="bnZ-P5-ldY"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="18" id="kXu-3F-r1K"/>
                                                     </constraints>
                                                     <state key="normal" title="Button"/>
@@ -226,12 +226,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Vh-b0-YhS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="120" y="445"/>
+            <point key="canvasLocation" x="120" y="444.71830985915494"/>
         </scene>
         <!--Goal + Objectives-->
         <scene sceneID="csq-UH-cOo">
             <objects>
-                <viewController storyboardIdentifier="goalObjectivesStoryBoardID" title="Goal + Objectives" id="vfJ-jS-FYg" customClass="TBUIGOController" customModule="TaskBlotter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="goalObjectivesStoryBoardID" title="Goal + Objectives" id="vfJ-jS-FYg" customClass="TBUIGOController" customModule="WyGoal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VGv-fj-T7q">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -311,7 +311,7 @@
                                 <rect key="frame" x="16" y="112" width="288" height="265"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ObjectiveCell" rowHeight="101" id="ZJy-15-V1R" customClass="TBUIObjectiveCell" customModule="TaskBlotter" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ObjectiveCell" rowHeight="101" id="ZJy-15-V1R" customClass="TBUIObjectiveCell" customModule="WyGoal" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="288" height="101"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZJy-15-V1R" id="9aL-S8-r5g">
@@ -436,7 +436,7 @@
         <!--Objective + Tasks-->
         <scene sceneID="0Rt-JG-wz4">
             <objects>
-                <viewController storyboardIdentifier="objectiveTasksStoryBoardID" id="KjH-Aw-jb6" userLabel="Objective + Tasks" customClass="TBUIOTController" customModule="TaskBlotter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="objectiveTasksStoryBoardID" id="KjH-Aw-jb6" userLabel="Objective + Tasks" customClass="TBUIOTController" customModule="WyGoal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xSm-hA-14n">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -513,7 +513,7 @@
                                 <rect key="frame" x="16" y="112" width="288" height="257"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ObjectiveCell" rowHeight="101" id="FzV-m5-Zer" customClass="TBUIObjectiveCell" customModule="TaskBlotter" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ObjectiveCell" rowHeight="101" id="FzV-m5-Zer" customClass="TBUIObjectiveCell" customModule="WyGoal" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="288" height="101"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FzV-m5-Zer" id="tv6-Ah-Xaa">
@@ -646,7 +646,7 @@
         <!--Plan-->
         <scene sceneID="0zP-NE-vtX">
             <objects>
-                <viewController id="OZt-da-WXi" customClass="TBUIPlanController" customModule="TaskBlotter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="OZt-da-WXi" customClass="TBUIPlanController" customModule="WyGoal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CRa-kf-47g">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
