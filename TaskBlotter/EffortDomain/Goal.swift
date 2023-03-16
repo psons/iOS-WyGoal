@@ -46,8 +46,8 @@ class Goal: Codable, CustomStringConvertible {
      todo: add some precaution agains index out of range.
      */
     func removeObjective(oSlot: Int) -> Objective? {
-        let objectiveAtOSlot = self.objectives[oSlot]
         if self.objectives.indices.contains(oSlot) {
+            let objectiveAtOSlot = self.objectives[oSlot]
             self.objectives.remove(at: oSlot)
             return objectiveAtOSlot
         }

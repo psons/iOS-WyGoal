@@ -264,7 +264,6 @@
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="defaultGoalButtonAction:" destination="vfJ-jS-FYg" eventType="touchUpInside" id="uSW-bT-cxI"/>
                                             <action selector="deleteGoalButtonAction:" destination="vfJ-jS-FYg" eventType="touchUpInside" id="Uz1-uX-K0Y"/>
                                         </connections>
                                     </button>
@@ -489,7 +488,6 @@
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="defaultGoalButtonAction:" destination="vfJ-jS-FYg" eventType="touchUpInside" id="gSa-Tg-U23"/>
                                             <action selector="defaultObjectiveButtonAction:" destination="KjH-Aw-jb6" eventType="touchUpInside" id="3IA-VT-tHb"/>
                                         </connections>
                                     </button>
@@ -504,7 +502,6 @@
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="defaultGoalButtonAction:" destination="vfJ-jS-FYg" eventType="touchUpInside" id="v2a-hb-Jrv"/>
                                             <action selector="deleteObjectiveButtonAction:" destination="KjH-Aw-jb6" eventType="touchUpInside" id="WO4-ZS-KRY"/>
                                         </connections>
                                     </button>

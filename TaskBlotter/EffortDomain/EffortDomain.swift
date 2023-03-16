@@ -73,6 +73,23 @@ class EffortDomain: Codable, CustomStringConvertible {
         return appState
     }
 
+    /**
+     Retuns the Goal being removed, if the gSlot Index is valid in the goals list.  ( Maybe the caller will undo, or put it in a different slot, or just tell the user.)
+     Returns nil if the gSlot is out of range in the goals list.
+     */
+    func removeGoal(gSlot: Int) -> Goal? {
+        if self.goals.indices.contains(gSlot) {
+            let goalAtOSlot = self.goals[gSlot]
+            self.goals.remove(at: gSlot)
+            return goalAtOSlot
+        }
+        return nil
+    }
+    
+
+    
+    
+    
     func requestNewValidGOState(desiredState: AppState, previousAppState: AppState) -> AppState {
         let resultingAppState = AppState()
         if !isValidGslot(gSlot: desiredState.oSlot) {

@@ -64,10 +64,10 @@ class TBUIGOController: TBRootAccessController, UITableViewDataSource, UITableVi
     
     @IBAction func defaultGoalButtonAction(_ sender: UIButton) {
         print("pressed defaultGoalButton. screenGoalIndex is: \(self.screenGoalIndex)")
-       
+        
         // todo: there is no gIndexSaveCheck() like oIndexSaveCheck
         //      Goal creation happens before segue, so it is already there
-
+        
         let stateStore = getTBStateStore()
         let domainStore = getTBDomainStore()
         let newState = domainStore.domain.requestNewCurrentGState(desiredGSlot: self.screenGoalIndex, previousAppState: stateStore.state)
@@ -84,13 +84,32 @@ class TBUIGOController: TBRootAccessController, UITableViewDataSource, UITableVi
         let goalRankAsStr = String(self.screenGoalIndex + 1)
         self.defaultGoalButton.setTitle("Set Default: \(goalRankAsStr)", for: .normal)
     }
-
     
+    func goalHasNoObjectives() -> Bool {
+        return self.getTBDomainStore().domain.goals[self.screenGoalIndex].objectives.count == 0
+    }
+    
+    func doGoalDeletePopNav() {
+        print("Will do delete of \(self.screenGoalIndex)")
+        print("Then invoke nav back to the goal listing")
+        _ = self.getTBDomainStore().domain.removeGoal(gSlot: self.screenGoalIndex)
+        
+        self.navigationController?.popViewController(animated: true)
+
+    }
     
     @IBAction func deleteGoalButtonAction(_ sender: Any) {
         print("pressed delete Goal button. goalRank is: \(self.screenGoalIndex)")
-        print("alert if there are objectives, else delete it.")
-        print("unwind / dismiss controller stack to the Goal Listing.")
+        if goalHasNoObjectives() {
+            doGoalDeleteAlert(condition: "Will delete the curent Goal",
+                              choice: "Are you sure you want to delete it?",
+                              notice: "Goal Deleted",
+                              newState: "Will now return to the Goal Listing")
+        } else {
+            alertCondition(notice: "There are objectives for this Goal.",
+                           newState: "You must delete them before this Goal can be deleted")
+        }
+        
     }
     
     @IBAction func createObjectiveButtonAction(_ sender: UIButton) {
@@ -118,6 +137,66 @@ class TBUIGOController: TBRootAccessController, UITableViewDataSource, UITableVi
             }
         }
     }
+
+    func alertCondition(notice: String, newState: String) {
+        print("Need to alert for condition: \(notice)")
+        print("With Prompt: \(newState)")
+
+        let innerAlertController =
+            UIAlertController(
+                title: notice,
+                message: newState,
+                preferredStyle: .alert)
+        innerAlertController.addAction(
+            UIAlertAction(
+                title: "OK",
+                style: .default, handler: nil))
+        self.present(
+            innerAlertController,
+            animated: true,
+            completion: nil)
+
+    }
+    
+    
+    
+    func doGoalDeleteAlert(condition: String, choice: String, notice: String, newState: String) {
+        let outerAlertController = UIAlertController(
+            title: condition,
+            message: choice,
+            preferredStyle: .alert)
+        let outerAlertActionConfirmPath = UIAlertAction(
+            title: "Yes", style: .default)
+                { _ in
+                    // This is the change action the user is approving.
+                    self.doGoalDeletePopNav()
+                    let innerAlertController =
+                        UIAlertController(
+                            title: notice,
+                            message: newState,
+                            preferredStyle: .alert)
+                    innerAlertController.addAction(
+                        UIAlertAction(
+                            title: "OK",
+                            style: .default, handler: nil))
+                    self.present(
+                        innerAlertController,
+                        animated: true,
+                        completion: nil)
+                }
+
+        let outerAlertActionEscapePath = UIAlertAction(
+            title: "No", style: .default)
+
+        
+        outerAlertController.addAction(outerAlertActionConfirmPath)
+        outerAlertController.addAction(outerAlertActionEscapePath)
+   
+        present(outerAlertController, animated: true, completion: nil)
+    }
+
+    
+    
 }
 
 // extensions for protocols needed to support TableView
