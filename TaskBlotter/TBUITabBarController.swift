@@ -69,6 +69,19 @@ class TBUITabBarController: UITabBarController {
         return goState
     }
     
+    func getGoalListingVC() -> UIViewController {
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "goalListingStoryBoardID")
+    }
+    
+    func getGoalObjectivesVC() -> TBUIGOController {
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "goalObjectivesStoryBoardID") as! TBUIGOController
+    }
+
+    func getObjectiveTasksVC() -> TBUIOTController {
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "objectiveTasksStoryBoardID") as! TBUIOTController
+    }
+
+    
     /**
      Builds and launches all or part of an array of nav controller rooted at the TBUITabBarController
      0 - Goal listing: TBUIGoalController
@@ -82,69 +95,51 @@ class TBUITabBarController: UITabBarController {
             return
         }
         
+        let appNav = self.viewControllers?[2] as! UINavigationController // hard coded 2 is the position of this controller in the tab index.
+        var vcList: [UIViewController] = []
+        
         if self.navTarget == "WyGoal" {
-            
   
             print("TBUITabBarController wil do doNavigation() to \(self.navTarget)")
-            let goalNav = self.viewControllers?[2] as! UINavigationController // hard coded 2 is the position of this controller in the tab index.
-
-            let goalListingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "goalListingStoryBoardID")
+            vcList.append(getGoalListingVC())
             
-            let goalObjectivesVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "goalObjectivesStoryBoardID") as! TBUIGOController
-
+            let goalObjectivesVC = getGoalObjectivesVC()
             /**
              TODO:  these next two lines are goal creation andsetting up of the apropriate VC, same as iin the segue
              */
             goalObjectivesVC.screenGoal = Goal(name: self.intentData)
             goalObjectivesVC.screenGoalIndex = self.domainStore.domain.addGoal(goal: goalObjectivesVC.screenGoal)
             self.domainStore.saveData()
-            
-            // set up the nav controller
-            goalNav.setViewControllers([goalListingVC, goalObjectivesVC], animated: true)
-            // will display last VC in the list
-            
-            // set the TAB Bar controller have the Nav as curently selected
-            self.selectedViewController = goalNav  // this actualy displays the view controller after the arry is set up on prev line.
-
-            
+            vcList.append(goalObjectivesVC)
         }
         
         if self.navTarget == "GoalListing" {
             print("TBUITabBarController wil do doNavigation() to \(self.navTarget)")
-            let goalNav = self.viewControllers?[2] as! UINavigationController // hard coded 2 is the position of this controller in the tab index.
-
-            let goalListingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "goalListingStoryBoardID")
-            // todo: build up a list of controllers here for deeper navigation cases.like [goalVC, goalObjectiveVC]
-
-            goalNav.setViewControllers([goalListingVC], animated: true)  // can make longer array, and will display last.
-            self.selectedViewController = goalNav  // this actualy displays the view controller after the arry is set up on prev line.
+            vcList.append(getGoalListingVC())
         }
         if self.navTarget == "ObjectiveTasks" {
-            
             let screenStateData = getValidatedGOState()
-            
             print("TBUITabBarController wil do doNavigation() to \(self.navTarget)")
-            let goalNav = self.viewControllers?[2] as! UINavigationController // hard coded 2 is the position of this controller in the tab index.
+            vcList.append(getGoalListingVC())
 
-            let goalListingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "goalListingStoryBoardID")
-            
-            let goalObjectivesVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "goalObjectivesStoryBoardID") as! TBUIGOController
+            let goalObjectivesVC = getGoalObjectivesVC()
             goalObjectivesVC.screenGoal = screenStateData.goal
             goalObjectivesVC.screenGoalIndex = screenStateData.gSlot
+            vcList.append(goalObjectivesVC)
             
-            let objectiveTasksVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "objectiveTasksStoryBoardID") as! TBUIOTController
+            let objectiveTasksVC = getObjectiveTasksVC()
             objectiveTasksVC.screenGoalIndex = screenStateData.gSlot
             objectiveTasksVC.screenObjectiveIndex = screenStateData.oSlot
             objectiveTasksVC.screenObjective = screenStateData.objective
-            
-            // set up the nav controller
-            goalNav.popToRootViewController(animated: false)
-            goalNav.setViewControllers([goalListingVC, goalObjectivesVC, objectiveTasksVC], animated: true)
-            // will display last VC in the list
-            
-            // set the TAB Bar controller have the Nav as curently selected
-            self.selectedViewController = goalNav  // this actualy displays the view controller after the arry is set up on prev line.
+            vcList.append(objectiveTasksVC)
         }
+        // set up the nav controller
+        appNav.popToRootViewController(animated: false)
+        appNav.setViewControllers(vcList, animated: true)
+        // will display last VC in the list
+        
+        // set the TAB Bar controller have the Nav as curently selected
+        self.selectedViewController = appNav  // this actualy displays the view controller after the arry is set up on prev line.
     }
     
 
