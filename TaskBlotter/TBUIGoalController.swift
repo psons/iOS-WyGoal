@@ -64,6 +64,8 @@ class TBUIGoalController: UIViewController, UITableViewDataSource, UITableViewDe
                     targetVC.screenGoal = goal
                     targetVC.screenGoalIndex = indexPath.row
                 }
+            } else {
+                print("Unrecognized Segue is probably a bug: \(segue.destination)")
             }
         }
     }

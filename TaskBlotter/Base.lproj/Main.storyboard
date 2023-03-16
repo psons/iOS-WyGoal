@@ -426,12 +426,12 @@
                         <outlet property="maxObjectiveStepper" destination="Fe4-J9-rHx" id="2Uj-sQ-4Tx"/>
                         <outlet property="maxObjectiveTF" destination="737-Ge-a9J" id="Lie-Nm-Pvt"/>
                         <outlet property="objectiveListingTableView" destination="JyZ-xv-i8Q" id="IBu-Pb-MIa"/>
-                        <segue destination="KjH-Aw-jb6" kind="show" identifier="ShowObjectiveDetail" id="SkY-8N-aYr"/>
+                        <segue destination="KjH-Aw-jb6" kind="show" identifier="ShowObjectiveDetail" id="MyC-fU-Kdv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vnO-CJ-YyL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="951" y="480"/>
+            <point key="canvasLocation" x="1035" y="410"/>
         </scene>
         <!--Objective + Tasks-->
         <scene sceneID="0Rt-JG-wz4">
@@ -624,7 +624,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LZc-em-emE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1614" y="242"/>
+            <point key="canvasLocation" x="1869" y="410"/>
         </scene>
         <!--Goal List-->
         <scene sceneID="hLD-fK-iiE">
@@ -668,7 +668,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dKs-Hq-z1S"/>
+        <segue reference="MyC-fU-Kdv"/>
         <segue reference="6Si-1G-7Ts"/>
     </inferredMetricsTieBreakers>
     <resources>

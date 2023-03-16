@@ -86,6 +86,7 @@ class TBUIGOController: TBRootAccessController, UITableViewDataSource, UITableVi
     }
 
     
+    
     @IBAction func deleteGoalButtonAction(_ sender: Any) {
         print("pressed delete Goal button. goalRank is: \(self.screenGoalIndex)")
         print("alert if there are objectives, else delete it.")
@@ -101,17 +102,19 @@ class TBUIGOController: TBRootAccessController, UITableViewDataSource, UITableVi
         // Pass the selected object to the new view controller.
         if let targetVC = segue.destination as? TBUIOTController {
             targetVC.screenGoalIndex = self.screenGoalIndex
-            if segue.identifier != "CreateNewObjective" {
+            if segue.identifier == "ShowObjectiveDetail"  {
                 print("Doing segue: \(String(describing: segue.identifier))")
                 if let indexPath = self.objectiveListingTableView.indexPathForSelectedRow {
                     let objective = objectives[indexPath.row]
                     targetVC.screenObjective = objective
                     targetVC.screenObjectiveIndex = indexPath.row
                 }
-            } else {
+            } else if segue.identifier == "CreateNewObjective" {
                 targetVC.screenObjective = Objective(name: "New Objective")
                 /** Not setting objectiveRankindicates that the objective is not created or saved yet.
                  */
+            } else {
+                print("TBUIGOController.prepare() Unrecognized Segue\(String(describing: segue.identifier)) ")
             }
         }
     }
@@ -142,5 +145,10 @@ extension TBUIGOController {
         cell.objectiveGrip.titleLabel?.text = String(indexPath.row + 1) // adjust index to user counting from 1
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "ShowObjectiveDetail", sender: self)
+        }
+    
 }
 
