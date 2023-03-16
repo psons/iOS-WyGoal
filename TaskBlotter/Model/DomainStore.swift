@@ -13,6 +13,10 @@ class DomainStore {
         self.domain = domain
     }
         
+    init(eDomain: EffortDomain) {
+        self.domain = eDomain
+    }
+    
     init(name: String = "default") {
         self.domain = EffortDomain(name: name)
     }
@@ -25,13 +29,24 @@ class DomainStore {
             .appendingPathComponent("domain.json")
     }
     
-    func saveData(domainRef: EffortDomain) {
-        DomainStore.save(domain: domainRef) { result in
+    func saveData() {
+        DomainStore.save(domain: self.domain) { result in
             if case .failure(let error) = result {
                 fatalError(error.localizedDescription)
             }
         }
     }
+    
+    
+//    func saveDomainData() {
+//        DomainStore.save(domain: self.domain) { result in
+//            if case .failure(let error) = result {
+//                fatalError(error.localizedDescription)
+//            }
+//        }
+//    }
+
+    
     
     static func load(completion: @escaping (Result<EffortDomain, Error>)->Void) {
         DispatchQueue.global(qos: .background).async {

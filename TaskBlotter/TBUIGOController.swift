@@ -31,7 +31,7 @@ class TBUIGOController: TBRootAccessController, UITableViewDataSource, UITableVi
             print("Exit Ended on \(editedName)")
             let domainStore = getTBDomainStore()
             domainStore.domain.goals[self.screenGoalIndex].name = editedName
-            domainStore.saveData(domainRef: domainStore.domain)
+            domainStore.saveData()
         }
         
     }
@@ -58,7 +58,7 @@ class TBUIGOController: TBRootAccessController, UITableViewDataSource, UITableVi
         let maxObjectives = maxObjectiveStepper.value
         print("change in maxObjectiveStepper): \(maxObjectives)")
         domainStore.domain.goals[self.screenGoalIndex].maxObjectives = Int(maxObjectives)
-        domainStore.saveData(domainRef: domainStore.domain)
+        domainStore.saveData()
         self.maxObjectiveTF.text = String(self.screenGoal.maxObjectives)
     }
     
@@ -71,7 +71,7 @@ class TBUIGOController: TBRootAccessController, UITableViewDataSource, UITableVi
         let stateStore = getTBStateStore()
         let domainStore = getTBDomainStore()
         let newState = domainStore.domain.requestNewCurrentGState(desiredGSlot: self.screenGoalIndex, previousAppState: stateStore.state)
-        stateStore.saveData(stateRef: newState)
+        stateStore.saveData()
         print("defaultObjectiveButtonAction saved:  \(newState)")
         setSetDefaultButtonText() // might have updated if we just created an Objective
         

@@ -505,6 +505,7 @@
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="defaultGoalButtonAction:" destination="vfJ-jS-FYg" eventType="touchUpInside" id="v2a-hb-Jrv"/>
+                                            <action selector="deleteObjectiveButtonAction:" destination="KjH-Aw-jb6" eventType="touchUpInside" id="WO4-ZS-KRY"/>
                                         </connections>
                                     </button>
                                 </subviews>

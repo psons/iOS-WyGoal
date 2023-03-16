@@ -27,14 +27,14 @@ class StateStore {
     }
     
 
-    func saveData(stateRef: AppState) {
-        StateStore.save(state: stateRef) { result in
+    func saveData() {
+        StateStore.save(state: self.state) { result in
             if case .failure(let error) = result {
                 fatalError(error.localizedDescription)
             }
         }
     }
-    
+
     static func load(completion: @escaping (Result<AppState, Error>)->Void) {
         DispatchQueue.global(qos: .background).async {
             do {

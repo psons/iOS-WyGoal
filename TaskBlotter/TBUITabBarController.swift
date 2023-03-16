@@ -53,22 +53,6 @@ class TBUITabBarController: UITabBarController {
         return validatedAppState
     }
 
-    /**
-     gets the saved state data for two cases where screen state materializes from saved state, not user clicks.
-         - tab bar direct to the current saved objective
-         - building up a nav array-stack as from a shortcut
-     */
-//    func getSavedStateData() -> ScreenStateData {
-//        let savedStateData = self.stateStore.state
-//        let validatedAppState = useSyncedSavedState()
-//        savedStateData.screenGoalIndex = validatedAppState.gSlot
-//        savedStateData.screenObjectiveIndex = validatedAppState.oSlot
-//        savedStateData.goal = self.domainStore.domain.goals[validatedAppState.gSlot]
-//        savedStateData.objective = savedStateData.goal.objectives[savedStateData.screenObjectiveIndex]
-//        return savedStateData
-//    }
-    
-
     
     /**
      gets the screen state data for two cases where screen state materializes from saved / cached state, not user clicks and navigation.
@@ -113,7 +97,7 @@ class TBUITabBarController: UITabBarController {
              */
             goalObjectivesVC.screenGoal = Goal(name: self.intentData)
             goalObjectivesVC.screenGoalIndex = self.domainStore.domain.addGoal(goal: goalObjectivesVC.screenGoal)
-            self.domainStore.saveData(domainRef: self.domainStore.domain)
+            self.domainStore.saveData()
             
             // set up the nav controller
             goalNav.setViewControllers([goalListingVC, goalObjectivesVC], animated: true)
@@ -175,15 +159,6 @@ class TBUITabBarController: UITabBarController {
         }
     }
 
-    func saveStateData(stateRef: AppState) {
-        StateStore.save(state: stateRef) { result in
-            if case .failure(let error) = result {
-                fatalError(error.localizedDescription)
-            }
-        }
-    }
-
-    
     /**
      Loads the Domain data
      This method runs async, and we need data from it, so it needs to be a method in a long lived object in the app.
@@ -201,14 +176,6 @@ class TBUITabBarController: UITabBarController {
                 fatalError(error.localizedDescription)
             case .success(let domainData):
                 self.domainStore.domain = domainData
-            }
-        }
-    }
-
-    func saveDomainData(domainRef: EffortDomain) {
-        DomainStore.save(domain: domainRef) { result in
-            if case .failure(let error) = result {
-                fatalError(error.localizedDescription)
             }
         }
     }

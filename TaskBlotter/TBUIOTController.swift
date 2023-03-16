@@ -79,7 +79,7 @@ class TBUIOTController: TBRootAccessController {
         if self.screenObjectiveIndex == -1 {
             let domainStore = getTBDomainStore()
             let screenState = domainStore.domain.addObjective(objective: screenObjective, gSlot: self.screenGoalIndex)
-            domainStore.saveData(domainRef: domainStore.domain)
+            domainStore.saveData()
 
             // should be able to return the objective rank here from the newState
             self.screenObjectiveIndex = screenState.oSlot
@@ -96,7 +96,7 @@ class TBUIOTController: TBRootAccessController {
             let domainStore = getTBDomainStore() // Fatal if back button without ending exit on return
             let oIndex = oIndexSaveCheck()
             domainStore.domain.goals[self.screenGoalIndex].objectives[oIndex].name = editedName
-            domainStore.saveData(domainRef: domainStore.domain)
+            domainStore.saveData()
             /**
              is it possible that the 2 saves here happen out of order?  Depends on the dispatch queue design.
              */
@@ -113,20 +113,72 @@ class TBUIOTController: TBRootAccessController {
         let stateStore = getTBStateStore()
         stateStore.state.gSlot = self.screenGoalIndex
         stateStore.state.oSlot = oIndex
-        stateStore.saveData(stateRef: stateStore.state)
+        stateStore.saveData()
         print("defaultObjectiveButtonAction saved:  \(self.screenGoalIndex), \(oIndex)")
         setSetDefaultButtonText() // might have updated if we just created an Objective
     }
 
+    @IBAction func deleteObjectiveButtonAction(_ sender: Any) {
+    print("Raise an Alert to confirm delete")
+        doObjectiveDeleteAlert(condition: "Will delete the curent Objective",
+                    choice: "Are you sure you want to delete it?",
+                    notice: "Objective Deleted",
+                    newState: "Will now return to current Goal")
+    }
+    
     @IBAction func maxTasksStepperAction(_ sender: Any) {
         let domainStore = getTBDomainStore()
         let maxTasks = Int(maxTaskStepper.value)
         print("change in maxTasksStepper): \(maxTasks)")
         _ = oIndexSaveCheck()
         domainStore.domain.goals[self.screenGoalIndex].objectives[self.screenObjectiveIndex].maxTasks = maxTasks
-        domainStore.saveData(domainRef: domainStore.domain)
+        domainStore.saveData()
         self.maxTaskTF.text = String(maxTasks)
     }
+    
+    func doObjectiveDeletePopNav() {
+        print("Will do delete of \(self.screenGoalIndex),\(self.screenObjectiveIndex)")
+        print("Then invoke nave back to the goal \(self.screenGoalIndex)")
+        _ = self.getTBDomainStore().domain.goals[self.screenGoalIndex].removeObjective(oSlot: self.screenObjectiveIndex)
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func doObjectiveDeleteAlert(condition: String, choice: String, notice: String, newState: String) {
+        let outerAlertController = UIAlertController(
+            title: condition,
+            message: choice,
+            preferredStyle: .alert)
+        let outerAlertActionConfirmPath = UIAlertAction(
+            title: "Yes", style: .default)
+                { _ in
+                    // This is the change action the user is approving.
+                    self.doObjectiveDeletePopNav()
+                    let innerAlertController =
+                        UIAlertController(
+                            title: notice,
+                            message: newState,
+                            preferredStyle: .alert)
+                    innerAlertController.addAction(
+                        UIAlertAction(
+                            title: "OK",
+                            style: .default, handler: nil))
+                    self.present(
+                        innerAlertController,
+                        animated: true,
+                        completion: nil)
+                }
+
+        let outerAlertActionEscapePath = UIAlertAction(
+            title: "No", style: .default)
+
+        
+        outerAlertController.addAction(outerAlertActionConfirmPath)
+        outerAlertController.addAction(outerAlertActionEscapePath)
+   
+        present(outerAlertController, animated: true, completion: nil)
+    }
+
+
     
     
     

@@ -40,6 +40,20 @@ class Goal: Codable, CustomStringConvertible {
         self.objectives.append(objective)
     }
 
+    /**
+     Retuns the objective being removed, if the oSlot Index is valid in the objectives list.  ( Maybe the caller will undo, or put it in a different slot, or just tell the user.)
+     Returns nil if the oSlot is out of range in the objectives list/
+     todo: add some precaution agains index out of range.
+     */
+    func removeObjective(oSlot: Int) -> Objective? {
+        let objectiveAtOSlot = self.objectives[oSlot]
+        if self.objectives.indices.contains(oSlot) {
+            self.objectives.remove(at: oSlot)
+            return objectiveAtOSlot
+        }
+        return nil
+    }
+    
     func objectiveStrings() -> String {
         var sList = ""
         for objective in self.objectives {

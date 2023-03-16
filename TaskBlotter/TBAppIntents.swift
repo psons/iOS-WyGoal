@@ -34,8 +34,8 @@ struct TaskBlotterTestDataSetup: AppIntent {
     
     func perform() async throws -> some IntentResult {
         print("TaskBlotterTestDataSetup.perform()")
-        let domainStore = DomainStore()
-        domainStore.saveData(domainRef: testEffortDomain)
+        let domainStore = DomainStore(domain: testEffortDomain)
+        domainStore.saveData()
         return .result()  //.finished
     }
 }
