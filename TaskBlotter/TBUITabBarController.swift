@@ -180,6 +180,9 @@ class TBUITabBarController: UITabBarController {
         }
     }
      
+    /**
+        determines the navigation screen and provides a name for minimal creation of a goal, objective, or task.
+     */
     func setNavigation(navTarget: String, name: String) {
         self.intentData = name
         setNavigation(navTarget: navTarget)

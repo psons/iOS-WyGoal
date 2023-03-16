@@ -135,7 +135,7 @@ class TBUIOTController: TBRootAccessController {
         domainStore.saveData()
         self.maxTaskTF.text = String(maxTasks)
     }
-    
+        
     func doObjectiveDeletePopNav() {
         print("Will do delete of \(self.screenGoalIndex),\(self.screenObjectiveIndex)")
         print("Then invoke nave back to the goal \(self.screenGoalIndex)")
