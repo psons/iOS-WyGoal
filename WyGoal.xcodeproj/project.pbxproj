@@ -15,6 +15,8 @@
 		3488D0BE29B449D80009DA87 /* TBUIGoalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3488D0BD29B449D80009DA87 /* TBUIGoalController.swift */; };
 		3488D0C029B45F5A0009DA87 /* TBUIGoalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3488D0BF29B45F5A0009DA87 /* TBUIGoalCell.swift */; };
 		3488E3D129BBCD9D00FFBB7C /* TBUIGOController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3488E3D029BBCD9D00FFBB7C /* TBUIGOController.swift */; };
+		348980D329C3F53100E1F56D /* TBUITaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348980D229C3F53100E1F56D /* TBUITaskController.swift */; };
+		348980D529C3F84700E1F56D /* TBUITaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348980D429C3F84700E1F56D /* TBUITaskCell.swift */; };
 		349012CF29B8252E0095D133 /* DomainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349012CE29B8252E0095D133 /* DomainStore.swift */; };
 		34B4216529BD1427000D3C79 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B4216429BD1427000D3C79 /* AppState.swift */; };
 		34B4216729BD143C000D3C79 /* EffortDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B4216629BD143C000D3C79 /* EffortDomain.swift */; };
@@ -66,6 +68,8 @@
 		3488D0BD29B449D80009DA87 /* TBUIGoalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBUIGoalController.swift; sourceTree = "<group>"; };
 		3488D0BF29B45F5A0009DA87 /* TBUIGoalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBUIGoalCell.swift; sourceTree = "<group>"; };
 		3488E3D029BBCD9D00FFBB7C /* TBUIGOController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBUIGOController.swift; sourceTree = "<group>"; };
+		348980D229C3F53100E1F56D /* TBUITaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBUITaskController.swift; sourceTree = "<group>"; };
+		348980D429C3F84700E1F56D /* TBUITaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBUITaskCell.swift; sourceTree = "<group>"; };
 		349012CE29B8252E0095D133 /* DomainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainStore.swift; sourceTree = "<group>"; };
 		34B4216429BD1427000D3C79 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		34B4216629BD143C000D3C79 /* EffortDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffortDomain.swift; sourceTree = "<group>"; };
@@ -168,11 +172,13 @@
 				3488D0BD29B449D80009DA87 /* TBUIGoalController.swift */,
 				3488E3D029BBCD9D00FFBB7C /* TBUIGOController.swift */,
 				34B8C0AB29BBE8D9008C262E /* TBUIOTController.swift */,
+				348980D229C3F53100E1F56D /* TBUITaskController.swift */,
 				34DEF98D29B181C400F01AA9 /* TBUIGoalObjectiveController.swift */,
 				34DD74CC29B63CFE0034DC50 /* TBUIGoalListingTableView.swift */,
 				3488D0BF29B45F5A0009DA87 /* TBUIGoalCell.swift */,
 				34B8C0AD29BBF1CA008C262E /* TBUIObjectiveCell.swift */,
 				34DEF98F29B1821400F01AA9 /* TBUIPlanController.swift */,
+				348980D429C3F84700E1F56D /* TBUITaskCell.swift */,
 				34DEF96229B1765C00F01AA9 /* Assets.xcassets */,
 				34DEF96429B1765C00F01AA9 /* LaunchScreen.storyboard */,
 				34DEF96729B1765C00F01AA9 /* Info.plist */,
@@ -372,6 +378,8 @@
 				34B4216929BD14B0000D3C79 /* EffortDomainAppState.swift in Sources */,
 				34B4216B29BD14DB000D3C79 /* Goal.swift in Sources */,
 				34DEF99029B1821400F01AA9 /* TBUIPlanController.swift in Sources */,
+				348980D329C3F53100E1F56D /* TBUITaskController.swift in Sources */,
+				348980D529C3F84700E1F56D /* TBUITaskCell.swift in Sources */,
 				34DEF95C29B1765900F01AA9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

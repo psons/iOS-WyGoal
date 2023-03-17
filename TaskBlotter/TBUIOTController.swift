@@ -12,7 +12,7 @@ import UIKit
 //  darker text against white:   = darker Greenish
 // Cell Identifier: "TaskCell"
 
-class TBUIOTController: TBRootAccessController {
+class TBUIOTController: TBRootAccessController, UITableViewDataSource, UITableViewDelegate {
 
     var screenObjective = Objective(name: "UNKNOWN Objective")
     var screenObjectiveIndex = -1
@@ -29,9 +29,8 @@ class TBUIOTController: TBRootAccessController {
         super.viewDidLoad()
         self.title = "Objective + Tasks"
         setupFromSaved()
-        // todo: uncomment when I do the tasktableview
-//        taskListinTableView.delegate = self
-//        taskListinTableView.dataSource = self
+        taskListinTableView.delegate = self
+        taskListinTableView.dataSource = self
         
     }
 
@@ -180,9 +179,30 @@ class TBUIOTController: TBRootAccessController {
    
         present(outerAlertController, animated: true, completion: nil)
     }
+}
 
+extension TBUIOTController {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.screenObjective.tasks.count
+    }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath) as! TBUITaskCell
+
+        let task = self.getTBDomainStore().domain.goals[self.screenGoalIndex].objectives[self.screenObjectiveIndex].tasks[indexPath.row]
+
+//        cell.taskNameLabel.text = task.name
+//        cell.taskDetail.text = task.detail
+//        cell.taskGrip.titleLabel?.text = String(indexPath.row + 1)
+        return cell
+    }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "SowTaskDetail", sender: self)
+        }
+
 }

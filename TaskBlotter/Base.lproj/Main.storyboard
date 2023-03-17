@@ -511,27 +511,13 @@
                                 <rect key="frame" x="16" y="112" width="288" height="257"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ObjectiveCell" rowHeight="101" id="FzV-m5-Zer" customClass="TBUIObjectiveCell" customModule="WyGoal" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TaskCell" rowHeight="101" id="FzV-m5-Zer" userLabel="Task Cell" customClass="TBUITaskCell" customModule="WyGoal" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="288" height="101"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FzV-m5-Zer" id="tv6-Ah-Xaa">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FzV-m5-Zer" id="tv6-Ah-Xaa" customClass="TBUITaskCell" customModule="WyGoal" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="288" height="101"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="95f-ft-fwn" userLabel="Task Drag Grip">
-                                                    <rect key="frame" x="0.0" y="0.0" width="22" height="101"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="22" id="HsL-yf-Bcb"/>
-                                                    </constraints>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" title="R">
-                                                        <backgroundConfiguration key="background">
-                                                            <color key="backgroundColor" red="0.38823529411764707" green="0.81176470588235294" blue="0.63921568627450975" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </backgroundConfiguration>
-                                                        <fontDescription key="titleFontDescription" name="KhmerSangamMN" family="Khmer Sangam MN" pointSize="12"/>
-                                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </buttonConfiguration>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="254" text="Task Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzI-Yt-LaZ" userLabel="Task Name Label">
                                                     <rect key="frame" x="30" y="4" width="242" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -550,6 +536,20 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="95f-ft-fwn" userLabel="Task Drag Grip">
+                                                    <rect key="frame" x="0.0" y="0.0" width="22" height="101"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="22" id="HsL-yf-Bcb"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="R">
+                                                        <backgroundConfiguration key="background">
+                                                            <color key="backgroundColor" red="0.38823529411764707" green="0.81176470588235294" blue="0.63921568627450975" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </backgroundConfiguration>
+                                                        <fontDescription key="titleFontDescription" name="KhmerSangamMN" family="Khmer Sangam MN" pointSize="12"/>
+                                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </buttonConfiguration>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="95f-ft-fwn" firstAttribute="top" secondItem="tv6-Ah-Xaa" secondAttribute="top" id="1d3-AH-KRv"/>
@@ -567,11 +567,6 @@
                                                 <constraint firstAttribute="trailing" secondItem="C58-lX-bmJ" secondAttribute="trailing" constant="16" id="rGC-Yu-VFq"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="objectiveGrip" destination="95f-ft-fwn" id="e7S-6m-02G"/>
-                                            <outlet property="objectiveNameLabel" destination="SO4-ft-SAB" id="EB1-rC-nl1"/>
-                                            <outlet property="taskSummary" destination="C58-lX-bmJ" id="2u4-Je-6AG"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -618,11 +613,69 @@
                         <outlet property="maxTaskTF" destination="791-CA-xDb" id="zKR-LO-pUO"/>
                         <outlet property="objectiveNameTF" destination="m9p-Qb-U07" id="rWU-w8-PNR"/>
                         <outlet property="taskListinTableView" destination="jnc-cP-Pqf" id="4Jn-Hk-rmX"/>
+                        <segue destination="nOf-vS-MkB" kind="show" identifier="SowTaskDetail" id="nJ4-Az-rHt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LZc-em-emE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1869" y="410"/>
+            <point key="canvasLocation" x="1774" y="417"/>
+        </scene>
+        <!--Task Detail-->
+        <scene sceneID="ca7-sP-k1X">
+            <objects>
+                <viewController id="nOf-vS-MkB" userLabel="Task Detail" customClass="TBUITaskController" customModule="WyGoal" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Nzv-XX-vV3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="254" text="Task Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OIr-bk-exx" userLabel="Task Name Label">
+                                <rect key="frame" x="16" y="60" width="288" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" name="AccentColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="254" text="Task Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oUb-8W-owV" userLabel="Task Detail Label">
+                                <rect key="frame" x="16" y="110.5" width="288" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" name="AccentColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="253" text="Task Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iD6-ZB-MKt" userLabel="Task Name text">
+                                <rect key="frame" x="16" y="83" width="288" height="19.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" text="Task Detail" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hR-vh-CKz">
+                                <rect key="frame" x="16" y="133.5" width="288" height="369.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="JmP-4p-69D"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="JmP-4p-69D" firstAttribute="bottom" secondItem="4hR-vh-CKz" secondAttribute="bottom" constant="16" id="5MF-xj-iGT"/>
+                            <constraint firstItem="OIr-bk-exx" firstAttribute="top" secondItem="JmP-4p-69D" secondAttribute="top" constant="16" id="8S1-nO-nSf"/>
+                            <constraint firstItem="JmP-4p-69D" firstAttribute="trailing" secondItem="4hR-vh-CKz" secondAttribute="trailing" constant="16" id="BTg-Mh-LC5"/>
+                            <constraint firstItem="iD6-ZB-MKt" firstAttribute="top" secondItem="OIr-bk-exx" secondAttribute="bottom" constant="8" symbolic="YES" id="BYi-8H-H63"/>
+                            <constraint firstItem="oUb-8W-owV" firstAttribute="top" secondItem="iD6-ZB-MKt" secondAttribute="bottom" constant="8" symbolic="YES" id="KJo-Tr-L0r"/>
+                            <constraint firstItem="iD6-ZB-MKt" firstAttribute="leading" secondItem="JmP-4p-69D" secondAttribute="leading" constant="16" id="KTp-Cm-7Ad"/>
+                            <constraint firstItem="OIr-bk-exx" firstAttribute="leading" secondItem="JmP-4p-69D" secondAttribute="leading" constant="16" id="Ro2-jv-tUl"/>
+                            <constraint firstItem="4hR-vh-CKz" firstAttribute="leading" secondItem="JmP-4p-69D" secondAttribute="leading" constant="16" id="atJ-uK-klA"/>
+                            <constraint firstItem="oUb-8W-owV" firstAttribute="leading" secondItem="JmP-4p-69D" secondAttribute="leading" constant="16" id="c7a-nr-5fS"/>
+                            <constraint firstItem="JmP-4p-69D" firstAttribute="trailing" secondItem="OIr-bk-exx" secondAttribute="trailing" constant="16" id="fWG-Jy-5S8"/>
+                            <constraint firstItem="4hR-vh-CKz" firstAttribute="top" secondItem="oUb-8W-owV" secondAttribute="bottom" constant="8" symbolic="YES" id="jW3-Qq-ixV"/>
+                            <constraint firstItem="JmP-4p-69D" firstAttribute="trailing" secondItem="oUb-8W-owV" secondAttribute="trailing" constant="16" id="je8-Ed-vyg"/>
+                            <constraint firstItem="JmP-4p-69D" firstAttribute="trailing" secondItem="iD6-ZB-MKt" secondAttribute="trailing" constant="16" id="rAL-0P-ytb"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="XQR-jN-UcF"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zoG-Fh-wCF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2681" y="410"/>
         </scene>
         <!--Goal List-->
         <scene sceneID="hLD-fK-iiE">
