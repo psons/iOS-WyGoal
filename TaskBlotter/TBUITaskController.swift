@@ -9,12 +9,20 @@ import UIKit
 
 class TBUITaskController: UIViewController {
 
+    var task = Task(status: .todo, name: "UNKNOWN", detail: "")
+    
+    @IBOutlet weak var taskName: UILabel!
+    @IBOutlet weak var taskDetail: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Task Detail"
 
-        // Do any additional setup after loading the view.
     }
-    
+
+    override func viewWillAppear(_ animated: Bool) {
+        self.taskName.text = self.task.name
+        self.taskDetail.text = self.task.detail
+    }
 
     /*
     // MARK: - Navigation

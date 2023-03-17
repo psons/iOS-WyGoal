@@ -9,9 +9,10 @@ import UIKit
 
 class TBUITaskCell: UITableViewCell {
 
-//    @IBOutlet weak var taskNameLabel: UILabel!
-//    @IBOutlet weak var taskDetail: UILabel!
-//    @IBOutlet weak var taskGrip: UIButton!
+    @IBOutlet weak var taskNameLabel: UILabel!
+    @IBOutlet weak var taskDetail: UILabel!
+    @IBOutlet weak var taskGrip: UIButton!
+
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -59,6 +59,27 @@ class TBUIOTController: TBRootAccessController, UITableViewDataSource, UITableVi
         self.maxTaskStepper.value = Double(self.screenObjective.maxTasks)
         setSetDefaultButtonText()
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if let targetVC = segue.destination as? TBUITaskController {
+            
+            if segue.identifier == "ShowTaskDetail"  {
+                print("Doing segue: \(String(describing: segue.identifier))")
+                if let indexPath = self.taskListinTableView.indexPathForSelectedRow {
+                    targetVC.task = self.screenObjective.tasks[indexPath.row]
+                }
+            } else {
+                print("TBUIGOController.prepare() Unrecognized Segue\(String(describing: segue.identifier)) ")
+            }
+        }
+    }
+    
+    
+    
+    
 
     /**
      Handles incrementing indecies for user display
@@ -195,14 +216,14 @@ extension TBUIOTController {
 
         let task = self.getTBDomainStore().domain.goals[self.screenGoalIndex].objectives[self.screenObjectiveIndex].tasks[indexPath.row]
 
-//        cell.taskNameLabel.text = task.name
-//        cell.taskDetail.text = task.detail
-//        cell.taskGrip.titleLabel?.text = String(indexPath.row + 1)
+        cell.taskNameLabel.text = task.name
+        cell.taskDetail.text = task.detail
+        cell.taskGrip.titleLabel?.text = String(indexPath.row + 1)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "SowTaskDetail", sender: self)
+        self.performSegue(withIdentifier: "ShowTaskDetail", sender: self)
         }
 
 }

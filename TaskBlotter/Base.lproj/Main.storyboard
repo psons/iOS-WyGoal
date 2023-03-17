@@ -507,7 +507,7 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jnc-cP-Pqf">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jnc-cP-Pqf">
                                 <rect key="frame" x="16" y="112" width="288" height="257"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -518,28 +518,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="288" height="101"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="254" text="Task Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzI-Yt-LaZ" userLabel="Task Name Label">
-                                                    <rect key="frame" x="30" y="4" width="242" height="14.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" name="AccentColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="253" text="Task Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SO4-ft-SAB" userLabel="Task Name text">
-                                                    <rect key="frame" x="30" y="20.5" width="242" height="19.5"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" text="Task Detail" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C58-lX-bmJ">
-                                                    <rect key="frame" x="30" y="42" width="242" height="53"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="95f-ft-fwn" userLabel="Task Drag Grip">
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="95f-ft-fwn" userLabel="Task Drag Grip">
                                                     <rect key="frame" x="0.0" y="0.0" width="22" height="101"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="22" id="HsL-yf-Bcb"/>
+                                                        <constraint firstAttribute="height" constant="200" id="iWX-JL-RWe"/>
                                                     </constraints>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="R">
@@ -550,23 +533,45 @@
                                                         <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </buttonConfiguration>
                                                 </button>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="ovR-Rd-ZJl">
+                                                    <rect key="frame" x="30" y="4" width="250" height="93"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="751" text="Task Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzI-Yt-LaZ" userLabel="Task Name Label">
+                                                            <rect key="frame" x="0.0" y="0.0" width="66" height="14.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" name="AccentColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="751" text="Task Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SO4-ft-SAB" userLabel="Task Name text">
+                                                            <rect key="frame" x="0.0" y="17.5" width="85" height="19.5"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" text="Task Detail" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C58-lX-bmJ">
+                                                            <rect key="frame" x="0.0" y="40" width="62" height="53"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="95f-ft-fwn" firstAttribute="top" secondItem="tv6-Ah-Xaa" secondAttribute="top" id="1d3-AH-KRv"/>
-                                                <constraint firstItem="rzI-Yt-LaZ" firstAttribute="leading" secondItem="95f-ft-fwn" secondAttribute="trailing" constant="8" symbolic="YES" id="3th-m0-J7V"/>
+                                                <constraint firstAttribute="trailing" secondItem="ovR-Rd-ZJl" secondAttribute="trailing" constant="8" id="2gX-wT-TGY"/>
+                                                <constraint firstAttribute="bottom" secondItem="ovR-Rd-ZJl" secondAttribute="bottom" constant="4" id="5CU-T5-PeL"/>
                                                 <constraint firstAttribute="bottom" secondItem="95f-ft-fwn" secondAttribute="bottom" id="Cx9-m1-pVe"/>
-                                                <constraint firstAttribute="trailing" secondItem="SO4-ft-SAB" secondAttribute="trailing" constant="16" id="DdA-Rq-GLy"/>
-                                                <constraint firstItem="rzI-Yt-LaZ" firstAttribute="top" secondItem="tv6-Ah-Xaa" secondAttribute="top" constant="4" id="K3N-mq-1LP"/>
-                                                <constraint firstItem="C58-lX-bmJ" firstAttribute="top" secondItem="SO4-ft-SAB" secondAttribute="bottom" constant="2" id="KK7-KB-6Zx"/>
-                                                <constraint firstAttribute="trailing" secondItem="rzI-Yt-LaZ" secondAttribute="trailing" constant="16" id="SEd-c2-F4a"/>
+                                                <constraint firstItem="ovR-Rd-ZJl" firstAttribute="leading" secondItem="95f-ft-fwn" secondAttribute="trailing" constant="8" id="T8z-uI-rcV"/>
                                                 <constraint firstItem="95f-ft-fwn" firstAttribute="leading" secondItem="tv6-Ah-Xaa" secondAttribute="leading" id="b1L-aO-TGv"/>
-                                                <constraint firstAttribute="bottom" secondItem="C58-lX-bmJ" secondAttribute="bottom" constant="6" id="dqP-Jg-x5T"/>
-                                                <constraint firstItem="C58-lX-bmJ" firstAttribute="leading" secondItem="95f-ft-fwn" secondAttribute="trailing" constant="8" symbolic="YES" id="ehA-wa-hWZ"/>
-                                                <constraint firstItem="SO4-ft-SAB" firstAttribute="top" secondItem="rzI-Yt-LaZ" secondAttribute="bottom" constant="2" id="fpc-9c-Tdn"/>
-                                                <constraint firstItem="SO4-ft-SAB" firstAttribute="leading" secondItem="95f-ft-fwn" secondAttribute="trailing" constant="8" symbolic="YES" id="lhg-Jh-8jr"/>
-                                                <constraint firstAttribute="trailing" secondItem="C58-lX-bmJ" secondAttribute="trailing" constant="16" id="rGC-Yu-VFq"/>
+                                                <constraint firstItem="ovR-Rd-ZJl" firstAttribute="top" secondItem="tv6-Ah-Xaa" secondAttribute="top" constant="4" id="xJQ-CQ-hN5"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="taskDetail" destination="C58-lX-bmJ" id="05V-gC-I73"/>
+                                            <outlet property="taskGrip" destination="95f-ft-fwn" id="P8f-ar-NMi"/>
+                                            <outlet property="taskNameLabel" destination="SO4-ft-SAB" id="I1O-qd-K1H"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -613,12 +618,12 @@
                         <outlet property="maxTaskTF" destination="791-CA-xDb" id="zKR-LO-pUO"/>
                         <outlet property="objectiveNameTF" destination="m9p-Qb-U07" id="rWU-w8-PNR"/>
                         <outlet property="taskListinTableView" destination="jnc-cP-Pqf" id="4Jn-Hk-rmX"/>
-                        <segue destination="nOf-vS-MkB" kind="show" identifier="SowTaskDetail" id="nJ4-Az-rHt"/>
+                        <segue destination="nOf-vS-MkB" kind="show" identifier="ShowTaskDetail" id="nJ4-Az-rHt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LZc-em-emE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1774" y="417"/>
+            <point key="canvasLocation" x="1773.75" y="416.19718309859155"/>
         </scene>
         <!--Task Detail-->
         <scene sceneID="ca7-sP-k1X">
@@ -646,7 +651,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" text="Task Detail" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hR-vh-CKz">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" text="Task Detail" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hR-vh-CKz">
                                 <rect key="frame" x="16" y="133.5" width="288" height="369.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
@@ -672,6 +677,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="XQR-jN-UcF"/>
+                    <connections>
+                        <outlet property="taskDetail" destination="4hR-vh-CKz" id="HLq-IL-Wkm"/>
+                        <outlet property="taskName" destination="iD6-ZB-MKt" id="0vf-DF-hzw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zoG-Fh-wCF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
