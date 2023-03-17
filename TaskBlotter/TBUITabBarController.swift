@@ -44,7 +44,7 @@ class TBUITabBarController: UITabBarController {
     /**
      Retrns an AppState with indexes verified to be on the model's current state.
      todo: consider whether the actual disk saved state migh be changing outside of the control of this app
-        for 2023-03-17 CSC471 class assume that the updates allways go through the statestore and domain stor, and that even Siri voice updates
+        for 2023-03-17 CSC471 class assume that the updates always go through the statestore and domain stor, and that even Siri voice updates
      launch the app and maintain the in-memory store
      */
     func useSyncedSavedState() -> AppState {
@@ -55,6 +55,7 @@ class TBUITabBarController: UITabBarController {
 
     
     /**
+     Builds an AppState into a GOState
      gets the screen state data for two cases where screen state materializes from saved / cached state, not user clicks and navigation.
          - tab bar direct to the current saved objective
          - building up a nav array-stack as from a shortcut
@@ -73,12 +74,22 @@ class TBUITabBarController: UITabBarController {
         return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "goalListingStoryBoardID")
     }
     
-    func getGoalObjectivesVC() -> TBUIGOController {
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "goalObjectivesStoryBoardID") as! TBUIGOController
+    /**
+     Only uses goal and gSlot from the screenState
+     */
+    func getGoalObjectivesVC(screenState: GOState) -> TBUIGOController {
+        var goalObjectivesVC =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "goalObjectivesStoryBoardID") as! TBUIGOController
+        goalObjectivesVC.screenGoal = screenState.goal
+        goalObjectivesVC.screenGoalIndex = screenState.gSlot
+        return goalObjectivesVC
     }
 
-    func getObjectiveTasksVC() -> TBUIOTController {
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "objectiveTasksStoryBoardID") as! TBUIOTController
+    func getObjectiveTasksVC(screenState: GOState) -> TBUIOTController {
+        let objectiveTasksVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "objectiveTasksStoryBoardID") as! TBUIOTController
+        objectiveTasksVC.screenGoalIndex = screenState.gSlot
+        objectiveTasksVC.screenObjectiveIndex = screenState.oSlot
+        objectiveTasksVC.screenObjective = screenState.objective
+        return objectiveTasksVC
     }
 
     
@@ -97,41 +108,52 @@ class TBUITabBarController: UITabBarController {
         
         let appNav = self.viewControllers?[2] as! UINavigationController // hard coded 2 is the position of this controller in the tab index.
         var vcList: [UIViewController] = []
-        
+        print("TBUITabBarController wil do doNavigation() to \(self.navTarget)")
+
         if self.navTarget == "WyGoal" {
-  
-            print("TBUITabBarController wil do doNavigation() to \(self.navTarget)")
-            vcList.append(getGoalListingVC())
-            
-            let goalObjectivesVC = getGoalObjectivesVC()
-            /**
-             TODO:  these next two lines are goal creation andsetting up of the apropriate VC, same as iin the segue
-             */
-            goalObjectivesVC.screenGoal = Goal(name: self.intentData)
-            goalObjectivesVC.screenGoalIndex = self.domainStore.domain.addGoal(goal: goalObjectivesVC.screenGoal)
+            var screenState = GOState(goal: Goal(name: self.intentData) )
+            _ = self.domainStore.domain.addGoal(goal: screenState.goal)
             self.domainStore.saveData()
-            vcList.append(goalObjectivesVC)
-        }
-        
-        if self.navTarget == "GoalListing" {
-            print("TBUITabBarController wil do doNavigation() to \(self.navTarget)")
             vcList.append(getGoalListingVC())
-        }
-        if self.navTarget == "ObjectiveTasks" {
-            let screenStateData = getValidatedGOState()
-            print("TBUITabBarController wil do doNavigation() to \(self.navTarget)")
+            let goalObjectivesVC = getGoalObjectivesVC(screenState: screenState)
+            vcList.append(goalObjectivesVC)
+            
+        } else if self.navTarget == "GoalListing" {
+            vcList.append(getGoalListingVC())
+        } else if self.navTarget == "ObjectiveTasks" {  // shows an objective
             vcList.append(getGoalListingVC())
 
-            let goalObjectivesVC = getGoalObjectivesVC()
-            goalObjectivesVC.screenGoal = screenStateData.goal
-            goalObjectivesVC.screenGoalIndex = screenStateData.gSlot
+            let screenState = getValidatedGOState()
+            
+            let goalObjectivesVC = getGoalObjectivesVC(screenState: screenState)
             vcList.append(goalObjectivesVC)
             
-            let objectiveTasksVC = getObjectiveTasksVC()
-            objectiveTasksVC.screenGoalIndex = screenStateData.gSlot
-            objectiveTasksVC.screenObjectiveIndex = screenStateData.oSlot
-            objectiveTasksVC.screenObjective = screenStateData.objective
+            let objectiveTasksVC = getObjectiveTasksVC(screenState: screenState)
             vcList.append(objectiveTasksVC)
+            
+        } else if self.navTarget == "AddObjective" {  // creates an objective
+            vcList.append(getGoalListingVC())
+
+            // todo: need to load saved state her so the new objective goes wher the user wants it!
+            
+            let screenState = getValidatedGOState()
+
+            // new objective creation affects screenState in 2 ways...
+            screenState.objective = Objective(name: self.intentData)
+            let newAppState = domainStore.domain.addObjective(objective: screenState.objective, gSlot: screenState.gSlot)
+            screenState.oSlot = newAppState.oSlot
+            domainStore.saveData()
+
+            let goalObjectivesVC = getGoalObjectivesVC(screenState: screenState)
+            vcList.append(goalObjectivesVC)
+            
+            // screenState has the new Objective.
+            let objectiveTasksVC = getObjectiveTasksVC(screenState: screenState)
+            vcList.append(objectiveTasksVC)
+
+        } else {
+            print("Bad Nav setup has to be fatal.")
+            assertionFailure(" doNavigation() failure likely caused by bad setNavigation(navTarget: ...)")
         }
         // set up the nav controller
         appNav.popToRootViewController(animated: false)
@@ -200,8 +222,15 @@ class TBUITabBarController: UITabBarController {
     todo: set up as ubclass of AppState, which will require AppState to be updated with Codable init 
  */
 class GOState {
-    var oSlot = -1
     var gSlot = -1
+    var oSlot = -1
     var goal = Goal(name: "UNKNOWN")
     var objective = Objective(name: "UNKNOWN")
+    
+    init(gSlot: Int = 1, oSlot: Int = 1, goal: Goal = Goal(name: "UNKNOWN"), objective: Objective = Objective(name: "UNKNOWN")) {
+        self.gSlot = gSlot
+        self.oSlot = oSlot
+        self.goal = goal
+        self.objective = objective
+    }
 }

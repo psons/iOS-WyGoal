@@ -71,6 +71,9 @@ class TBUIGOController: TBRootAccessController, UITableViewDataSource, UITableVi
         let stateStore = getTBStateStore()
         let domainStore = getTBDomainStore()
         let newState = domainStore.domain.requestNewCurrentGState(desiredGSlot: self.screenGoalIndex, previousAppState: stateStore.state)
+        domainStore.saveData()
+        stateStore.state.gSlot = newState.gSlot
+        stateStore.state.oSlot = newState.oSlot
         stateStore.saveData()
         print("defaultObjectiveButtonAction saved:  \(newState)")
         setSetDefaultButtonText() // might have updated if we just created an Objective
@@ -129,9 +132,12 @@ class TBUIGOController: TBRootAccessController, UITableViewDataSource, UITableVi
                     targetVC.screenObjectiveIndex = indexPath.row
                 }
             } else if segue.identifier == "CreateNewObjective" {
-                targetVC.screenObjective = Objective(name: "New Objective")
-                /** Not setting objectiveRankindicates that the objective is not created or saved yet.
-                 */
+                // todo add this objective to the domain and save it
+                let newObjective = Objective(name: "New Objective")
+                let appState = self.getTBDomainStore().domain.addObjective(objective: newObjective, gSlot: self.screenGoalIndex)
+                self.getTBDomainStore().saveData()
+                targetVC.screenObjective = newObjective
+                targetVC.screenObjectiveIndex = appState.oSlot
             } else {
                 print("TBUIGOController.prepare() Unrecognized Segue\(String(describing: segue.identifier)) ")
             }

@@ -57,6 +57,7 @@ class TBUIGoalController: UIViewController, UITableViewDataSource, UITableViewDe
                 print("Making a Goal")
                 targetVC.screenGoal = Goal(name: "New")
                 targetVC.screenGoalIndex = self.useParentTBC().domainStore.domain.addGoal(goal: targetVC.screenGoal)
+                self.useParentTBC().domainStore.saveData()
             } else if segue.identifier == "ShowGoalDetail"{
                 print("Showing an existing Goal")
                 if let indexPath = self.goalListingTableview.indexPathForSelectedRow {

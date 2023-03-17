@@ -75,6 +75,9 @@ class TBUIOTController: TBRootAccessController {
      This should be used to assure saving of any user edit after the 'Create New Objective' button Segue to this screen.
      This does not update the AppState used as a shortcut target for new Objectives and Tasks, but the caller may do so
      */
+    /**
+     todo eliminate this method and all of its uses in favor of assuring that the objective is always created before coming to this screen
+     */
     func oIndexSaveCheck() -> Int {
         if self.screenObjectiveIndex == -1 {
             let domainStore = getTBDomainStore()

@@ -80,6 +80,25 @@ struct WyGoalAddIntent: AppIntent {
     }
 }
 
+struct WyGoalObjectiveAddIntent: AppIntent {
+    static var title: LocalizedStringResource = "Add Objective to the Wygoal app"
+    static var description = IntentDescription("Adds a WyGoal Objective to work on")
+    static var openAppWhenRun = true
+
+    @Parameter(title: "Name of the Objective")
+    var name: String    // non-optional will have Siri assure that it is provided.
+    
+    @MainActor
+    func perform() async throws -> some IntentResult {
+        print("WyGoalObjectiveAddIntent.perform() \(name)")
+        
+        let tbc = getTBRootController()
+        tbc.setNavigation(navTarget: "AddObjective", name: name)
+        tbc.doNavigation()
+        return .result(value: "Launched WyGoal screen with new WyGoal" )
+    }
+}
+
 
 struct WyGoalTaskAddIntent: AppIntent {
     static var title: LocalizedStringResource = "Add Wygoal Task"
@@ -198,6 +217,21 @@ struct TaskBlotterShortcuts: AppShortcutsProvider {
                 "Please create my \(.applicationName)",
                 "Please create a new \(.applicationName)",
                 "Add a new \(.applicationName)"])
+
+        // WyGoalObjectiveAddIntent
+        AppShortcut(
+            intent: WyGoalObjectiveAddIntent(), phrases: [
+                "\(.applicationName) Objective",
+                "Add Objective to \(.applicationName)",
+                "Add an Objective to \(.applicationName)",
+                "Add my Objective to \(.applicationName)",
+                "Creat an Objective in \(.applicationName)",
+                "Creat my Objective in \(.applicationName)",
+                "Please create my Objective in \(.applicationName)",
+                "Please create a new Objective in \(.applicationName)",
+                "Add a new Objective \(.applicationName)",
+                "Add a new \(.applicationName) Objective",
+                "Add a new Objective \(.applicationName)"])
 
         // WyGoalTaskAddIntent
         AppShortcut(
