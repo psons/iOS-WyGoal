@@ -33,6 +33,8 @@ class TBUIOTController: TBRootAccessController, UITableViewDataSource, UITableVi
         taskListingTableView.dataSource = self
         
     }
+    
+    
 
     func setupFromSaved() {
         if self.screenGoalIndex == -1 {
@@ -58,9 +60,16 @@ class TBUIOTController: TBRootAccessController, UITableViewDataSource, UITableVi
         self.maxTaskTF.text = String(self.screenObjective.maxTasks)
         self.maxTaskStepper.value = Double(self.screenObjective.maxTasks)
         setSetDefaultButtonText()
+        self.taskListingTableView.reloadData()
+
     }
     
     
+    @IBAction func createTaskButtonAction(_ sender: UIButton) {
+        print("pressed create Task button.  Segue should happen")
+    }
+    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
@@ -72,6 +81,13 @@ class TBUIOTController: TBRootAccessController, UITableViewDataSource, UITableVi
                     targetVC.screenTask = self.screenObjective.tasks[indexPath.row]
                     targetVC.screenTaskIndex = indexPath.row
                 }
+            } else if segue.identifier == "CreateNewTask" {
+                // todo add this task to the domain and save it
+                let newTask = Task(name: "New Task", detail: "")
+                let appState = self.getTBDomainStore().domain.addTask(task: newTask, gSlot: self.screenGoalIndex, oSlot: self.screenObjectiveIndex)
+                self.getTBDomainStore().saveData()
+                targetVC.screenTask = newTask
+                targetVC.screenTaskIndex = self.getTBDomainStore().domain.goals[appState.gSlot].objectives[appState.oSlot].tasks.count //?? 0
             } else {
                 print("TBUIGOController.prepare() Unrecognized Segue\(String(describing: segue.identifier)) ")
             }

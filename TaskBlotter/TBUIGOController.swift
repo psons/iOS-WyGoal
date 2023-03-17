@@ -132,7 +132,6 @@ class TBUIGOController: TBRootAccessController, UITableViewDataSource, UITableVi
                     targetVC.screenObjectiveIndex = indexPath.row
                 }
             } else if segue.identifier == "CreateNewObjective" {
-                // todo add this objective to the domain and save it
                 let newObjective = Objective(name: "New Objective")
                 let appState = self.getTBDomainStore().domain.addObjective(objective: newObjective, gSlot: self.screenGoalIndex)
                 self.getTBDomainStore().saveData()

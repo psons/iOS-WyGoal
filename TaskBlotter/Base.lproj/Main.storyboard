@@ -450,6 +450,10 @@
                                     <fontDescription key="titleFontDescription" name="KhmerSangamMN" family="Khmer Sangam MN" pointSize="16"/>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="createTaskButtonAction:" destination="KjH-Aw-jb6" eventType="touchUpInside" id="heJ-6x-s3Z"/>
+                                    <segue destination="mZN-Qj-8l7" kind="show" identifier="CreateNewTask" id="1a0-dc-IrG"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="vZF-YQ-ww6">
                                 <rect key="frame" x="16" y="436" width="288" height="32"/>
@@ -669,10 +673,6 @@
                                     <action selector="deleteObjectiveButtonAction:" destination="KjH-Aw-jb6" eventType="touchUpInside" id="TVw-E4-lOG"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Wwp-rP-ZQ0">
-                                <rect key="frame" x="26" y="519" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m9g-it-BD3">
                                 <rect key="frame" x="16" y="410" width="288" height="42"/>
                                 <subviews>
@@ -826,7 +826,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="MyC-fU-Kdv"/>
+        <segue reference="1a0-dc-IrG"/>
+        <segue reference="dKs-Hq-z1S"/>
         <segue reference="6Si-1G-7Ts"/>
     </inferredMetricsTieBreakers>
     <resources>

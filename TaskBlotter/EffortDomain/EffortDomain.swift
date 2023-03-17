@@ -52,7 +52,7 @@ class EffortDomain: Codable, CustomStringConvertible {
     }
     
     /**
-     Returns the user provided goal slot, suitable for adding objectives if it is a valid goal index.
+    Returns the user provided goal slot, suitable for adding objectives if it is a valid goal index.
     If it is not a valid goal index, the default goal slot is returned.
      */
     func validGSlot(gSlot: Int) -> Int {
@@ -73,6 +73,42 @@ class EffortDomain: Codable, CustomStringConvertible {
         return appState
     }
 
+    func isValidOslot(givenGslot: Int, oSlot: Int) -> Bool {
+        if isValidGslot(gSlot: givenGslot) {
+            return self.goals[givenGslot].objectives.indices.contains(oSlot)
+        } else {
+            return false
+        }
+    }
+
+    /**
+    Returns the user provided go slot, suitable for adding tasks if it is the g ad o indecies are valid.
+    If the g an o index is not valid, the default goal slot, objective slot  is returned.
+     */
+    func validGOSlot(givenGslot: Int, oSlot: Int) -> AppState {
+        let newAppState = AppState()
+        newAppState.gSlot = givenGslot
+        newAppState.oSlot = oSlot
+
+        if isValidOslot(givenGslot: givenGslot, oSlot: oSlot){
+            return newAppState
+        } else {
+            newAppState.gSlot = EffortDomain.defaultGSlot
+            newAppState.oSlot = Goal.defaultOslot
+            return   newAppState // was no good.  forced to default
+        }
+        
+    }
+
+    
+    /** This should be more sophisticated when  the domain store is somthing that can mutate while the user is working with objectives.
+     The task could be added in a default place if the objective becomes unavailable*/
+    func addTask(task: Task, gSlot: Int, oSlot: Int) -> AppState {
+        let appState = validGOSlot(givenGslot: gSlot, oSlot: oSlot)
+        self.goals[appState.gSlot].objectives[appState.oSlot].tasks.append(task)
+        return appState
+    }
+    
     /**
      Retuns the Goal being removed, if the gSlot Index is valid in the goals list.  ( Maybe the caller will undo, or put it in a different slot, or just tell the user.)
      Returns nil if the gSlot is out of range in the goals list.
@@ -85,10 +121,6 @@ class EffortDomain: Codable, CustomStringConvertible {
         }
         return nil
     }
-    
-
-    
-    
     
     func requestNewValidGOState(desiredState: AppState, previousAppState: AppState) -> AppState {
         let resultingAppState = AppState()

@@ -26,7 +26,7 @@ class Task: Codable, CustomStringConvertible {
         return "{Task} |status:\(status)|name: \(name)|detail: \(detail)|tid: \(tid)|"
     }
 
-    init(status: StatusVal, name: String, detail: String) {
+    init(status: StatusVal = .todo, name: String, detail: String) {
         self.status = status
         self.name = name
         self.detail = detail
