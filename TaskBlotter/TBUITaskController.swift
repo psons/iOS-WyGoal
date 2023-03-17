@@ -9,19 +9,14 @@ import UIKit
 
 class TBUITaskController: UIViewController {
 
+    var screenTask = Task(status: .todo, name: "UNKNOWN", detail: "")
+    var screenTaskIndex = -1
+    
     @IBOutlet weak var taskNameTF: UITextField!
-    
     @IBOutlet weak var taskDetailTV: UITextView!
-    
     @IBOutlet weak var taskStatusSC: UISegmentedControl!
-    
     @IBOutlet weak var taskRankTF: UITextField!
     
-    var task = Task(status: .todo, name: "UNKNOWN", detail: "")
-    
-//    @IBOutlet weak var taskName: UILabel!
-//    @IBOutlet weak var taskDetail: UILabel!
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Task Detail"
@@ -29,9 +24,9 @@ class TBUITaskController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        self.taskNameTF.text = self.task.name
-        self.taskDetailTV.text = self.task.detail
-        self.taskRankTF.text = "9x"
+        self.taskNameTF.text = self.screenTask.name
+        self.taskDetailTV.text = self.screenTask.detail
+        self.taskRankTF.text = String(self.screenTaskIndex)
     }
 
     /*

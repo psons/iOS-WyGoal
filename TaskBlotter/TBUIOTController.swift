@@ -69,7 +69,8 @@ class TBUIOTController: TBRootAccessController, UITableViewDataSource, UITableVi
             if segue.identifier == "ShowTaskDetail"  {
                 print("Doing segue: \(String(describing: segue.identifier))")
                 if let indexPath = self.taskListingTableView.indexPathForSelectedRow {
-                    targetVC.task = self.screenObjective.tasks[indexPath.row]
+                    targetVC.screenTask = self.screenObjective.tasks[indexPath.row]
+                    targetVC.screenTaskIndex = indexPath.row
                 }
             } else {
                 print("TBUIGOController.prepare() Unrecognized Segue\(String(describing: segue.identifier)) ")
