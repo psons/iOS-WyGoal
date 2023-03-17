@@ -24,7 +24,7 @@ var effortDomainJsonString =
                     "oid": "c21f969b5f.c9ec52c702",
                     "tasks": [
                         {
-                            "status": "in progress",
+                            "status": "in_progress",
                             "name": "live in the moment",
                             "detail": "Do the right thing for the moment now!",
                             "tid": "c21f969b5f.c9ec52c702.0eeac89fb5"
@@ -89,7 +89,7 @@ var effortDomainJsonString =
                             "oid": "c32777777.c0eaaaaaa0",
                             "tasks": [
                                 {
-                                    "status": "in progress",
+                                    "status": "in_progress",
                                     "name": "Get DePaul to list CSC438",
                                     "detail": "Need a middle tier cours for APIs.  Python would be fun",
                                     "tid": "c32777777.c0eaaaaaa0.0eeac89fa1"
@@ -102,7 +102,7 @@ var effortDomainJsonString =
                             "oid": "c32777777.c0eaaaaaa1",
                             "tasks": [
                                 {
-                                    "status": "in progress",
+                                    "status": "in_progress",
                                     "name": "Angular",
                                     "detail": "",
                                     "tid": "c32777777.c0eaaaaaa1.0eeac89fa2"
@@ -115,7 +115,7 @@ var effortDomainJsonString =
                             "oid": "c32777777.c0eaaaaaa2",
                             "tasks": [
                                 {
-                                    "status": "in progress",
+                                    "status": "in_progress",
                                     "name": "React Native",
                                     "detail": "",
                                     "tid": "c32777777.c0eaaaaaa2.0eeac89fa3"
@@ -128,7 +128,7 @@ var effortDomainJsonString =
                             "oid": "c32777777.c0eaaaaaa3",
                             "tasks": [
                                 {
-                                    "status": "in progress",
+                                    "status": "in_progress",
                                     "name": "Java",
                                     "detail": "",
                                     "tid": "c32777777.c0eaaaaaa3.0eeac89fa4"
@@ -141,7 +141,7 @@ var effortDomainJsonString =
                             "oid": "c32777777.c0eaaaaaa4",
                             "tasks": [
                                 {
-                                    "status": "in progress",
+                                    "status": "in_progress",
                                     "name": "Kotlin",
                                     "detail": "",
                                     "tid": "c32777777.c0eaaaaaa4.0eeac89fa6"
@@ -154,7 +154,7 @@ var effortDomainJsonString =
                             "oid": "c32777777.c0eaaaaaa5",
                             "tasks": [
                                 {
-                                    "status": "in progress",
+                                    "status": "in_progress",
                                     "name": "Storyboards",
                                     "detail": "",
                                     "tid": "c32777777.c0eaaaaaa5.0eeac89fa7"
@@ -167,7 +167,7 @@ var effortDomainJsonString =
                             "oid": "c32777777.c0eaaaaaa6",
                             "tasks": [
                                 {
-                                    "status": "in progress",
+                                    "status": "in_progress",
                                     "name": "Swift UI",
                                     "detail": "",
                                     "tid": "c32777777.c0eaaaaaa6.0eeac89fa8"
@@ -180,7 +180,7 @@ var effortDomainJsonString =
                             "oid": "c32777777.c0eaaaaaa7",
                             "tasks": [
                                 {
-                                    "status": "in progress",
+                                    "status": "in_progress",
                                     "name": "Mongo and Spark",
                                     "detail": "",
                                     "tid": "c32777777.c0eaaaaaa7.0eeac89fa0"
@@ -193,7 +193,7 @@ var effortDomainJsonString =
                             "oid": "c32777777.c0eaaaaaa8",
                             "tasks": [
                                 {
-                                    "status": "in progress",
+                                    "status": "in_progress",
                                     "name": "RDBMS and Hadoop",
                                     "detail": "",
                                     "tid": "c32777777.c0eaaaaaa8.0eeac89fa9"
@@ -206,7 +206,7 @@ var effortDomainJsonString =
                             "oid": "c32777777.c0eaaaaaa9",
                             "tasks": [
                                 {
-                                    "status": "in progress",
+                                    "status": "in_progress",
                                     "name": "Tibco and Kafka",
                                     "detail": "",
                                     "tid": "c32777777.c0eaaaaaa9.0eeac89f11"
@@ -230,9 +230,9 @@ var effortDomainJsonString =
                         "oid": "c32f070b6f.c0ec63c813",
                         "tasks": [
                             {
-                                "status": "in progress",
+                                "status": "completed",
                                 "name": "Fix Phone Booth",
-                                "detail": "",
+                                "detail": "Antena on top was damaged.  Time travel is now possible again.",
                                 "tid": "c32f070b6f.c0ec63c813.0eeac89fa5"
                             },
                             {
@@ -248,15 +248,15 @@ var effortDomainJsonString =
                                 "tid": "c32f070b6f.c0ec63c813.e34beb10c4"
                             },
                             {
-                                "status": "todo",
+                                "status": "in_progress",
                                 "name": "Gather all the friends",
-                                "detail": "",
+                                "detail": "Nepolean is at the mall still.  Most of the rest are in the phone booth",
                                 "tid": "c32f070b6f.c0ec63c813.5103dd140d"
                             },
                             {
                                 "status": "todo",
                                 "name": "Form Wyld Stalyon",
-                                "detail": "",
+                                "detail": "This will be righteous!",
                                 "tid": "c32f070b6f.c0ec63c813.92292d0fe7"
                             }
                         ]
@@ -267,7 +267,7 @@ var effortDomainJsonString =
                         "oid": "c32f070b6f.c0ec63c8ed",
                         "tasks": [
                             {
-                                "status": "in progress",
+                                "status": "in_progress",
                                 "name": "Rescue Princess",
                                 "detail": "She is imprisoned in the tower.",
                                 "tid": "c32f070b6f.c0ec63c8ed.0eeac89fbf"
@@ -318,7 +318,7 @@ var effortDomainJsonString =
                                 "tid": "c32f070aaa.c0ec63cbbb.5103dd140d"
                             },
                             {
-                                "status": "in progress",
+                                "status": "in_progress",
                                 "name": "Argue with peasants",
                                 "detail": "",
                                 "tid": "c32f070aaa.c0ec63cbbb.0eeac89fa5"
@@ -343,7 +343,7 @@ var effortDomainJsonString =
                         "oid": "c32f070aaa.c0ec63cccc",
                         "tasks": [
                             {
-                                "status": "in progress",
+                                "status": "in_progress",
                                 "name": "Punish Zoot",
                                 "detail": "She is imprisoned in the tower.",
                                 "tid": "c32f070aaa.c0ec63cccc.0eeac89fbf"

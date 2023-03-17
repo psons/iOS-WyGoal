@@ -10,7 +10,7 @@ enum StatusVal: String, Codable {
     case abandoned = "abandoned"
     case completed = "completed"
     case scheduled = "scheduled"
-    case in_progress = "in progress"
+    case in_progress = "in_progress"
     case unfinished = "unfinished"
     case todo = "todo"
     var state: String { return self.rawValue }

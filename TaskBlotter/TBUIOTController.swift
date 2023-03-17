@@ -18,7 +18,7 @@ class TBUIOTController: TBRootAccessController, UITableViewDataSource, UITableVi
     var screenObjectiveIndex = -1
     var screenGoalIndex = -1
     @IBOutlet weak var objectiveNameTF: UITextField!
-    @IBOutlet weak var taskListinTableView: UITableView!
+    @IBOutlet weak var taskListingTableView: UITableView!
     @IBOutlet weak var defaultObjectiveButton: UIButton!
     @IBOutlet weak var maxTaskStepper: UIStepper!
     @IBOutlet weak var maxTaskTF: UITextField!
@@ -29,8 +29,8 @@ class TBUIOTController: TBRootAccessController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         self.title = "Objective + Tasks"
         setupFromSaved()
-        taskListinTableView.delegate = self
-        taskListinTableView.dataSource = self
+        taskListingTableView.delegate = self
+        taskListingTableView.dataSource = self
         
     }
 
@@ -68,7 +68,7 @@ class TBUIOTController: TBRootAccessController, UITableViewDataSource, UITableVi
             
             if segue.identifier == "ShowTaskDetail"  {
                 print("Doing segue: \(String(describing: segue.identifier))")
-                if let indexPath = self.taskListinTableView.indexPathForSelectedRow {
+                if let indexPath = self.taskListingTableView.indexPathForSelectedRow {
                     targetVC.task = self.screenObjective.tasks[indexPath.row]
                 }
             } else {
@@ -212,13 +212,12 @@ extension TBUIOTController {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath) as! TBUITaskCell
 
         let task = self.getTBDomainStore().domain.goals[self.screenGoalIndex].objectives[self.screenObjectiveIndex].tasks[indexPath.row]
-
-        cell.taskNameLabel.text = task.name
-        cell.taskDetail.text = task.detail
-        cell.taskGrip.titleLabel?.text = String(indexPath.row + 1)
+        let cell = tableView.dequeueReusableCell(withIdentifier: task.status.rawValue, for: indexPath)
+        /**Using off the shelf cell, not mine**/
+        cell.textLabel?.text = task.name
+        cell.detailTextLabel?.text = task.detail
         return cell
     }
     
