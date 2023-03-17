@@ -773,71 +773,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Yug-LC-b73"/>
+                    <connections>
+                        <outlet property="taskDetailTV" destination="w82-yY-FA0" id="YQ6-M9-Kan"/>
+                        <outlet property="taskNameTF" destination="vYs-3W-57C" id="g1L-gc-8RW"/>
+                        <outlet property="taskRankTF" destination="fWP-aR-p36" id="FNs-Jt-PYU"/>
+                        <outlet property="taskStatusSC" destination="vnS-gC-bWu" id="xfI-c0-1xD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rrE-rM-cjn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2563" y="336"/>
-        </scene>
-        <!--Task Detail-->
-        <scene sceneID="ca7-sP-k1X">
-            <objects>
-                <viewController id="nOf-vS-MkB" userLabel="Task Detail" customClass="TBUITaskController" customModule="WyGoal" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Nzv-XX-vV3">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="254" text="Task Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OIr-bk-exx" userLabel="Task Name Label">
-                                <rect key="frame" x="16" y="16" width="288" height="15"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" name="AccentColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="254" text="Task Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oUb-8W-owV" userLabel="Task Detail Label">
-                                <rect key="frame" x="16" y="66.5" width="288" height="15"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" name="AccentColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="253" text="Task Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iD6-ZB-MKt" userLabel="Task Name text">
-                                <rect key="frame" x="16" y="39" width="288" height="19.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" text="Task Detail" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hR-vh-CKz">
-                                <rect key="frame" x="16" y="89.5" width="288" height="462.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="JmP-4p-69D"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="JmP-4p-69D" firstAttribute="bottom" secondItem="4hR-vh-CKz" secondAttribute="bottom" constant="16" id="5MF-xj-iGT"/>
-                            <constraint firstItem="OIr-bk-exx" firstAttribute="top" secondItem="JmP-4p-69D" secondAttribute="top" constant="16" id="8S1-nO-nSf"/>
-                            <constraint firstItem="JmP-4p-69D" firstAttribute="trailing" secondItem="4hR-vh-CKz" secondAttribute="trailing" constant="16" id="BTg-Mh-LC5"/>
-                            <constraint firstItem="iD6-ZB-MKt" firstAttribute="top" secondItem="OIr-bk-exx" secondAttribute="bottom" constant="8" symbolic="YES" id="BYi-8H-H63"/>
-                            <constraint firstItem="oUb-8W-owV" firstAttribute="top" secondItem="iD6-ZB-MKt" secondAttribute="bottom" constant="8" symbolic="YES" id="KJo-Tr-L0r"/>
-                            <constraint firstItem="iD6-ZB-MKt" firstAttribute="leading" secondItem="JmP-4p-69D" secondAttribute="leading" constant="16" id="KTp-Cm-7Ad"/>
-                            <constraint firstItem="OIr-bk-exx" firstAttribute="leading" secondItem="JmP-4p-69D" secondAttribute="leading" constant="16" id="Ro2-jv-tUl"/>
-                            <constraint firstItem="4hR-vh-CKz" firstAttribute="leading" secondItem="JmP-4p-69D" secondAttribute="leading" constant="16" id="atJ-uK-klA"/>
-                            <constraint firstItem="oUb-8W-owV" firstAttribute="leading" secondItem="JmP-4p-69D" secondAttribute="leading" constant="16" id="c7a-nr-5fS"/>
-                            <constraint firstItem="JmP-4p-69D" firstAttribute="trailing" secondItem="OIr-bk-exx" secondAttribute="trailing" constant="16" id="fWG-Jy-5S8"/>
-                            <constraint firstItem="4hR-vh-CKz" firstAttribute="top" secondItem="oUb-8W-owV" secondAttribute="bottom" constant="8" symbolic="YES" id="jW3-Qq-ixV"/>
-                            <constraint firstItem="JmP-4p-69D" firstAttribute="trailing" secondItem="oUb-8W-owV" secondAttribute="trailing" constant="16" id="je8-Ed-vyg"/>
-                            <constraint firstItem="JmP-4p-69D" firstAttribute="trailing" secondItem="iD6-ZB-MKt" secondAttribute="trailing" constant="16" id="rAL-0P-ytb"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="XQR-jN-UcF"/>
-                    <connections>
-                        <outlet property="taskDetail" destination="4hR-vh-CKz" id="HLq-IL-Wkm"/>
-                        <outlet property="taskName" destination="iD6-ZB-MKt" id="0vf-DF-hzw"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zoG-Fh-wCF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2824" y="-329"/>
+            <point key="canvasLocation" x="2505" y="410"/>
         </scene>
         <!--Goal List-->
         <scene sceneID="hLD-fK-iiE">
