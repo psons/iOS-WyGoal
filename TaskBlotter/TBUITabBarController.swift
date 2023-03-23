@@ -92,6 +92,13 @@ class TBUITabBarController: UITabBarController {
         return objectiveTasksVC
     }
 
+    func getTaskDetailVC(task: Task, taskIndex: Int) -> TBUITaskController {
+        let taskDetailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "taskDetailStoryBoardID") as! TBUITaskController
+        taskDetailVC.screenTaskIndex = taskIndex
+        taskDetailVC.screenTask = task
+        return taskDetailVC
+
+    }
     
     /**
      Builds and launches all or part of an array of nav controller rooted at the TBUITabBarController
@@ -133,8 +140,6 @@ class TBUITabBarController: UITabBarController {
             
         } else if self.navTarget == "AddObjective" {  // creates an objective
             vcList.append(getGoalListingVC())
-
-            // todo: need to load saved state her so the new objective goes wher the user wants it!
             
             let screenState = getValidatedGOState()
 
@@ -151,7 +156,28 @@ class TBUITabBarController: UITabBarController {
             let objectiveTasksVC = getObjectiveTasksVC(screenState: screenState)
             vcList.append(objectiveTasksVC)
 
-        } else {
+        } else if self.navTarget == "AddTask" {
+            vcList.append(getGoalListingVC())
+            
+            let screenState = getValidatedGOState()
+
+            let goalObjectivesVC = getGoalObjectivesVC(screenState: screenState)
+            vcList.append(goalObjectivesVC)
+            
+            // screenState has the new Objective.
+            let objectiveTasksVC = getObjectiveTasksVC(screenState: screenState)
+            vcList.append(objectiveTasksVC)
+
+            // add and save task.
+            let taskDetailVC = getTaskDetailVC(task: Task(name: self.intentData, detail: "detail to edit"),  taskIndex: 1)
+            let newTask = Task(name: self.intentData, detail: "")
+            let appState = self.domainStore.domain.addTask(task: newTask, gSlot: screenState.gSlot, oSlot: screenState.oSlot)
+            domainStore.saveData()
+            taskDetailVC.screenTask = newTask
+            taskDetailVC.screenTaskIndex = self.domainStore.domain.goals[appState.gSlot].objectives[appState.oSlot].tasks.count
+            vcList.append(taskDetailVC)
+            
+        }else {
             print("Bad Nav setup has to be fatal.")
             assertionFailure(" doNavigation() failure likely caused by bad setNavigation(navTarget: ...)")
         }

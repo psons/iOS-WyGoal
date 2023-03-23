@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TBUITaskController: UIViewController {
+class TBUITaskController: TBRootAccessController {
 
     var screenTask = Task(status: .todo, name: "UNKNOWN", detail: "")
     var screenTaskIndex = -1
@@ -26,7 +26,7 @@ class TBUITaskController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.taskNameTF.text = self.screenTask.name
         self.taskDetailTV.text = self.screenTask.detail
-        self.taskRankTF.text = String(self.screenTaskIndex)
+        self.taskRankTF.text = String(self.screenTaskIndex + 1)
     }
 
     /*

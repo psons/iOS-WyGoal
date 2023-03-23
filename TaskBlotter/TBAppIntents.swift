@@ -103,15 +103,18 @@ struct WyGoalObjectiveAddIntent: AppIntent {
 struct WyGoalTaskAddIntent: AppIntent {
     static var title: LocalizedStringResource = "Add Wygoal Task"
     static var description = IntentDescription("Adds a WyGoal task to complete")
-    static var openAppWhenRun = false  // <---- Won't launch app, or load ViewControllers.
+    static var openAppWhenRun = true  // <---- Won't launch app, or load ViewControllers.
 
     @Parameter(title: "Name of the Task")
     var name: String    // not non-optional will have Siri assure that it is provided.
 
-    
+    @MainActor
     func perform() async throws -> some IntentResult {
-        print("WyGoalObjectiveAddIntent.perform() \(name)")
+        print("WyGoalTaskAddIntent.perform() \(name)")
         
+        let tbc = getTBRootController()
+        tbc.setNavigation(navTarget: "AddTask", name: name)
+        tbc.doNavigation()
         return .result()  //.finished
     }
 }
@@ -230,6 +233,7 @@ struct TaskBlotterShortcuts: AppShortcutsProvider {
                 "Please create my Objective in \(.applicationName)",
                 "Please create a new Objective in \(.applicationName)",
                 "Add a new Objective \(.applicationName)",
+                "Add a new Objective to 77\(.applicationName)",
                 "Add a new \(.applicationName) Objective",
                 "Add a new Objective \(.applicationName)"])
 

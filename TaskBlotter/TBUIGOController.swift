@@ -133,8 +133,10 @@ class TBUIGOController: TBRootAccessController, UITableViewDataSource, UITableVi
                 }
             } else if segue.identifier == "CreateNewObjective" {
                 let newObjective = Objective(name: "New Objective")
+                print("New Objective should add to goal \(self.screenGoalIndex) \(self.screenGoal.name)")
                 let appState = self.getTBDomainStore().domain.addObjective(objective: newObjective, gSlot: self.screenGoalIndex)
                 self.getTBDomainStore().saveData()
+                print("New Objective now reports the appState as \(appState)")
                 targetVC.screenObjective = newObjective
                 targetVC.screenObjectiveIndex = appState.oSlot
             } else {

@@ -83,6 +83,7 @@ class TBUIOTController: TBRootAccessController, UITableViewDataSource, UITableVi
                 }
             } else if segue.identifier == "CreateNewTask" {
                 // todo add this task to the domain and save it
+                // similar code in the TBUITabBarController could be combined.
                 let newTask = Task(name: "New Task", detail: "")
                 let appState = self.getTBDomainStore().domain.addTask(task: newTask, gSlot: self.screenGoalIndex, oSlot: self.screenObjectiveIndex)
                 self.getTBDomainStore().saveData()
