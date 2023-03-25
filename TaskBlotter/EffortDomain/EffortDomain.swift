@@ -69,7 +69,7 @@ class EffortDomain: Codable, CustomStringConvertible {
     func addObjective(objective: Objective, gSlot: Int) -> AppState {
         let gSl = validGSlot(gSlot: gSlot)
         self.goals[gSl].objectives.append(objective)
-        let appState = AppState.factory(gSl, self.goals[gSl].objectives.count - 1)
+        let appState = AppState(gSl, self.goals[gSl].objectives.count - 1)
         return appState
     }
 
@@ -138,7 +138,7 @@ class EffortDomain: Codable, CustomStringConvertible {
     
     /**
      logic requires knowledge of prior appState and the state of goals in the AppDomain
-     Return an appstate that has a valid goal, as requested if possible, and also if possible  a valid objective
+     Return an appstate that has a valid goal, as requested if possible, and also if possible
      Try to preserve existing oSlot if goal is not changing.
      */
     func requestNewCurrentGState(desiredGSlot: Int, previousAppState: AppState) -> AppState {

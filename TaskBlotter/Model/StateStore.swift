@@ -6,6 +6,13 @@
 //
 
 import Foundation
+
+/**
+ Data saving class for the users 'context' consisting of:
+  - the index of the current goal that they may be creating / editing, or a default goal, which always exists.
+  - the index of the current objective that they may be creating / editing or a default objective, which always exists.
+  - todo: context should include a current task if the user is creating or editing a task
+ */
 class StateStore {
     var state: AppState
     init(state: AppState) {

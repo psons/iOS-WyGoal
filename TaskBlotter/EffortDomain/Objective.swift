@@ -11,6 +11,8 @@ let defaultMaxTasks = 1
 
 // Objective replaces Story in the class model.
 class Objective: Codable, CustomStringConvertible {
+    static let defaultTslot = 0
+    static let invalidTslot = -1
     var name: String
     var maxTasks = defaultMaxTasks
     let oid: String

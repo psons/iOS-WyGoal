@@ -242,21 +242,30 @@ class TBUITabBarController: UITabBarController {
 }
 
 /**
- Data representing a path down to an Objective as a user might nevigate in the app
+ class for holding user interaction state in a viewcontroller for creating and editing goals.
+ the Goal object captured 
+ */
+class GState {
+    var gSlot = -1
+    var goal = Goal(name: "UNKNOWN")
+    init(gSlot: Int = 1, goal: Goal = Goal(name: "UNKNOWN")) {
+        self.gSlot = gSlot
+        self.goal = goal
+    }
+}
+
+/**
+ Data representing an index path down to an Objective as a user might navigate in the app
   It is an elaboration on an AppState with a known EffortDomainModel.
-    A few screens save a goal along with the
     todo: set up as ubclass of AppState, which will require AppState to be updated with Codable init 
  */
-class GOState {
-    var gSlot = -1
+class GOState: GState {
     var oSlot = -1
-    var goal = Goal(name: "UNKNOWN")
     var objective = Objective(name: "UNKNOWN")
     
     init(gSlot: Int = 1, oSlot: Int = 1, goal: Goal = Goal(name: "UNKNOWN"), objective: Objective = Objective(name: "UNKNOWN")) {
-        self.gSlot = gSlot
+        super.init(gSlot: gSlot, goal: goal)
         self.oSlot = oSlot
-        self.goal = goal
         self.objective = objective
     }
 }

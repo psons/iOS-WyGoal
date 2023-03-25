@@ -730,7 +730,7 @@
                                     <constraint firstItem="ClV-dG-Sg7" firstAttribute="centerY" secondItem="mDP-pd-pZD" secondAttribute="centerY" id="z8T-P2-WAO"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Task Name Might be a few lines long." borderStyle="roundedRect" placeholder="Enter an objective name here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vYs-3W-57C" userLabel="Task Name.">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a task name here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vYs-3W-57C" userLabel="Task Name.">
                                 <rect key="frame" x="16" y="44" width="288" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="MBv-Ty-IFE"/>
@@ -740,6 +740,8 @@
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="objectiveNameTFdidEndExitAction:" destination="KjH-Aw-jb6" eventType="editingDidEndOnExit" id="38n-2A-SwR"/>
+                                    <action selector="taskNameTFdidEndExitAction:" destination="mZN-Qj-8l7" eventType="editingDidEndOnExit" id="Anw-i5-scN"/>
+                                    <action selector="taskNameTFdidEndExitAction:" destination="mZN-Qj-8l7" eventType="editingDidEnd" id="d9n-hS-lQt"/>
                                 </connections>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="w82-yY-FA0">

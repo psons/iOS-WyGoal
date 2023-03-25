@@ -95,10 +95,6 @@ class TBUIOTController: TBRootAccessController, UITableViewDataSource, UITableVi
         }
     }
     
-    
-    
-    
-
     /**
      Handles incrementing indecies for user display
      */
@@ -184,6 +180,9 @@ class TBUIOTController: TBRootAccessController, UITableViewDataSource, UITableVi
         self.navigationController?.popViewController(animated: true)
     }
     
+    /**
+     Offers the user an alert with an option to opt out of deleyting the current Objective.
+     */
     func doObjectiveDeleteAlert(condition: String, choice: String, notice: String, newState: String) {
         let outerAlertController = UIAlertController(
             title: condition,
@@ -220,6 +219,9 @@ class TBUIOTController: TBRootAccessController, UITableViewDataSource, UITableVi
     }
 }
 
+/**
+ Tabeview support extension for TBUIOTController
+ */
 extension TBUIOTController {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

@@ -29,6 +29,19 @@ class TBUITaskController: TBRootAccessController {
         self.taskRankTF.text = String(self.screenTaskIndex + 1)
     }
 
+    @IBAction func taskNameTFdidEndExitAction(_ sender: UITextField) {
+        if let editedName = sender.text {
+            print("Exit Ended on \(editedName)")
+            // todo implement saving.  need oIndex.
+//            let domainStore = getTBDomainStore() // Fatal if back button without ending exit on return
+//            domainStore.domain.goals[self.screenGoalIndex].objectives[oIndex].name = editedName
+//            domainStore.saveData()
+            /**
+             is it possible that the 2 saves here happen out of order?  Depends on the dispatch queue design.
+             */
+        }
+
+    }
     /*
     // MARK: - Navigation
 
